@@ -1,27 +1,105 @@
 # HomeLab OS v1
 
-> A lightweight, self-hosted operating platform designed for personal private cloud management, developer workspace control, storage administration, encrypted vault integration, and hardware telemetry on Ubuntu 24.04 LTS.
+> A lightweight, self-hosted operating platform providing personal private cloud management, developer workspace control, storage administration, encrypted vault integration, automated backups, and hardware monitoring.
 
 ---
 
-## 🖥️ Target Hardware Specifications
+## ⚠️ Important Architecture Clarification: Two Environments
 
+HomeLab OS strictly separates the **Development Environment** from the **Production Deployment Server**.
+
+```text
+┌─────────────────────────────────────────┐       ┌─────────────────────────────────────────┐
+│     Environment 1: Development          │       │      Environment 2: Production          │
+├─────────────────────────────────────────┤       ├─────────────────────────────────────────┤
+│ • Hardware: Developer Laptop/Desktop    │       │ • Hardware: Dell Inspiron 5558          │
+│ • OS: macOS / Linux / Windows           │       │ • OS: Ubuntu 24.04 LTS                  │
+│ • Goal: Writing code, testing features  │       │ • Goal: 24/7 Production Runtime         │
+│ • Docker: OPTIONAL                      │ ─────►│ • Docker Engine: MANDATORY              │
+│ • Database: SQLite / Local Postgres     │       │ • Docker Compose: MANDATORY             │
+└─────────────────────────────────────────┘       └─────────────────────────────────────────┘
+```
+
+---
+
+## 🔄 Deployment Pipeline
+
+```text
+Developer Machine ──► Git Repository ──► Release Package ──► Installer ──► Deployment Server (Docker Stack)
+```
+
+1. **Developer Machine**: Code written, tested via Pytest, and scanned for security violations.
+2. **Git Repository**: Pushed to `origin/main` after automated pre-commit audit (`scripts/security_scan.sh`).
+3. **Release Package**: Versioned Tarballs generated under `release/packages/` following SemVer (`Major.Minor.Patch`).
+4. **Installer**: Windows Remote Assistant (`installer/windows/`) or Native Linux Script (`installer/linux/`).
+5. **Deployment Server**: Executed on Ubuntu 24.04 LTS via `/deployment/install.sh`.
+
+---
+
+## 💻 For Developers (Environment 1)
+
+### Requirements
+- Python 3.12+
+- Node.js 20+
+- Git
+- **Docker is OPTIONAL** for development.
+
+### Quickstart Developer Setup
+```bash
+# 1. Clone repository
+git clone https://github.com/SidddhantJain/HomeLab-OS.git
+cd HomeLab-OS
+
+# 2. Run Backend API (FastAPI)
+cd backend
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+
+# 3. Run Frontend UI (React + Vite)
+cd ../frontend
+npm install
+npm run dev
+
+# 4. Run Pytest Suite
+python -m pytest tests/backend
+
+# 5. Run Security Audit Scan
+bash scripts/security_scan.sh
+```
+
+- **Local API Specs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Local Dashboard**: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🖥️ For Server Deployment (Environment 2)
+
+### Target Server Hardware Specifications
 - **Server Model**: Dell Inspiron 5558
-- **CPU**: Intel Core i7-5500U (2 Cores, 4 Threads @ 2.40GHz / 3.00GHz Turbo)
+- **CPU**: Intel Core i7-5500U (2 Cores, 4 Threads @ 2.40GHz)
 - **RAM**: 8GB DDR3L
-- **Primary OS Drive**: 240GB Solid State Drive (SSD)
-- **Secondary Data Storage**: 1TB External Hard Disk Drive (HDD)
-- **Operating System**: Ubuntu 24.04 LTS Server
+- **System Drive**: 240GB SSD
+- **External Storage**: 1TB External HDD
+- **Operating System**: Ubuntu 24.04 LTS
+- **Runtime Requirement**: **Docker Engine & Docker Compose (MANDATORY)**
 
----
+### Production Server Installation
+Run the automated server installer:
+```bash
+# 1. Run requirements check
+bash deployment/requirements_check.sh
 
-## 🏗️ Technology Stack
+# 2. Install & start HomeLab OS container stack
+bash deployment/install.sh
 
-- **Backend**: Python 3.12+, FastAPI, SQLAlchemy 2.0, PostgreSQL 16, Redis 7, Bcrypt, PyJWT
-- **Frontend**: React 18, Vite, Tailwind CSS, Axios, React Router v6, Lucide Icons
-- **Infrastructure**: Docker, Docker Compose, Nginx Reverse Proxy
-- **Database & Migrations**: PostgreSQL 16, Alembic
-- **Testing**: Pytest, FastAPI TestClient
+# 3. Verify server health
+bash deployment/health_check.sh
+```
+
+- **Production Dashboard**: [http://<server-ip>:3000](http://<server-ip>:3000)
+- **Production API**: [http://<server-ip>:8000/api/v1/system/status](http://<server-ip>:8000/api/v1/system/status)
 
 ---
 
@@ -29,80 +107,30 @@
 
 ```text
 homeos-v1/
-├── backend/            # FastAPI Python application (API, Models, Schemas, Core)
+├── backend/            # FastAPI Python application core
 ├── frontend/           # React + Vite + Tailwind CSS dashboard UI
-├── database/           # SQL schema dumps, seed data, and migration backups
-├── docker/             # Docker compose configs and service definitions
-├── scripts/            # Deployment, health check, and maintenance automation
-├── configs/            # Server configurations (Nginx, system, firewall)
-├── docs/               # System documentation & specifications
-└── tests/              # Backend and frontend automated test suites
+├── database/           # Baseline SQL schemas & migrations
+├── deployment/         # Server deployment scripts (install, update, uninstall, health)
+├── installer/          # Dual-layer installers (Windows Remote Assistant & Linux Native)
+├── release/            # Release metadata (version.json, packages)
+├── scripts/            # Security audit pre-commit scan script
+├── configs/            # System & proxy configurations
+├── docs/               # System architecture & deployment pipeline specs
+├── Documentation/
+│   ├── Public/         # SRS, SAD, DB Schema, API Specs (Committed to Git)
+│   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
+└── tests/              # Backend Pytest automated tests
 ```
 
 ---
 
-## 🚀 Development Setup & Running Locally
+## 🔒 Security & Privacy Rules
 
-### Prerequisites
-- Python 3.12+
-- Node.js 20+
-- Docker & Docker Compose
-
-### 1. Environment Configuration
-Copy the template configuration to create your local `.env`:
-```bash
-cp .env.example .env
-```
-
-### 2. Running with Docker Compose (Recommended)
-Start the complete stack (PostgreSQL, Redis, FastAPI Backend, React Frontend):
-```bash
-docker compose up -d --build
-```
-Access the dashboard at: [http://localhost:3000](http://localhost:3000)
-
-### 3. Manual Local Development
-
-#### Backend Development
-```bash
-cd backend
-python -m venv venv
-# On Linux/macOS: source venv/bin/activate
-# On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
-API Documentation (Swagger UI): [http://localhost:8000/docs](http://localhost:8000/docs)
-
-#### Frontend Development
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Development Server: [http://localhost:3000](http://localhost:3000)
-
----
-
-## 🧪 Running Automated Tests
-
-Run the backend Pytest test suite:
-```bash
-python -m pytest tests/backend
-```
-
----
-
-## 📌 Phase 1 Progress (Core v0.1)
-
-- [x] Repository Structure created according to SRS specs
-- [x] FastAPI Core Backend initialized (`GET /` returning system status)
-- [x] SQLAlchemy Database Models (`User`, `AuditLog`, `SystemMetric`)
-- [x] Bcrypt Password Hashing & JWT Authentication Endpoints (`/auth/register`, `/auth/login`)
-- [x] React + Vite + Tailwind CSS Glassmorphic Dashboard (`/`, `/login`, `/settings`)
-- [x] Docker Compose Setup (PostgreSQL 16, Redis 7, Backend, Frontend)
-- [x] Pytest Backend Test Suite (100% passing)
-- [x] Updated Documentation & CHANGELOG.md
+- **Documentation Separation**: All private credentials, server IP addresses, SSH keys, and vault passphrases belong in `Documentation/Private/` which is protected by `.gitignore`.
+- **Pre-Commit Security Audit**: Before pushing code to `origin/main`, execute:
+  ```bash
+  bash scripts/security_scan.sh
+  ```
 
 ---
 

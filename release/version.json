@@ -1,0 +1,17 @@
+{
+  "name": "HomeLab OS",
+  "version": "1.0.0",
+  "phase": "Phase 1 Core Foundation & Deployment Pipeline",
+  "release_date": "2026-07-28",
+  "compatibility": {
+    "target_hardware": "Dell Inspiron 5558",
+    "target_os": "Ubuntu 24.04 LTS",
+    "docker_engine": ">=24.0",
+    "docker_compose": ">=2.20"
+  },
+  "components": {
+    "backend": "FastAPI v0.111.0",
+    "frontend": "React v18.3.1 + Vite v5.2",
+    "database": "PostgreSQL v16 + Redis v7"
+  }
+}

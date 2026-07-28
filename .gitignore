@@ -26,12 +26,21 @@ env/
 ENV/
 .venv
 
-# Environment variables & secrets
+# Environment variables & secrets protection
 .env
+.env.*
 .env.local
-.env.*.local
 *.pem
 *.key
+*.crt
+secrets/
+vault/
+credentials/
+backup-config/
+private/
+
+# Security & Private Documentation
+Documentation/Private/
 
 # Database & SQLite/Postgres local data
 database/*.db
@@ -39,6 +48,8 @@ database/*.sqlite
 *.sqlite3
 postgres_data/
 redis_data/
+homelab_test.db
+homelab_fallback.db
 
 # Node / Frontend
 node_modules/
@@ -48,6 +59,10 @@ yarn-error.log*
 .pnpm-debug.log*
 frontend/dist/
 frontend/build/
+
+# Release build packages
+release/packages/*.tar.gz
+release/packages/*.zip
 
 # IDE & OS files
 .vscode/
