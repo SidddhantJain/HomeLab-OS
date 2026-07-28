@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import Column, String, DateTime, Float
 from app.core.database import Base
 
@@ -11,4 +11,4 @@ class SystemMetric(Base):
     cpu_usage = Column(Float, nullable=False)
     ram_usage = Column(Float, nullable=False)
     temperature = Column(Float, nullable=True)
-    timestamp = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+    timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False, index=True)

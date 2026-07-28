@@ -1,7 +1,6 @@
 import uuid
-from datetime import datetime
-from sqlalchemy import Column, String, DateTime, Enum
-from sqlalchemy.dialects.postgresql import UUID
+from datetime import datetime, timezone
+from sqlalchemy import Column, String, DateTime
 from app.core.database import Base
 import enum
 
@@ -26,5 +25,5 @@ class User(Base):
     password_hash = Column(String(255), nullable=False)
     role = Column(String(20), default=UserRole.ADMIN.value, nullable=False)
     status = Column(String(20), default=UserStatus.ACTIVE.value, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     last_login = Column(DateTime, nullable=True)

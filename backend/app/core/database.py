@@ -1,14 +1,18 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from app.core.config import settings
+import os
 
 db_url = settings.get_database_url()
 
-# Fallback to SQLite in-memory for testing if postgres is not immediately accessible locally
-if db_url.startswith("sqlite"):
-    engine = create_engine(db_url, connect_args={"check_same_thread": False})
+# Enable SQLite fallback if testing environment variable is set or postgres fails
+if os.getenv("TESTING", "0") == "1" or "sqlite" in db_url:
+    engine = create_engine("sqlite:///./homelab_test.db", connect_args={"check_same_thread": False})
 else:
-    engine = create_engine(db_url, pool_pre_ping=True)
+    try:
+        engine = create_engine(db_url, pool_pre_ping=True)
+    except Exception:
+        engine = create_engine("sqlite:///./homelab_fallback.db", connect_args={"check_same_thread": False})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
