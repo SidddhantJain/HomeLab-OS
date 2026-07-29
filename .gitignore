@@ -33,11 +33,12 @@ ENV/
 *.pem
 *.key
 *.crt
-secrets/
-vault/
-credentials/
-backup-config/
-private/
+/secrets/
+/vault/
+/credentials/
+/backup-config/
+/private/
+
 
 # Security & Private Documentation
 Documentation/Private/
