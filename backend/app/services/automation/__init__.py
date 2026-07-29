@@ -1,1 +1,7 @@
-"""Automation Service — Executes rule-based workflows and scheduled automation routines."""
+"""
+HomeLab OS — Automation Service Initialization
+"""
+
+from app.services.automation.service import AutomationService
+
+__all__ = ["AutomationService"]

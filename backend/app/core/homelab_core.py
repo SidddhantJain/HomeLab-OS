@@ -76,8 +76,17 @@ class HomelabCore:
     def _register_default_services(self) -> None:
         from app.services.storage import StorageService
         from app.services.vault import VaultService
+        from app.services.workspace import WorkspaceService
+        from app.services.projects import ProjectService
+        from app.services.backup import BackupService
+        from app.services.automation import AutomationService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
+        self.register_service("workspace", WorkspaceService())
+        self.register_service("projects", ProjectService())
+        self.register_service("backup", BackupService())
+        self.register_service("automation", AutomationService())
+
 
     def _register_default_jobs(self) -> None:
         # Task 10: Storage Health Scan (run every 24 hours)
