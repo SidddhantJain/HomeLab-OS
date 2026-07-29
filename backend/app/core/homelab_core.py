@@ -64,7 +64,10 @@ class HomelabCore:
 
     def _register_default_services(self) -> None:
         from app.services.storage import StorageService
+        from app.services.vault import VaultService
         self.register_service("storage", StorageService())
+        self.register_service("vault", VaultService())
+
 
     @classmethod
     def instance(cls) -> "HomelabCore":
