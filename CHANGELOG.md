@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v1.1.0-pre-phase2] - 2026-07-29
+
+### Added
+- **HomeLab Core coordinator**: Singleton architecture orchestrating platform lifecycles and service registry registration.
+- **Internal Event Bus**: Lightweight in-process event broker supporting wildcard string channel patterns (e.g. `storage.*`).
+- **Server State Machine**: Governs formal server lifecycles (BOOTING, STARTING, RUNNING, MAINTENANCE, etc.) with enforced transition path mappings.
+- **Hardware Abstraction Layer (HAL)**: Host-independent modules for query cpu, memory, disk storage, network, thermal zones, battery state, and energy profile profiles.
+- **Scheduler Framework**: Standardized time-aware job execution runner (interval, cron, one-shot) integrated with server states.
+- **Telemetry Framework**: Aggregates health values, logs performance metrics, and maintains warning status records.
+- **Plugin System Layout**: Plugin scanning directories, version validation engines, and permissions limits.
+- **YAML Configuration Aggregation**: Multi-file configuration aggregator loading settings under `config/` merging with dotenv credentials.
+- **Frontend Client SDK**: React client SDK abstraction wrapping all platform endpoints to simplify UI-level fetch flows.
+- **Unified Migration Manager**: Orchestrates multi-dimensional state updates (Alembic schema, Docker files, configs, vaults).
+
 ## [v1.0.0-phase1] - 2026-07-28
 
 ### Added

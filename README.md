@@ -103,19 +103,43 @@ bash deployment/health_check.sh
 
 ---
 
+## 🏗️ Platform Core & Subsystems
+
+HomeLab OS has been consolidated into a modular, event-driven software platform:
+
+- **HomeLab Core**: The central coordinator singleton orchestrating service registries and lifecycles.
+- **Event Bus**: In-process pub/sub system enabling decoupled inter-service communications.
+- **Server State Machine**: Enforces valid server states (BOOTING, RUNNING, MAINTENANCE, UPDATING, etc.).
+- **Hardware Abstraction Layer (HAL)**: Unified Python interfaces query CPU, RAM, Network, Battery, and Thermals safely across environments.
+- **Scheduler Framework**: Central job engine pausing automatically during high-load system states.
+- **Telemetry Framework**: Unified health status scoring, warning metrics, and alert collectors.
+- **Plugin System**: Structured extension discovery and sandboxed plugin layouts under `plugins/`.
+- **YAML Configuration System**: Human-readable configuration sets under `config/` merging with dotenv settings.
+- **Frontend SDK**: Unified client abstraction layer inside the React application (`frontend/src/sdk/`).
+- **Migration Framework**: Coordinates database schema updates (Alembic), YAML structures, and Docker profiles.
+
+---
+
 ## 📂 Repository Structure
 
 ```text
 homeos-v1/
 ├── backend/            # FastAPI Python application core
+│   ├── app/
+│   │   ├── core/       # HomeLab Core, Event Bus, State Machine, Telemetry, Scheduler, Configs
+│   │   ├── hardware/   # Hardware Abstraction Layer (HAL)
+│   │   ├── services/   # Isolated platform services (12 service packages)
+│   │   └── api/        # REST controllers and routers
 ├── frontend/           # React + Vite + Tailwind CSS dashboard UI
+│   ├── src/sdk/        # Frontend Client SDK for API requests
+├── config/             # YAML configurations (system, storage, vault, docker, etc.)
+├── plugins/            # Extensible platform plugin directories
 ├── database/           # Baseline SQL schemas & migrations
 ├── deployment/         # Server deployment scripts (install, update, uninstall, health)
 ├── installer/          # Dual-layer installers (Windows Remote Assistant & Linux Native)
-├── release/            # Release metadata (version.json, packages)
+├── release/            # Release metadata & versioned channel archives (stable, beta, nightly)
 ├── scripts/            # Security audit pre-commit scan script
-├── configs/            # System & proxy configurations
-├── docs/               # System architecture & deployment pipeline specs
+├── docs/               # Architecture design specifications
 ├── Documentation/
 │   ├── Public/         # SRS, SAD, DB Schema, API Specs (Committed to Git)
 │   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
@@ -136,3 +160,4 @@ homeos-v1/
 
 ## 📄 License
 Privately developed for HomeLab OS Project.
+
