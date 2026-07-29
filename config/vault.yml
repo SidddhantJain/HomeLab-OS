@@ -1,0 +1,9 @@
+# Vault Encryption Configuration
+vault:
+  encryption: LUKS
+  key_derivation: PBKDF2
+  auto_lock_timeout_seconds: 900
+  backup_keys:
+    enabled: true
+    destination: /mnt/storage/vault_backup
+  mount_point: /mnt/vault

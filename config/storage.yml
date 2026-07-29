@@ -1,0 +1,12 @@
+# Storage Configuration
+disks:
+  auto_mount: true
+  preferred_filesystem: ext4
+  scan_interval_seconds: 3600
+  smart_monitoring:
+    enabled: true
+    alert_on_temperature_c: 60
+mount_points:
+  - path: /mnt/storage
+    label: StorageDrive
+    read_only: false

@@ -1,0 +1,11 @@
+# HomeLab OS System Configuration
+server:
+  name: HomeLab-Inspiron
+  environment: development
+  log_level: INFO
+  port: 8000
+  host: 0.0.0.0
+security:
+  jwt_expiration_minutes: 1440
+  allowed_cors_origins:
+    - "*"

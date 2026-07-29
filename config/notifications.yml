@@ -1,0 +1,15 @@
+# Notifications Dispatcher settings
+notifications:
+  channels:
+    email:
+      enabled: false
+      smtp_host: smtp.example.com
+      smtp_port: 587
+    webhook:
+      enabled: false
+      url: https://hooks.example.com/homelab
+  rules:
+    critical_alerts:
+      notify_immediately: true
+      channels:
+        - webhook

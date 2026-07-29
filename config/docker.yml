@@ -1,0 +1,12 @@
+# Docker Compose & Sandbox Integration
+docker:
+  socket_path: /var/run/docker.sock
+  compose_project_name: homelab_stack
+  network_subnet: 172.20.0.0/16
+  containers:
+    postgres:
+      image: postgres:16-alpine
+      restart_policy: always
+    redis:
+      image: redis:7-alpine
+      restart_policy: always

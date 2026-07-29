@@ -1,0 +1,8 @@
+# User Identity Rules & Registration Policy
+users:
+  allow_public_registration: false
+  min_password_length: 8
+  require_mfa: false
+  session_timeout_seconds: 86400
+  default_roles:
+    - user

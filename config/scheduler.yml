@@ -1,0 +1,11 @@
+# Central Scheduler Jobs
+jobs:
+  telemetry_report:
+    enabled: true
+    interval_seconds: 60
+  disk_health_check:
+    enabled: true
+    cron: "0 */12 * * *"
+  backup_rotation:
+    enabled: true
+    cron: "0 2 * * *"
