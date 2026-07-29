@@ -5,6 +5,8 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
+import StoragePage from './pages/Storage';
+import VaultPage from './pages/Vault';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,6 +44,8 @@ function App() {
                 <main className="flex-1 p-6 overflow-y-auto">
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
+                    <Route path="/storage" element={<StoragePage />} />
+                    <Route path="/vault" element={<VaultPage />} />
                     <Route path="/settings" element={<Settings />} />
                   </Routes>
                 </main>
@@ -53,5 +57,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

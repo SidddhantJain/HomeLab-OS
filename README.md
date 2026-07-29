@@ -141,7 +141,12 @@ homeos-v1/
 ├── scripts/            # Security audit pre-commit scan script
 ├── docs/               # Architecture design specifications
 ├── Documentation/
-│   ├── Public/         # SRS, SAD, DB Schema, API Specs (Committed to Git)
+│   ├── Public/         # SRS, SAD, DB Schema, API Specs, Storage/Vault specifications
+│   │   ├── [Storage Service Architecture](Documentation/Public/Storage_Service_Architecture.md)
+│   │   ├── [Vault Service Architecture](Documentation/Public/Vault_Service_Architecture.md)
+│   │   ├── [External HDD Setup Guide](Documentation/Public/External_HDD_Setup_Guide.md)
+│   │   ├── [LUKS Vault Design](Documentation/Public/LUKS_Vault_Design.md)
+│   │   └── [Storage & Vault API Documentation](Documentation/Public/Storage_API_Documentation.md)
 │   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
 └── tests/              # Backend Pytest automated tests
 ```

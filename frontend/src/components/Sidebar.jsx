@@ -5,11 +5,12 @@ import { LayoutDashboard, HardDrive, Lock, FolderKanban, Settings, Cpu } from 'l
 const Sidebar = () => {
   const navItems = [
     { path: '/', label: 'Dashboard', icon: LayoutDashboard },
-    { path: '/storage', label: 'Storage', icon: HardDrive, disabled: true },
-    { path: '/vault', label: 'Private Vault', icon: Lock, disabled: true },
+    { path: '/storage', label: 'Storage', icon: HardDrive },
+    { path: '/vault', label: 'Private Vault', icon: Lock },
     { path: '/projects', label: 'Projects', icon: FolderKanban, disabled: true },
     { path: '/settings', label: 'Settings', icon: Settings },
   ];
+
 
   return (
     <aside className="w-64 glass-nav border-r border-slate-800 p-4 flex flex-col justify-between hidden md:flex min-h-[calc(100vh-61px)]">

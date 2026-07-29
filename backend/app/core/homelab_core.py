@@ -39,6 +39,8 @@ from typing import Optional
 
 from app.core.event_bus import EventBus, Event
 from app.core.server_state import ServerState, ServerStateMachine
+from app.core.telemetry import TelemetryCollector
+from app.core.scheduler import Scheduler, ScheduleMode
 
 
 class HomelabCore:
@@ -54,6 +56,8 @@ class HomelabCore:
     def __init__(self) -> None:
         self.event_bus = EventBus()
         self.state_machine = ServerStateMachine(initial=ServerState.BOOTING)
+        self.telemetry = TelemetryCollector()
+        self.scheduler = Scheduler()
         self._services: dict[str, object] = {}
 
         # Wire state transitions into the event bus automatically.
@@ -62,11 +66,86 @@ class HomelabCore:
         # Register default services
         self._register_default_services()
 
+        # Wire event subscribers
+        from app.core.event_subscribers import wire_event_subscribers
+        wire_event_subscribers(self.event_bus, self.telemetry)
+
+        # Register default scheduled jobs
+        self._register_default_jobs()
+
     def _register_default_services(self) -> None:
         from app.services.storage import StorageService
         from app.services.vault import VaultService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
+
+    def _register_default_jobs(self) -> None:
+        # Task 10: Storage Health Scan (run every 24 hours)
+        self.scheduler.register(
+            name="Storage Health Scan",
+            service="storage",
+            mode=ScheduleMode.INTERVAL,
+            interval_seconds=86400,
+            callback=self._run_storage_health_scan
+        )
+
+        # Task 10: Vault Reminder (checks unlocked status durations)
+        self.scheduler.register(
+            name="Vault Reminder",
+            service="vault",
+            mode=ScheduleMode.INTERVAL,
+            interval_seconds=3600,
+            callback=self._run_vault_reminder_check
+        )
+
+        # Task 10: Snapshot Retention Prep
+        self.scheduler.register(
+            name="Snapshot Retention Prep",
+            service="storage",
+            mode=ScheduleMode.INTERVAL,
+            interval_seconds=86400,
+            callback=self._run_snapshot_retention_prep
+        )
+
+    def _run_storage_health_scan(self) -> None:
+        # Trigger storage sync
+        from app.core.database import SessionLocal
+        db = SessionLocal()
+        try:
+            storage_svc = self.get_service("storage")
+            if hasattr(storage_svc, "sync_devices"):
+                storage_svc.sync_devices(db)
+        except Exception as exc:
+            print(f"[HomelabCore] Storage health scan job failed: {exc}")
+        finally:
+            db.close()
+
+    def _run_vault_reminder_check(self) -> None:
+        from app.core.database import SessionLocal
+        from app.models.vault import VaultMetadata
+        db = SessionLocal()
+        try:
+            meta = db.query(VaultMetadata).order_by(VaultMetadata.created_at.desc()).first()
+            if meta and meta.status == "UNLOCKED" and meta.last_unlock_time:
+                from datetime import datetime, timezone
+                elapsed = datetime.now(timezone.utc) - meta.last_unlock_time
+                if elapsed.total_seconds() > 43200: # 12 hours
+                    self.event_bus.publish(
+                        Event(
+                            name="vault.unlocked_reminder_warning",
+                            source="homelab_core",
+                            payload={"message": "Vault has been left unlocked for over 12 hours."}
+                        )
+                    )
+        except Exception as exc:
+            print(f"[HomelabCore] Vault reminder job failed: {exc}")
+        finally:
+            db.close()
+
+    def _run_snapshot_retention_prep(self) -> None:
+        # Placeholder for delete after X cycles
+        pass
+
 
 
     @classmethod

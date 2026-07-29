@@ -20,10 +20,15 @@ def setup_test_db():
     Base.metadata.drop_all(bind=engine)
 
 
-client = TestClient(app)
+@pytest.fixture
+def client():
+    from app.core.homelab_core import HomelabCore
+    HomelabCore.reset()
+    with TestClient(app) as c:
+        yield c
 
 
-def test_read_root():
+def test_read_root(client):
     response = client.get("/")
     assert response.status_code == 200
     data = response.json()
@@ -32,7 +37,7 @@ def test_read_root():
     assert data["status"] == "running"
 
 
-def test_auth_register_and_login():
+def test_auth_register_and_login(client):
     # Test Registration
     reg_payload = {
         "username": "admin_test",
@@ -63,7 +68,7 @@ def test_auth_register_and_login():
     assert token_data["username"] == "admin_test"
 
 
-def test_system_status():
+def test_system_status(client):
     response = client.get("/api/v1/system/status")
     assert response.status_code == 200
     data = response.json()
@@ -71,3 +76,4 @@ def test_system_status():
     assert "server_name" in data
     assert "cpu" in data
     assert "ram" in data
+
