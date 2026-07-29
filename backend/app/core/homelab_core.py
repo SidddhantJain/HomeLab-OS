@@ -59,6 +59,13 @@ class HomelabCore:
         # Wire state transitions into the event bus automatically.
         self.state_machine.on_change(self._on_state_change)
 
+        # Register default services
+        self._register_default_services()
+
+    def _register_default_services(self) -> None:
+        from app.services.storage import StorageService
+        self.register_service("storage", StorageService())
+
     @classmethod
     def instance(cls) -> "HomelabCore":
         """Return the global HomelabCore singleton (created on first call)."""
@@ -100,6 +107,12 @@ class HomelabCore:
         """Perform the platform startup sequence."""
         self.state_machine.transition(ServerState.STARTING)
         self.event_bus.publish(Event(name="core.starting", source="homelab_core"))
+
+        # Initialize registered services
+        for name, service in list(self._services.items()):
+            if hasattr(service, "initialize"):
+                service.initialize()
+
         self.state_machine.transition(ServerState.RUNNING)
         self.event_bus.publish(Event(name="core.running", source="homelab_core"))
 
@@ -107,6 +120,12 @@ class HomelabCore:
         """Perform the platform shutdown sequence."""
         self.state_machine.transition(ServerState.SHUTTING_DOWN)
         self.event_bus.publish(Event(name="core.shutting_down", source="homelab_core"))
+
+        # Shutdown registered services
+        for name, service in list(self._services.items()):
+            if hasattr(service, "shutdown"):
+                service.shutdown()
+
         self.state_machine.transition(ServerState.OFFLINE)
         self.event_bus.publish(Event(name="core.offline", source="homelab_core"))
 

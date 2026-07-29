@@ -14,9 +14,13 @@ Base.metadata.create_all(bind=engine)
 async def lifespan(app: FastAPI):
     # Startup tasks
     print(f"Starting {settings.PROJECT_NAME} {settings.VERSION}...")
+    from app.core.homelab_core import HomelabCore
+    HomelabCore.instance().startup()
     yield
     # Shutdown tasks
     print(f"Shutting down {settings.PROJECT_NAME}...")
+    HomelabCore.instance().shutdown()
+
 
 
 app = FastAPI(
