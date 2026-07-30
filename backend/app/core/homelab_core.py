@@ -80,12 +80,19 @@ class HomelabCore:
         from app.services.projects import ProjectService
         from app.services.backup import BackupService
         from app.services.automation import AutomationService
+        from app.services.documentation import DocumentationService
+        from app.services.downloads import DownloadService
+        from app.services.notifications import NotificationService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
         self.register_service("workspace", WorkspaceService())
         self.register_service("projects", ProjectService())
         self.register_service("backup", BackupService())
         self.register_service("automation", AutomationService())
+        self.register_service("documentation", DocumentationService())
+        self.register_service("downloads", DownloadService())
+        self.register_service("notifications", NotificationService())
+
 
 
     def _register_default_jobs(self) -> None:
