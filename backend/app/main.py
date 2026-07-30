@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import engine, Base
-from app.api import auth, system, storage, projects, vault
+from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation
 
 # Auto-create tables for initial boot
 Base.metadata.create_all(bind=engine)
@@ -20,7 +20,6 @@ async def lifespan(app: FastAPI):
     # Shutdown tasks
     print(f"Shutting down {settings.PROJECT_NAME}...")
     HomelabCore.instance().shutdown()
-
 
 
 app = FastAPI(
@@ -55,6 +54,11 @@ app.include_router(system.router, prefix=settings.API_V1_STR)
 app.include_router(storage.router, prefix=settings.API_V1_STR)
 app.include_router(projects.router, prefix=settings.API_V1_STR)
 app.include_router(vault.router, prefix=settings.API_V1_STR)
+app.include_router(workspace.router, prefix=settings.API_V1_STR)
+app.include_router(backup.router, prefix=settings.API_V1_STR)
+app.include_router(downloads.router, prefix=settings.API_V1_STR)
+app.include_router(documentation.router, prefix=settings.API_V1_STR)
+
 
 
 if __name__ == "__main__":
