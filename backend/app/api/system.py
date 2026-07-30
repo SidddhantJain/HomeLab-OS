@@ -44,3 +44,35 @@ def trigger_maintenance():
         "message": "Routine maintenance task initiated."
     }
 
+
+@router.get("/telemetry")
+def get_telemetry_metrics():
+    from app.core.database import SessionLocal
+    from app.models.workspace import Workspace
+    from app.models.project import Project
+    from app.models.snapshot import Snapshot
+    from app.models.backup import BackupJob
+    from app.models.download import DownloadTask
+    from app.models.storage import StorageDevice
+
+    db = SessionLocal()
+    try:
+        workspace_count = db.query(Workspace).filter(Workspace.status == "ACTIVE").count()
+        project_count = db.query(Project).filter(Project.status == "ACTIVE").count()
+        snapshot_count = db.query(Snapshot).count()
+        backup_count = db.query(BackupJob).count()
+        download_count = db.query(DownloadTask).filter(DownloadTask.status == "RUNNING").count()
+        storage_count = db.query(StorageDevice).count()
+
+        return {
+            "workspace_usage": workspace_count,
+            "project_size": project_count * 1.2, # Simulated average GB size
+            "backup_status": "healthy" if backup_count > 0 else "inactive",
+            "snapshot_count": snapshot_count,
+            "download_activity": download_count,
+            "storage_usage": storage_count
+        }
+    finally:
+        db.close()
+
+
