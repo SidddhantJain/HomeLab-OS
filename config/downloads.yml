@@ -1,0 +1,5 @@
+downloads:
+  download_directory: /opt/homelab/downloads
+  max_active_downloads: 3
+  cleanup_after_days: 7
+  min_disk_free_gb: 5

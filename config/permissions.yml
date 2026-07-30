@@ -1,0 +1,4 @@
+permissions:
+  enforce_strict_rbac: true
+  enable_denied_alerts: true
+  default_role: GUEST

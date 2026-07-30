@@ -1,11 +1,6 @@
-# Projects Configuration
 projects:
-  root_directory: /var/homelab/projects
-  allowed_templates:
-    - python-fastapi
-    - react-vite
-    - static-html
-  git:
-    auto_commit: false
-    default_branch: main
-    gpg_sign: true
+  auto_register_workspaces: true
+  enable_git_sync: true
+  enable_dependency_scan: true
+  snapshot:
+    retention_count: 10

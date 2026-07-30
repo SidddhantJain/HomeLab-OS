@@ -1,0 +1,4 @@
+workspace:
+  root_directory: /opt/homelab/workspaces
+  default_owner: admin
+  enable_size_tracking: true

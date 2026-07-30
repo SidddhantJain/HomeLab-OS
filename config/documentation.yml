@@ -1,0 +1,6 @@
+documentation:
+  doc_directories:
+    - docs
+    - Documentation/Public
+  enable_search_indexing: true
+  rendered_theme: dark

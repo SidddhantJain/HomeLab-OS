@@ -1,0 +1,5 @@
+backup:
+  local_storage_path: /opt/homelab/backups
+  external_hdd_path: /mnt/homelab-storage/backups
+  compression_enabled: true
+  encryption_enabled: true
