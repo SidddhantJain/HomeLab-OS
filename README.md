@@ -141,12 +141,19 @@ homeos-v1/
 ├── scripts/            # Security audit pre-commit scan script
 ├── docs/               # Architecture design specifications
 ├── Documentation/
-│   ├── Public/         # SRS, SAD, DB Schema, API Specs, Storage/Vault specifications
+│   ├── Public/         # SRS, SAD, DB Schema, API Specs, Storage/Vault/Phase 3 specifications
 │   │   ├── [Storage Service Architecture](Documentation/Public/Storage_Service_Architecture.md)
 │   │   ├── [Vault Service Architecture](Documentation/Public/Vault_Service_Architecture.md)
 │   │   ├── [External HDD Setup Guide](Documentation/Public/External_HDD_Setup_Guide.md)
 │   │   ├── [LUKS Vault Design](Documentation/Public/LUKS_Vault_Design.md)
-│   │   └── [Storage & Vault API Documentation](Documentation/Public/Storage_API_Documentation.md)
+│   │   ├── [Storage & Vault API Documentation](Documentation/Public/Storage_API_Documentation.md)
+│   │   ├── [Workspace Service Architecture](Documentation/Public/Workspace_Service_Architecture.md)
+│   │   ├── [Project Service Architecture](Documentation/Public/Project_Service_Architecture.md)
+│   │   ├── [Backup Architecture](Documentation/Public/Backup_Architecture.md)
+│   │   ├── [Snapshot Architecture](Documentation/Public/Snapshot_Architecture.md)
+│   │   ├── [Permission Model](Documentation/Public/Permission_Model.md)
+│   │   ├── [Documentation Service Architecture](Documentation/Public/Documentation_Service_Architecture.md)
+│   │   └── [Download Service Architecture](Documentation/Public/Download_Service_Architecture.md)
 │   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
 └── tests/              # Backend Pytest automated tests
 ```
