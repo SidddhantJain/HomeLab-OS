@@ -10,6 +10,14 @@ from app.models.backup import BackupJob
 from app.models.permission import Role, Permission
 from app.models.notification import Notification
 from app.models.download import DownloadTask
+from app.models.metrics_history import MetricsHistory
+from app.models.alert import Alert, AlertRule
+from app.models.workflow import WorkflowJob, WorkflowHistory
+from app.models.docker import DockerService
+from app.models.update import UpdateHistory
+from app.models.session import Session, SecurityEvent
+from app.models.power import PowerSchedule
+from app.models.remote import RemoteDevice, RemoteSession, RemoteCommand, RemoteAuditLog, FileOperation, DeviceKey
 
 __all__ = [
     "User",
@@ -30,7 +38,24 @@ __all__ = [
     "Role",
     "Permission",
     "Notification",
-    "DownloadTask"
+    "DownloadTask",
+    "MetricsHistory",
+    "Alert",
+    "AlertRule",
+    "WorkflowJob",
+    "WorkflowHistory",
+    "DockerService",
+    "UpdateHistory",
+    "Session",
+    "SecurityEvent",
+    "PowerSchedule",
+    "RemoteDevice",
+    "RemoteSession",
+    "RemoteCommand",
+    "RemoteAuditLog",
+    "FileOperation",
+    "DeviceKey"
 ]
+
 
 
