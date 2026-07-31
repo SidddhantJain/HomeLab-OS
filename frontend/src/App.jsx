@@ -7,6 +7,12 @@ import Login from './pages/Login';
 import Settings from './pages/Settings';
 import StoragePage from './pages/Storage';
 import VaultPage from './pages/Vault';
+import WorkspacePage from './pages/Workspace';
+import ProjectsPage from './pages/Projects';
+import SnapshotsPage from './pages/Snapshots';
+import BackupsPage from './pages/Backups';
+import DocumentationPage from './pages/Documentation';
+import DownloadsPage from './pages/Downloads';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,6 +52,12 @@ function App() {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/storage" element={<StoragePage />} />
                     <Route path="/vault" element={<VaultPage />} />
+                    <Route path="/workspaces" element={<WorkspacePage />} />
+                    <Route path="/projects" element={<ProjectsPage />} />
+                    <Route path="/snapshots" element={<SnapshotsPage />} />
+                    <Route path="/backups" element={<BackupsPage />} />
+                    <Route path="/documentation" element={<DocumentationPage />} />
+                    <Route path="/downloads" element={<DownloadsPage />} />
                     <Route path="/settings" element={<Settings />} />
                   </Routes>
                 </main>
@@ -58,5 +70,5 @@ function App() {
   );
 }
 
-
 export default App;
+

@@ -1,15 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, HardDrive, Lock, FolderKanban, Settings, Cpu } from 'lucide-react';
+import { LayoutDashboard, HardDrive, Lock, FolderKanban, Settings, Cpu, Layers, Camera, Database, BookOpen, Download } from 'lucide-react';
 
 const Sidebar = () => {
   const navItems = [
     { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/workspaces', label: 'Workspaces', icon: Layers },
+    { path: '/projects', label: 'Projects', icon: FolderKanban },
+    { path: '/snapshots', label: 'Snapshots', icon: Camera },
+    { path: '/backups', label: 'Backups', icon: Database },
+    { path: '/downloads', label: 'Downloads', icon: Download },
+    { path: '/documentation', label: 'Documentation', icon: BookOpen },
     { path: '/storage', label: 'Storage', icon: HardDrive },
     { path: '/vault', label: 'Private Vault', icon: Lock },
-    { path: '/projects', label: 'Projects', icon: FolderKanban, disabled: true },
     { path: '/settings', label: 'Settings', icon: Settings },
   ];
+
 
 
   return (
