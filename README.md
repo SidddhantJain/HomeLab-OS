@@ -153,7 +153,8 @@ homeos-v1/
 │   │   ├── [Snapshot Architecture](Documentation/Public/Snapshot_Architecture.md)
 │   │   ├── [Permission Model](Documentation/Public/Permission_Model.md)
 │   │   ├── [Documentation Service Architecture](Documentation/Public/Documentation_Service_Architecture.md)
-│   │   └── [Download Service Architecture](Documentation/Public/Download_Service_Architecture.md)
+│   │   ├── [Download Service Architecture](Documentation/Public/Download_Service_Architecture.md)
+│   │   └── [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 │   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
 └── tests/              # Backend Pytest automated tests
 ```
