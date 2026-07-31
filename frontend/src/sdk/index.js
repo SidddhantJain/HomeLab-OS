@@ -13,6 +13,10 @@ import ProjectsSDK from './ProjectsSDK';
 import WorkspaceSDK from './WorkspaceSDK';
 import MonitoringSDK from './MonitoringSDK';
 import NotificationsSDK from './NotificationsSDK';
+import SnapshotSDK from './SnapshotSDK';
+import BackupSDK from './BackupSDK';
+import DocumentationSDK from './DocumentationSDK';
+import DownloadSDK from './DownloadSDK';
 
 class HomeLabSDK {
   constructor(apiClient) {
@@ -24,6 +28,10 @@ class HomeLabSDK {
     this.workspace = new WorkspaceSDK(apiClient);
     this.monitoring = new MonitoringSDK(apiClient);
     this.notifications = new NotificationsSDK(apiClient);
+    this.snapshots = new SnapshotSDK(apiClient);
+    this.backup = new BackupSDK(apiClient);
+    this.documentation = new DocumentationSDK(apiClient);
+    this.downloads = new DownloadSDK(apiClient);
   }
 }
 
@@ -37,4 +45,9 @@ export {
   WorkspaceSDK,
   MonitoringSDK,
   NotificationsSDK,
+  SnapshotSDK,
+  BackupSDK,
+  DocumentationSDK,
+  DownloadSDK,
 };
+

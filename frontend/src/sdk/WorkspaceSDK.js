@@ -11,15 +11,26 @@ class WorkspaceSDK {
     return response.data;
   }
 
-  async startWorkspace(id) {
-    const response = await this.client.post(`/workspaces/${id}/start`);
+  async createWorkspace(name, owner, description) {
+    const response = await this.client.post('/workspaces', { name, owner, description });
     return response.data;
   }
 
-  async stopWorkspace(id) {
-    const response = await this.client.post(`/workspaces/${id}/stop`);
+  async archiveWorkspace(id) {
+    const response = await this.client.post(`/workspaces/${id}/archive`);
+    return response.data;
+  }
+
+  async restoreWorkspace(id) {
+    const response = await this.client.post(`/workspaces/${id}/restore`);
+    return response.data;
+  }
+
+  async deleteWorkspace(id) {
+    const response = await this.client.delete(`/workspaces/${id}`);
     return response.data;
   }
 }
 
 export default WorkspaceSDK;
+
