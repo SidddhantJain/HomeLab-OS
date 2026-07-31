@@ -1,1 +1,8 @@
-"""Monitoring Service — Aggregates telemetry, system metrics, and health checks."""
+"""
+HomeLab OS — Monitoring Service Initialization
+"""
+
+from app.services.monitoring.service import MonitoringService
+from app.services.monitoring.events import MonitoringEvents
+
+__all__ = ["MonitoringService", "MonitoringEvents"]

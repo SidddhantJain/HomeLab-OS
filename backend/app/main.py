@@ -4,7 +4,8 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import engine, Base
-from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation
+from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring
+
 
 # Auto-create tables for initial boot
 Base.metadata.create_all(bind=engine)
@@ -58,6 +59,7 @@ app.include_router(workspace.router, prefix=settings.API_V1_STR)
 app.include_router(backup.router, prefix=settings.API_V1_STR)
 app.include_router(downloads.router, prefix=settings.API_V1_STR)
 app.include_router(documentation.router, prefix=settings.API_V1_STR)
+app.include_router(monitoring.router, prefix=settings.API_V1_STR)
 
 
 
