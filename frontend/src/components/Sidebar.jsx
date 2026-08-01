@@ -5,6 +5,8 @@ import { LayoutDashboard, HardDrive, Lock, FolderKanban, Settings, Cpu, Layers, 
 const Sidebar = () => {
   const navItems = [
     { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/admin', label: 'Control Center', icon: Cpu },
+    { path: '/remote', label: 'Remote Control', icon: Settings },
     { path: '/workspaces', label: 'Workspaces', icon: Layers },
     { path: '/projects', label: 'Projects', icon: FolderKanban },
     { path: '/snapshots', label: 'Snapshots', icon: Camera },
@@ -15,6 +17,7 @@ const Sidebar = () => {
     { path: '/vault', label: 'Private Vault', icon: Lock },
     { path: '/settings', label: 'Settings', icon: Settings },
   ];
+
 
 
 

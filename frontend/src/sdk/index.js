@@ -17,6 +17,7 @@ import SnapshotSDK from './SnapshotSDK';
 import BackupSDK from './BackupSDK';
 import DocumentationSDK from './DocumentationSDK';
 import DownloadSDK from './DownloadSDK';
+import { RemoteSDK } from './RemoteSDK';
 
 class HomeLabSDK {
   constructor(apiClient) {
@@ -32,6 +33,7 @@ class HomeLabSDK {
     this.backup = new BackupSDK(apiClient);
     this.documentation = new DocumentationSDK(apiClient);
     this.downloads = new DownloadSDK(apiClient);
+    this.remote = RemoteSDK;
   }
 }
 
@@ -49,5 +51,7 @@ export {
   BackupSDK,
   DocumentationSDK,
   DownloadSDK,
+  RemoteSDK,
 };
+
 

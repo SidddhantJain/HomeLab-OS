@@ -154,8 +154,14 @@ homeos-v1/
 │   │   ├── [Permission Model](Documentation/Public/Permission_Model.md)
 │   │   ├── [Documentation Service Architecture](Documentation/Public/Documentation_Service_Architecture.md)
 │   │   ├── [Download Service Architecture](Documentation/Public/Download_Service_Architecture.md)
+│   │   ├── [Monitoring Architecture](Documentation/Public/Monitoring_Architecture.md)
+│   │   ├── [Alert System Specification](Documentation/Public/Alert_System.md)
+│   │   ├── [Workflow Engine Architecture](Documentation/Public/Workflow_Engine.md)
+│   │   ├── [Remote Management Architecture](Documentation/Public/Remote_Management_Architecture.md)
+│   │   ├── [Mobile API Design](Documentation/Public/Mobile_API_Design.md)
 │   │   └── [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 │   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
+
 └── tests/              # Backend Pytest automated tests
 ```
 

@@ -13,6 +13,8 @@ import SnapshotsPage from './pages/Snapshots';
 import BackupsPage from './pages/Backups';
 import DocumentationPage from './pages/Documentation';
 import DownloadsPage from './pages/Downloads';
+import AdminDashboard from './pages/AdminDashboard';
+import RemoteControl from './pages/RemoteControl';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,6 +52,8 @@ function App() {
                 <main className="flex-1 p-6 overflow-y-auto">
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/remote" element={<RemoteControl />} />
                     <Route path="/storage" element={<StoragePage />} />
                     <Route path="/vault" element={<VaultPage />} />
                     <Route path="/workspaces" element={<WorkspacePage />} />
@@ -69,6 +73,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 
