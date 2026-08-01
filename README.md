@@ -159,8 +159,13 @@ homeos-v1/
 │   │   ├── [Workflow Engine Architecture](Documentation/Public/Workflow_Engine.md)
 │   │   ├── [Remote Management Architecture](Documentation/Public/Remote_Management_Architecture.md)
 │   │   ├── [Mobile API Design](Documentation/Public/Mobile_API_Design.md)
+│   │   ├── [Network Management Center Architecture](Documentation/Public/Network_Architecture.md)
+│   │   ├── [Network Topology Engine](Documentation/Public/Topology_Engine.md)
+│   │   ├── [Plugin Marketplace Foundation](Documentation/Public/Plugin_Marketplace.md)
+│   │   ├── [Emergency Hotspot Recovery](Documentation/Public/Emergency_Hotspot.md)
 │   │   └── [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 │   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
+
 
 └── tests/              # Backend Pytest automated tests
 ```

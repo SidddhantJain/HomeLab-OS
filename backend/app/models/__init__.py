@@ -18,6 +18,10 @@ from app.models.update import UpdateHistory
 from app.models.session import Session, SecurityEvent
 from app.models.power import PowerSchedule
 from app.models.remote import RemoteDevice, RemoteSession, RemoteCommand, RemoteAuditLog, FileOperation, DeviceKey
+from app.models.network import NetworkDevice, NetworkInterface, NetworkHistory, DeviceAlias, NetworkEvent
+from app.models.plugin import PluginMetadata
+from app.models.catalog import AppCatalogItem
+from app.models.token import ApiToken
 
 __all__ = [
     "User",
@@ -54,8 +58,17 @@ __all__ = [
     "RemoteCommand",
     "RemoteAuditLog",
     "FileOperation",
-    "DeviceKey"
+    "DeviceKey",
+    "NetworkDevice",
+    "NetworkInterface",
+    "NetworkHistory",
+    "DeviceAlias",
+    "NetworkEvent",
+    "PluginMetadata",
+    "AppCatalogItem",
+    "ApiToken"
 ]
+
 
 
 

@@ -93,6 +93,9 @@ class HomelabCore:
         from app.services.audit import AuditService
         from app.services.remote import RemoteManagementService
         from app.services.filemanager import FileManagerService
+        from app.services.network import NetworkService
+        from app.services.plugins import PluginService
+        from app.services.catalog import CatalogService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
         self.register_service("workspace", WorkspaceService())
@@ -112,6 +115,10 @@ class HomelabCore:
         self.register_service("audit", AuditService())
         self.register_service("remote", RemoteManagementService())
         self.register_service("filemanager", FileManagerService())
+        self.register_service("network", NetworkService())
+        self.register_service("plugins", PluginService())
+        self.register_service("catalog", CatalogService())
+
 
 
 

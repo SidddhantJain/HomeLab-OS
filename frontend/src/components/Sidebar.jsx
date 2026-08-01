@@ -7,6 +7,9 @@ const Sidebar = () => {
     { path: '/', label: 'Dashboard', icon: LayoutDashboard },
     { path: '/admin', label: 'Control Center', icon: Cpu },
     { path: '/remote', label: 'Remote Control', icon: Settings },
+    { path: '/network', label: 'Network Center', icon: Cpu },
+    { path: '/devices', label: 'Devices Inventory', icon: HardDrive },
+    { path: '/topology', label: 'Network Topology', icon: Layers },
     { path: '/workspaces', label: 'Workspaces', icon: Layers },
     { path: '/projects', label: 'Projects', icon: FolderKanban },
     { path: '/snapshots', label: 'Snapshots', icon: Camera },
@@ -17,6 +20,7 @@ const Sidebar = () => {
     { path: '/vault', label: 'Private Vault', icon: Lock },
     { path: '/settings', label: 'Settings', icon: Settings },
   ];
+
 
 
 

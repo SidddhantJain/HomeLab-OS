@@ -4,7 +4,8 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import engine, Base
-from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring, alerts, workflow, recovery, docker, power, audit, manager, remote, filemanager
+from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring, alerts, workflow, recovery, docker, power, audit, manager, remote, filemanager, network, plugins, catalog, tokens
+
 
 
 
@@ -73,6 +74,10 @@ app.include_router(audit.router, prefix=settings.API_V1_STR)
 app.include_router(manager.router, prefix=settings.API_V1_STR)
 app.include_router(remote.router, prefix=settings.API_V1_STR)
 app.include_router(filemanager.router, prefix=settings.API_V1_STR)
+app.include_router(network.router, prefix=settings.API_V1_STR)
+app.include_router(plugins.router, prefix=settings.API_V1_STR)
+app.include_router(catalog.router, prefix=settings.API_V1_STR)
+app.include_router(tokens.router, prefix=settings.API_V1_STR)
 
 
 

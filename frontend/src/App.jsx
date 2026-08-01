@@ -15,6 +15,9 @@ import DocumentationPage from './pages/Documentation';
 import DownloadsPage from './pages/Downloads';
 import AdminDashboard from './pages/AdminDashboard';
 import RemoteControl from './pages/RemoteControl';
+import NetworkPage from './pages/Network';
+import DevicesPage from './pages/Devices';
+import TopologyPage from './pages/Topology';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -54,6 +57,9 @@ function App() {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/remote" element={<RemoteControl />} />
+                    <Route path="/network" element={<NetworkPage />} />
+                    <Route path="/devices" element={<DevicesPage />} />
+                    <Route path="/topology" element={<TopologyPage />} />
                     <Route path="/storage" element={<StoragePage />} />
                     <Route path="/vault" element={<VaultPage />} />
                     <Route path="/workspaces" element={<WorkspacePage />} />
@@ -73,6 +79,7 @@ function App() {
     </div>
   );
 }
+
 
 
 export default App;

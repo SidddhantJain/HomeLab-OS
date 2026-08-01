@@ -1,1 +1,7 @@
-"""Plugins Service — Discovers, validates, loads, and manages platform plugins."""
+"""
+HomeLab OS — Plugins Service Initialization
+"""
+
+from app.services.plugins.service import PluginService
+
+__all__ = ["PluginService"]

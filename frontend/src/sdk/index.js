@@ -18,6 +18,9 @@ import BackupSDK from './BackupSDK';
 import DocumentationSDK from './DocumentationSDK';
 import DownloadSDK from './DownloadSDK';
 import { RemoteSDK } from './RemoteSDK';
+import { NetworkSDK } from './NetworkSDK';
+import { DevicesSDK } from './DevicesSDK';
+import { PluginsSDK } from './PluginsSDK';
 
 class HomeLabSDK {
   constructor(apiClient) {
@@ -34,6 +37,9 @@ class HomeLabSDK {
     this.documentation = new DocumentationSDK(apiClient);
     this.downloads = new DownloadSDK(apiClient);
     this.remote = RemoteSDK;
+    this.network = NetworkSDK;
+    this.devices = DevicesSDK;
+    this.plugins = PluginsSDK;
   }
 }
 
@@ -52,6 +58,10 @@ export {
   DocumentationSDK,
   DownloadSDK,
   RemoteSDK,
+  NetworkSDK,
+  DevicesSDK,
+  PluginsSDK,
 };
+
 
 
