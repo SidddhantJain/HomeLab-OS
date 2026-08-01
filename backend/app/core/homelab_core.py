@@ -84,6 +84,7 @@ class HomelabCore:
         from app.services.downloads import DownloadService
         from app.services.notifications import NotificationService
         from app.services.monitoring import MonitoringService
+        from app.services.alerts import AlertService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
         self.register_service("workspace", WorkspaceService())
@@ -94,6 +95,8 @@ class HomelabCore:
         self.register_service("downloads", DownloadService())
         self.register_service("notifications", NotificationService())
         self.register_service("monitoring", MonitoringService())
+        self.register_service("alerts", AlertService())
+
 
 
 
