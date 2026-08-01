@@ -11,7 +11,8 @@ import StorageSDK from './StorageSDK';
 import VaultSDK from './VaultSDK';
 import ProjectsSDK from './ProjectsSDK';
 import WorkspaceSDK from './WorkspaceSDK';
-import MonitoringSDK from './MonitoringSDK';
+import { MonitoringSDK } from './MonitoringSDK';
+
 import NotificationsSDK from './NotificationsSDK';
 import SnapshotSDK from './SnapshotSDK';
 import BackupSDK from './BackupSDK';
@@ -21,6 +22,11 @@ import { RemoteSDK } from './RemoteSDK';
 import { NetworkSDK } from './NetworkSDK';
 import { DevicesSDK } from './DevicesSDK';
 import { PluginsSDK } from './PluginsSDK';
+import { ActivitySDK } from './ActivitySDK';
+import { SettingsSDK } from './SettingsSDK';
+import { HealthSDK } from './HealthSDK';
+import { JobsSDK } from './JobsSDK';
+import { TransfersSDK } from './TransfersSDK';
 
 class HomeLabSDK {
   constructor(apiClient) {
@@ -40,6 +46,11 @@ class HomeLabSDK {
     this.network = NetworkSDK;
     this.devices = DevicesSDK;
     this.plugins = PluginsSDK;
+    this.activity = ActivitySDK;
+    this.settings = SettingsSDK;
+    this.health = HealthSDK;
+    this.jobs = JobsSDK;
+    this.transfers = TransfersSDK;
   }
 }
 
@@ -61,7 +72,13 @@ export {
   NetworkSDK,
   DevicesSDK,
   PluginsSDK,
+  ActivitySDK,
+  SettingsSDK,
+  HealthSDK,
+  JobsSDK,
+  TransfersSDK,
 };
+
 
 
 

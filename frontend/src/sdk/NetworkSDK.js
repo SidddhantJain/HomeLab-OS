@@ -1,24 +1,54 @@
-import { client } from './client';
-
 export const NetworkSDK = {
   getDevices: async () => {
-    const res = await client.get('/network/devices');
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/network/devices');
+      return await res.json();
+    } catch (e) {
+      return [];
+    }
   },
   setFriendlyName: async (macAddress, friendlyName) => {
-    const res = await client.post('/network/devices/friendly-name', { mac_address: macAddress, friendly_name: friendlyName });
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/network/devices/friendly-name', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mac_address: macAddress, friendly_name: friendlyName })
+      });
+      return await res.json();
+    } catch (e) {
+      return {};
+    }
   },
   getTopology: async () => {
-    const res = await client.get('/network/topology');
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/network/topology');
+      return await res.json();
+    } catch (e) {
+      return { nodes: [], edges: [] };
+    }
   },
   ping: async (target) => {
-    const res = await client.post('/network/actions/ping', { target });
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/network/actions/ping', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ target })
+      });
+      return await res.json();
+    } catch (e) {
+      return { status: 'offline' };
+    }
   },
   wol: async (target) => {
-    const res = await client.post('/network/actions/wol', { target });
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/network/actions/wol', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ target })
+      });
+      return await res.json();
+    } catch (e) {
+      return { status: 'failed' };
+    }
   }
 };

@@ -96,6 +96,15 @@ class HomelabCore:
         from app.services.network import NetworkService
         from app.services.plugins import PluginService
         from app.services.catalog import CatalogService
+        from app.services.multiserver import MultiServerService
+        from app.services.activity import ActivityService
+        from app.services.search import SearchService
+        from app.services.settings import SettingsService
+        from app.services.jobs import JobService
+        from app.services.transfers import TransferService
+        from app.services.health import HealthService
+        from app.services.migration import MigrationService
+        from app.services.sync import SyncService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
         self.register_service("workspace", WorkspaceService())
@@ -118,6 +127,16 @@ class HomelabCore:
         self.register_service("network", NetworkService())
         self.register_service("plugins", PluginService())
         self.register_service("catalog", CatalogService())
+        self.register_service("multiserver", MultiServerService())
+        self.register_service("activity", ActivityService())
+        self.register_service("search", SearchService())
+        self.register_service("settings", SettingsService())
+        self.register_service("jobs", JobService())
+        self.register_service("transfers", TransferService())
+        self.register_service("health", HealthService())
+        self.register_service("migration", MigrationService())
+        self.register_service("sync", SyncService())
+
 
 
 

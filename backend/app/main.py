@@ -4,7 +4,9 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import engine, Base
-from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring, alerts, workflow, recovery, docker, power, audit, manager, remote, filemanager, network, plugins, catalog, tokens
+from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring, alerts, workflow, recovery, docker, power, audit, manager, remote, filemanager, network, plugins, catalog, tokens, multiserver, activity, search, settings as settings_api, jobs, transfers, health, migration, sync, v2
+
+
 
 
 
@@ -78,6 +80,17 @@ app.include_router(network.router, prefix=settings.API_V1_STR)
 app.include_router(plugins.router, prefix=settings.API_V1_STR)
 app.include_router(catalog.router, prefix=settings.API_V1_STR)
 app.include_router(tokens.router, prefix=settings.API_V1_STR)
+app.include_router(multiserver.router, prefix=settings.API_V1_STR)
+app.include_router(activity.router, prefix=settings.API_V1_STR)
+app.include_router(search.router, prefix=settings.API_V1_STR)
+app.include_router(settings_api.router, prefix=settings.API_V1_STR)
+
+app.include_router(jobs.router, prefix=settings.API_V1_STR)
+app.include_router(transfers.router, prefix=settings.API_V1_STR)
+app.include_router(health.router, prefix=settings.API_V1_STR)
+app.include_router(migration.router, prefix=settings.API_V1_STR)
+app.include_router(sync.router, prefix=settings.API_V1_STR)
+app.include_router(v2.router, prefix="/api")
 
 
 

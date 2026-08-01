@@ -18,6 +18,12 @@ import RemoteControl from './pages/RemoteControl';
 import NetworkPage from './pages/Network';
 import DevicesPage from './pages/Devices';
 import TopologyPage from './pages/Topology';
+import ActivityTimelinePage from './pages/ActivityTimeline';
+import SettingsCenterPage from './pages/SettingsCenter';
+import HealthCenterPage from './pages/HealthCenter';
+import JobCenterPage from './pages/JobCenter';
+import TransfersPage from './pages/Transfers';
+import MigrationWizardPage from './pages/MigrationWizard';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -60,6 +66,12 @@ function App() {
                     <Route path="/network" element={<NetworkPage />} />
                     <Route path="/devices" element={<DevicesPage />} />
                     <Route path="/topology" element={<TopologyPage />} />
+                    <Route path="/activity" element={<ActivityTimelinePage />} />
+                    <Route path="/settings-center" element={<SettingsCenterPage />} />
+                    <Route path="/health" element={<HealthCenterPage />} />
+                    <Route path="/jobs" element={<JobCenterPage />} />
+                    <Route path="/transfers" element={<TransfersPage />} />
+                    <Route path="/migration" element={<MigrationWizardPage />} />
                     <Route path="/storage" element={<StoragePage />} />
                     <Route path="/vault" element={<VaultPage />} />
                     <Route path="/workspaces" element={<WorkspacePage />} />
@@ -79,6 +91,7 @@ function App() {
     </div>
   );
 }
+
 
 
 

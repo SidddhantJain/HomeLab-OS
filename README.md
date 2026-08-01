@@ -163,8 +163,14 @@ homeos-v1/
 │   │   ├── [Network Topology Engine](Documentation/Public/Topology_Engine.md)
 │   │   ├── [Plugin Marketplace Foundation](Documentation/Public/Plugin_Marketplace.md)
 │   │   ├── [Emergency Hotspot Recovery](Documentation/Public/Emergency_Hotspot.md)
+│   │   ├── [Desktop Manager Architecture](Documentation/Public/Desktop_Manager_Architecture.md)
+│   │   ├── [Mobile Companion API Architecture](Documentation/Public/Mobile_API_Architecture.md)
+│   │   ├── [Activity Timeline Architecture](Documentation/Public/Activity_Timeline.md)
+│   │   ├── [Health Center Architecture](Documentation/Public/Health_Center.md)
+│   │   ├── [API Versioning Strategy](Documentation/Public/API_Versioning.md)
 │   │   └── [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 │   └── Private/        # Credentials, IP addresses, SSH keys (STRICTLY IGNORED BY GIT)
+
 
 
 └── tests/              # Backend Pytest automated tests

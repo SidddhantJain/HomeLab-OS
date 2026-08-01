@@ -7,6 +7,11 @@ const Sidebar = () => {
     { path: '/', label: 'Dashboard', icon: LayoutDashboard },
     { path: '/admin', label: 'Control Center', icon: Cpu },
     { path: '/remote', label: 'Remote Control', icon: Settings },
+    { path: '/activity', label: 'Activity Timeline', icon: BookOpen },
+    { path: '/health', label: 'Health Center', icon: Cpu },
+    { path: '/jobs', label: 'Job Center', icon: Download },
+    { path: '/transfers', label: 'File Transfers', icon: Download },
+    { path: '/migration', label: 'Migration Assistant', icon: Layers },
     { path: '/network', label: 'Network Center', icon: Cpu },
     { path: '/devices', label: 'Devices Inventory', icon: HardDrive },
     { path: '/topology', label: 'Network Topology', icon: Layers },
@@ -18,8 +23,9 @@ const Sidebar = () => {
     { path: '/documentation', label: 'Documentation', icon: BookOpen },
     { path: '/storage', label: 'Storage', icon: HardDrive },
     { path: '/vault', label: 'Private Vault', icon: Lock },
-    { path: '/settings', label: 'Settings', icon: Settings },
+    { path: '/settings-center', label: 'Central Settings', icon: Settings },
   ];
+
 
 
 

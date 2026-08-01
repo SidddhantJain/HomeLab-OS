@@ -22,6 +22,12 @@ from app.models.network import NetworkDevice, NetworkInterface, NetworkHistory, 
 from app.models.plugin import PluginMetadata
 from app.models.catalog import AppCatalogItem
 from app.models.token import ApiToken
+from app.models.multiserver import ManagedServer, ServerGroup, ServerProfile, ServerConnection, ServerCertificate
+from app.models.activity import ActivityTimeline
+from app.models.job import BackgroundJob
+from app.models.transfer import FileTransfer
+from app.models.settings import UserSettings
+from app.models.sync import SyncState
 
 __all__ = [
     "User",
@@ -66,8 +72,19 @@ __all__ = [
     "NetworkEvent",
     "PluginMetadata",
     "AppCatalogItem",
-    "ApiToken"
+    "ApiToken",
+    "ManagedServer",
+    "ServerGroup",
+    "ServerProfile",
+    "ServerConnection",
+    "ServerCertificate",
+    "ActivityTimeline",
+    "BackgroundJob",
+    "FileTransfer",
+    "UserSettings",
+    "SyncState"
 ]
+
 
 
 

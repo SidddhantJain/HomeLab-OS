@@ -1,12 +1,22 @@
-import { client } from './client';
-
 export const DevicesSDK = {
   list: async () => {
-    const res = await client.get('/network/devices');
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/network/devices');
+      return await res.json();
+    } catch (e) {
+      return [];
+    }
   },
   updateAlias: async (mac, alias) => {
-    const res = await client.post('/network/devices/friendly-name', { mac_address: mac, friendly_name: alias });
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/network/devices/friendly-name', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mac_address: mac, friendly_name: alias })
+      });
+      return await res.json();
+    } catch (e) {
+      return {};
+    }
   }
 };

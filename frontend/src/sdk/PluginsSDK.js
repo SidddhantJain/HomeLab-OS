@@ -1,12 +1,22 @@
-import { client } from './client';
-
 export const PluginsSDK = {
   list: async () => {
-    const res = await client.get('/plugins');
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/plugins');
+      return await res.json();
+    } catch (e) {
+      return [];
+    }
   },
   register: async (pluginId, name, version = '1.0.0') => {
-    const res = await client.post('/plugins/register', { plugin_id: pluginId, name, version });
-    return res.data;
+    try {
+      const res = await fetch('/api/v1/plugins/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plugin_id: pluginId, name, version })
+      });
+      return await res.json();
+    } catch (e) {
+      return {};
+    }
   }
 };
