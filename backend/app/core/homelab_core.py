@@ -87,6 +87,9 @@ class HomelabCore:
         from app.services.alerts import AlertService
         from app.services.workflow import WorkflowService
         from app.services.disaster_recovery import DisasterRecoveryService
+        from app.services.docker import DockerService
+        from app.services.update import UpdateService
+        from app.services.power import PowerService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
         self.register_service("workspace", WorkspaceService())
@@ -100,6 +103,10 @@ class HomelabCore:
         self.register_service("alerts", AlertService())
         self.register_service("workflow", WorkflowService())
         self.register_service("disaster_recovery", DisasterRecoveryService())
+        self.register_service("docker", DockerService())
+        self.register_service("updates", UpdateService())
+        self.register_service("power", PowerService())
+
 
 
 

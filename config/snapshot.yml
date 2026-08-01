@@ -1,0 +1,10 @@
+snapshot:
+  policies:
+    daily_retention_copies: 7
+    weekly_retention_copies: 4
+    monthly_retention_copies: 12
+  allowed_tags:
+    - before_update
+    - before_delete
+    - manual
+    - automatic

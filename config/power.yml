@@ -1,0 +1,4 @@
+power:
+  wol_enabled: true
+  sleep_schedule: "0 0 * * *"
+  wake_schedule: "0 9 * * *"
