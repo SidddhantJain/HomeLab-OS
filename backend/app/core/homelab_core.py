@@ -85,6 +85,8 @@ class HomelabCore:
         from app.services.notifications import NotificationService
         from app.services.monitoring import MonitoringService
         from app.services.alerts import AlertService
+        from app.services.workflow import WorkflowService
+        from app.services.disaster_recovery import DisasterRecoveryService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
         self.register_service("workspace", WorkspaceService())
@@ -96,6 +98,9 @@ class HomelabCore:
         self.register_service("notifications", NotificationService())
         self.register_service("monitoring", MonitoringService())
         self.register_service("alerts", AlertService())
+        self.register_service("workflow", WorkflowService())
+        self.register_service("disaster_recovery", DisasterRecoveryService())
+
 
 
 
