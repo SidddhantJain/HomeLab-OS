@@ -83,9 +83,20 @@ class VaultService(BaseService):
             "message": "Vault decrypted and successfully mounted."
         }
 
-    def lock_vault(self, db: Session) -> Dict[str, Any]:
+    def lock_vault(self, db: Session = None) -> Dict[str, Any]:
         """Locks the vault and unmounts the loop image."""
-        success = self._manager.lock(db)
+        close_db = False
+        if db is None:
+            from app.core.database import SessionLocal
+            db = SessionLocal()
+            close_db = True
+
+        try:
+            success = self._manager.lock(db)
+        finally:
+            if close_db:
+                db.close()
+
         if not success:
             return {
                 "status": "unlocked",

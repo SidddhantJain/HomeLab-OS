@@ -90,6 +90,9 @@ class HomelabCore:
         from app.services.docker import DockerService
         from app.services.update import UpdateService
         from app.services.power import PowerService
+        from app.services.audit import AuditService
+        from app.services.remote import RemoteManagementService
+        from app.services.filemanager import FileManagerService
         self.register_service("storage", StorageService())
         self.register_service("vault", VaultService())
         self.register_service("workspace", WorkspaceService())
@@ -106,6 +109,10 @@ class HomelabCore:
         self.register_service("docker", DockerService())
         self.register_service("updates", UpdateService())
         self.register_service("power", PowerService())
+        self.register_service("audit", AuditService())
+        self.register_service("remote", RemoteManagementService())
+        self.register_service("filemanager", FileManagerService())
+
 
 
 
