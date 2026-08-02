@@ -30,22 +30,24 @@ def run_manager_tests():
     assert window is not None
     print("   [OK] MainWindow created successfully!")
 
-    print("\n[Test 2/4] Verifying 11 Page Navigation Modules...")
+    print("\n[Test 2/4] Verifying 13 Page Navigation Modules...")
     total_pages = window.pages_stack.count()
     print(f"   Found {total_pages} registered navigation pages.")
-    assert total_pages == 11
+    assert total_pages == 13
 
     for i in range(total_pages):
         window.switch_page(i)
         widget = window.pages_stack.widget(i)
-        print(f"   Page {i+1}/11 ({widget.__class__.__name__}): ACTIVE")
+        print(f"   Page {i+1}/13 ({widget.__class__.__name__}): ACTIVE")
 
     print("\n[Test 3/4] Testing API Client against live Dell server (192.168.0.180)...")
     status = api_client.get_system_status()
     print(f"   Response: {status}")
     assert status is not None
     assert status.get("status") == "running"
-    print("   [OK] Live Server API Communication PASSED!")
+    assert status.get("cpu") > 0.0
+    assert status.get("ram") > 0.0
+    print("   [OK] Live Server Telemetry (CPU & RAM > 0%) PASSED!")
 
     print("\n[Test 4/4] Verifying QSS Dark Theme Loading...")
     qss_path = os.path.join(root_dir, "manager", "themes", "dark_theme.qss")

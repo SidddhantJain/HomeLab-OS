@@ -8,10 +8,12 @@ from manager.pages.monitoring_page import MonitoringPage
 from manager.pages.storage_page import StoragePage
 from manager.pages.vault_page import VaultPage
 from manager.pages.docker_page import DockerPage
+from manager.pages.virtualbox_page import VirtualBoxPage
 from manager.pages.workspace_page import WorkspacePage
 from manager.pages.plugins_page import PluginsPage
 from manager.pages.network_page import NetworkPage
 from manager.pages.console_page import ConsolePage
+from manager.pages.remote_desktop_page import RemoteDesktopPage
 from manager.pages.automation_page import AutomationPage
 from manager.pages.settings_page import SettingsPage
 
@@ -38,7 +40,7 @@ class HomeLabMainWindow(QMainWindow):
         sidebar.setFixedWidth(240)
         s_layout = QVBoxLayout(sidebar)
         s_layout.setContentsMargins(16, 20, 16, 20)
-        s_layout.setSpacing(8)
+        s_layout.setSpacing(6)
 
         logo_lbl = QLabel("🛡️ HomeLab OS v1.5")
         logo_lbl.setObjectName("HeaderTitle")
@@ -47,7 +49,7 @@ class HomeLabMainWindow(QMainWindow):
         sub_lbl = QLabel("Native PySide6 Desktop Console")
         sub_lbl.setObjectName("MetricSubtext")
         s_layout.addWidget(sub_lbl)
-        s_layout.addSpacing(16)
+        s_layout.addSpacing(12)
 
         # Navigation Stack
         self.pages_stack = QStackedWidget()
@@ -60,9 +62,11 @@ class HomeLabMainWindow(QMainWindow):
             ("💾 Storage & SMART", StoragePage()),
             ("🔒 LUKS Vault", VaultPage()),
             ("🐳 Docker Stack", DockerPage()),
+            ("📦 VirtualBox VMs", VirtualBoxPage()),
             ("📁 Workspace", WorkspacePage()),
             ("🌐 Network Map", NetworkPage()),
             ("🖥️ Remote Console", ConsolePage()),
+            ("💻 Remote Desktop (RDP)", RemoteDesktopPage()),
             ("⚡ Visual Automation", AutomationPage()),
             ("🔌 Plugin Store", PluginsPage()),
             ("⚙️ Settings", SettingsPage())

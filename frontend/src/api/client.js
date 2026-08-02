@@ -1,9 +1,19 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api/v1';
+// Dynamically compute API_BASE_URL based on active browser location host IP
+const getDynamicBaseURL = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  if (typeof window !== 'undefined' && window.location) {
+    const host = window.location.hostname || '192.168.0.180';
+    return `${window.location.protocol}//${host}:8000/api/v1`;
+  }
+  return '/api/v1';
+};
 
 const apiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: getDynamicBaseURL(),
   headers: {
     'Content-Type': 'application/json',
   },
