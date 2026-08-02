@@ -5,6 +5,7 @@ HomeLab OS — Network Discovery Engine
 from __future__ import annotations
 
 import socket
+import platform
 from typing import List, Dict, Any
 
 
@@ -25,7 +26,9 @@ class NetworkDiscoveryEngine:
         return self.VENDOR_PREFIXES.get(prefix, "Generic Network Device")
 
     def discover_devices(self) -> List[Dict[str, Any]]:
-        # Discovers active devices on local subnet
+        hostname = socket.gethostname()
+        sys_os = f"{platform.system()} {platform.release()}"
+
         return [
             {
                 "ip_address": "192.168.1.1",
@@ -40,10 +43,10 @@ class NetworkDiscoveryEngine:
             {
                 "ip_address": "192.168.1.100",
                 "mac_address": "00:11:22:33:44:55",
-                "hostname": "homelab-server",
-                "friendly_name": "Dell Inspiron 5558 (HomeLab OS)",
-                "vendor": "Dell Inc.",
-                "operating_system": "Ubuntu 24.04 LTS",
+                "hostname": hostname,
+                "friendly_name": f"{hostname} ({platform.system()} HomeLab Host)",
+                "vendor": "HomeLab OS Host",
+                "operating_system": sys_os,
                 "connection_type": "Ethernet",
                 "is_online": True
             },

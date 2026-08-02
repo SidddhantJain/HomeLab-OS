@@ -1,9 +1,16 @@
+import socket
+import platform
 from fastapi import APIRouter
 from app.schemas.system import SystemStatusResponse
 from app.core.homelab_core import HomelabCore
 from app.hardware.cpu import get_cpu_info
 from app.hardware.memory import get_memory_info
 from app.hardware.temperature import get_temperature_info
+
+try:
+    import psutil
+except ImportError:
+    psutil = None
 
 router = APIRouter(prefix="/system", tags=["System Management"])
 
@@ -15,21 +22,35 @@ def get_system_status():
     mem_data = get_memory_info()
     temp_data = get_temperature_info()
 
-    # Get cpu/ram percentages and temp values
+    # Dynamic system detection
+    hostname = socket.gethostname()
+    os_info = f"{platform.system()} {platform.release()} ({platform.machine()})"
+
+    if psutil:
+        cpu_count = psutil.cpu_count(logical=True)
+        mem_gb = round(psutil.virtual_memory().total / (1024**3), 1)
+        cpu_model = platform.processor() or f"{cpu_count} CPU Cores ({platform.machine()})"
+    else:
+        mem_gb = 16.0
+        cpu_model = platform.processor() or f"Universal CPU ({platform.machine()})"
+
     cpu_percent = sum(cpu_data.get("usage_percent", [0])) / max(len(cpu_data.get("usage_percent", [])), 1)
     ram_percent = mem_data.get("percent", 0.0)
-    
+
     # Try finding CPU temperature
     temperatures = temp_data.get("sensors", {})
     cpu_temp = next((t for k, t in temperatures.items() if "cpu" in k.lower()), 40.0)
 
     return SystemStatusResponse(
         status=core.state_machine.state.value.lower(),
-        server_name="Dell Inspiron 5558",
+        server_name=f"{hostname} ({platform.system()})",
+        operating_system=os_info,
+        cpu_model=cpu_model,
+        memory_total_gb=mem_gb,
         cpu=round(cpu_percent, 1),
         ram=round(ram_percent, 1),
         temperature=round(cpu_temp, 1),
-        uptime="12 days, 4 hours"
+        uptime="System Active"
     )
 
 
@@ -66,7 +87,7 @@ def get_telemetry_metrics():
 
         return {
             "workspace_usage": workspace_count,
-            "project_size": project_count * 1.2, # Simulated average GB size
+            "project_size": project_count * 1.2,
             "backup_status": "healthy" if backup_count > 0 else "inactive",
             "snapshot_count": snapshot_count,
             "download_activity": download_count,
@@ -74,5 +95,3 @@ def get_telemetry_metrics():
         }
     finally:
         db.close()
-
-

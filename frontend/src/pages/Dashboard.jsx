@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Card from '../components/Card';
 import StatusIndicator from '../components/StatusIndicator';
 import apiClient from '../api/client';
-import { Cpu, MemoryStick as RAM, HardDrive, Activity, Server, ShieldCheck, RefreshCw } from 'lucide-react';
+import { Cpu, MemoryStick as RAM, HardDrive, Activity, ShieldCheck, RefreshCw } from 'lucide-react';
 
 const Dashboard = () => {
   const [systemStats, setSystemStats] = useState({
-    server_name: 'Dell Inspiron 5558',
+    server_name: 'Universal HomeLab Server',
+    operating_system: 'Linux / Windows Cross-Platform Host',
+    cpu_model: 'Universal Multi-Core Processor',
+    memory_total_gb: 16.0,
     status: 'running',
     cpu: 18.4,
     ram: 48.2,
     temperature: 44.5,
-    uptime: '12 days, 4 hours',
+    uptime: 'Active',
   });
   const [loading, setLoading] = useState(false);
 
@@ -46,7 +49,7 @@ const Dashboard = () => {
               <StatusIndicator status={systemStats.status} label={systemStats.status.toUpperCase()} />
             </div>
             <p className="text-sm text-slate-300">
-              Personal Private Cloud & Developer Platform • Ubuntu 24.04 LTS
+              Personal Private Cloud & Developer Platform • {systemStats.operating_system}
             </p>
           </div>
 
@@ -68,7 +71,7 @@ const Dashboard = () => {
         <Card
           title="CPU Usage"
           value={`${systemStats.cpu}%`}
-          subtitle="Intel i7-5500U • 2 Cores / 4 Threads"
+          subtitle={systemStats.cpu_model}
           icon={Cpu}
           percentage={systemStats.cpu}
           color="indigo"
@@ -77,7 +80,7 @@ const Dashboard = () => {
         <Card
           title="RAM Usage"
           value={`${systemStats.ram}%`}
-          subtitle="3.85 GB / 8.00 GB Allocated"
+          subtitle={`Allocated Memory (${systemStats.memory_total_gb || 16.0} GB Capacity)`}
           icon={RAM}
           percentage={systemStats.ram}
           color="cyan"
@@ -86,7 +89,7 @@ const Dashboard = () => {
         <Card
           title="Storage Usage"
           value="31.2%"
-          subtitle="75.0 GB / 240 GB SSD (Main Root)"
+          subtitle="System Primary Storage Drive"
           icon={HardDrive}
           percentage={31.2}
           color="emerald"
@@ -107,19 +110,19 @@ const Dashboard = () => {
           <div className="space-y-3">
             <div className="flex justify-between items-center py-2 border-b border-slate-800 text-xs">
               <span className="text-slate-400">Core Temperature</span>
-              <span className="text-emerald-400 font-bold">{systemStats.temperature || 44.5} °C</span>
+              <span className="text-emerald-400 font-bold">{systemStats.temperature || 40.0} °C</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-slate-800 text-xs">
               <span className="text-slate-400">System Uptime</span>
               <span className="text-slate-200 font-mono">{systemStats.uptime}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-slate-800 text-xs">
-              <span className="text-slate-400">External HDD (1TB)</span>
-              <span className="text-emerald-400 font-semibold">Mounted (/mnt/storage)</span>
+              <span className="text-slate-400">Secondary Storage Drive</span>
+              <span className="text-emerald-400 font-semibold">Mounted & Online</span>
             </div>
             <div className="flex justify-between items-center py-2 text-xs">
               <span className="text-slate-400">Encrypted Vault</span>
-              <span className="text-amber-400 font-semibold">Locked (LUKS2)</span>
+              <span className="text-amber-400 font-semibold">Locked (Encrypted LUKS)</span>
             </div>
           </div>
         </div>
@@ -131,7 +134,7 @@ const Dashboard = () => {
               Active Platform Services
             </h3>
             <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-              Docker Engine Active
+              Platform Service Registry Active
             </span>
           </div>
 
@@ -139,7 +142,7 @@ const Dashboard = () => {
             <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/40">
               <div className="flex items-center gap-2.5">
                 <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
-                <span className="font-semibold text-slate-200">PostgreSQL v16 Database</span>
+                <span className="font-semibold text-slate-200">PostgreSQL Database</span>
               </div>
               <span className="text-slate-400 font-mono">Port 5432</span>
             </div>

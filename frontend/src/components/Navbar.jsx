@@ -1,8 +1,21 @@
-import React from 'react';
-import { Server, Bell, User, LogOut } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Server, Bell, LogOut } from 'lucide-react';
 import StatusIndicator from './StatusIndicator';
 
 const Navbar = ({ user, onLogout }) => {
+  const [serverTitle, setServerTitle] = useState('Universal HomeLab Server');
+
+  useEffect(() => {
+    fetch('/api/v1/system/status')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.server_name) {
+          setServerTitle(data.server_name);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <header className="sticky top-0 z-30 glass-nav px-6 py-3.5 flex items-center justify-between">
       <div className="flex items-center gap-3">
@@ -11,13 +24,13 @@ const Navbar = ({ user, onLogout }) => {
         </div>
         <div>
           <h1 className="text-base font-bold text-white tracking-tight">HomeLab OS</h1>
-          <p className="text-xs text-slate-400">Dell Inspiron 5558 • v1.0</p>
+          <p className="text-xs text-slate-400">{serverTitle} • v1.0</p>
         </div>
       </div>
 
       <div className="flex items-center gap-4">
         <StatusIndicator status="running" label="Server Online" />
-        
+
         <button
           aria-label="Notifications"
           className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 transition-colors border border-slate-700/60"

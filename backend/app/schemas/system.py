@@ -10,7 +10,10 @@ class RootResponse(BaseModel):
 
 class SystemStatusResponse(BaseModel):
     status: str = "running"
-    server_name: str = "Dell Inspiron 5558"
+    server_name: str = "Universal HomeLab Server"
+    operating_system: Optional[str] = "Linux / Windows Platform"
+    cpu_model: Optional[str] = "Universal Processor"
+    memory_total_gb: Optional[float] = 16.0
     cpu: float = 12.5
     ram: float = 42.0
     temperature: Optional[float] = 45.0

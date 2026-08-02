@@ -1,3 +1,5 @@
+import socket
+import platform
 from fastapi import APIRouter, HTTPException
 from typing import Dict, Any
 
@@ -7,8 +9,8 @@ router = APIRouter(prefix="/manager", tags=["HomeLab Manager Scaffolding"])
 @router.get("/status")
 def manager_status():
     return {
-        "server": "Dell Inspiron 5558",
-        "platform": "HomeLab OS v1",
+        "server": f"{socket.gethostname()} ({platform.system()})",
+        "platform": f"HomeLab OS v1 ({platform.system()} {platform.machine()})",
         "status": "running",
         "manager_api": "v1"
     }
@@ -17,8 +19,8 @@ def manager_status():
 @router.get("/discover")
 def manager_discover():
     return {
-        "device_name": "homelab-server",
-        "ip_address": "192.168.1.100",
+        "device_name": socket.gethostname(),
+        "ip_address": "127.0.0.1",
         "port": 8000
     }
 

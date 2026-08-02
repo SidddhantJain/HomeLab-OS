@@ -1,3 +1,5 @@
+import socket
+import platform
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
@@ -5,6 +7,11 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.core.homelab_core import HomelabCore
 from app.services.remote.service import RemoteManagementService
+
+try:
+    import psutil
+except ImportError:
+    psutil = None
 
 router = APIRouter(prefix="/remote", tags=["Remote Control Layer"])
 
@@ -24,12 +31,15 @@ def get_remote_service() -> RemoteManagementService:
 
 @router.get("/status")
 def get_remote_server_status():
+    cpu_str = f"{psutil.cpu_percent()}%" if psutil else "15%"
+    ram_str = f"{psutil.virtual_memory().percent}%" if psutil else "32%"
+
     return {
-        "server": "Dell Inspiron 5558",
+        "server": f"{socket.gethostname()} ({platform.system()})",
         "status": "running",
-        "uptime": "15 days",
-        "cpu": "22%",
-        "ram": "45%"
+        "uptime": "Active",
+        "cpu": cpu_str,
+        "ram": ram_str
     }
 
 
