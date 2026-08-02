@@ -1,0 +1,219 @@
+/* HomeLab OS v1.5 - Premium Dark Glass Qt Theme */
+
+QMainWindow, QDialog {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
+    font-size: 13px;
+}
+
+QWidget {
+    background-color: transparent;
+    color: #F8FAFC;
+}
+
+/* Sidebar Navigation */
+QFrame#Sidebar {
+    background-color: #1E293B;
+    border-right: 1px solid #334155;
+}
+
+QPushButton#NavButton {
+    background-color: transparent;
+    color: #94A3B8;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+QPushButton#NavButton:hover {
+    background-color: #334155;
+    color: #F8FAFC;
+}
+
+QPushButton#NavButton:checked {
+    background-color: #0284C7;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Cards & Frames */
+QFrame#Card {
+    background-color: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+}
+
+QFrame#Card:hover {
+    border: 1px solid #0EA5E9;
+}
+
+/* Headers */
+QLabel#HeaderTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #F8FAFC;
+}
+
+QLabel#SectionTitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: #CBD5E1;
+}
+
+QLabel#MetricValue {
+    font-size: 24px;
+    font-weight: 800;
+    color: #38BDF8;
+}
+
+QLabel#MetricSubtext {
+    font-size: 11px;
+    color: #64748B;
+}
+
+/* Action Buttons */
+QPushButton#PrimaryButton {
+    background-color: #0284C7;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+}
+
+QPushButton#PrimaryButton:hover {
+    background-color: #0EA5E9;
+}
+
+QPushButton#PrimaryButton:pressed {
+    background-color: #0369A1;
+}
+
+QPushButton#SecondaryButton {
+    background-color: #334155;
+    color: #E2E8F0;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+QPushButton#SecondaryButton:hover {
+    background-color: #475569;
+    color: #F8FAFC;
+}
+
+QPushButton#DangerButton {
+    background-color: #E11D48;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+}
+
+QPushButton#DangerButton:hover {
+    background-color: #F43F5E;
+}
+
+/* Inputs & LineEdits */
+QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QComboBox {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 8px 12px;
+    selection-background-color: #0284C7;
+}
+
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QComboBox:focus {
+    border: 1px solid #38BDF8;
+}
+
+/* Tables & Lists */
+QTableWidget, QTreeWidget, QListWidget {
+    background-color: #1E293B;
+    color: #F8FAFC;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    gridline-color: #334155;
+    selection-background-color: #0369A1;
+    selection-color: #FFFFFF;
+}
+
+QHeaderView::section {
+    background-color: #0F172A;
+    color: #94A3B8;
+    padding: 6px 10px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 1px solid #334155;
+}
+
+/* Scrollbars */
+QScrollBar:vertical {
+    background-color: #0F172A;
+    width: 8px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #334155;
+    min-height: 20px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #475569;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    background-color: #0F172A;
+    height: 8px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #334155;
+    min-width: 20px;
+    border-radius: 4px;
+}
+
+/* Status Bar */
+QStatusBar {
+    background-color: #0F172A;
+    color: #94A3B8;
+    border-top: 1px solid #1E293B;
+    font-size: 12px;
+}
+
+/* Tab Widget */
+QTabWidget::pane {
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background-color: #1E293B;
+}
+
+QTabBar::tab {
+    background-color: #0F172A;
+    color: #94A3B8;
+    padding: 8px 16px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:selected {
+    background-color: #1E293B;
+    color: #38BDF8;
+    font-weight: 600;
+    border-bottom: 2px solid #38BDF8;
+}
