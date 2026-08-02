@@ -1,7 +1,7 @@
-# HomeLab OS System Configuration
+# HomeLab OS System Configuration v1.0.0 Stable
 server:
-  name: HomeLab-Inspiron
-  environment: development
+  name: Universal-HomeLab-Host
+  environment: production
   log_level: INFO
   port: 8000
   host: 0.0.0.0

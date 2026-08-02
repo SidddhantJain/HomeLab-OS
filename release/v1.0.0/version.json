@@ -1,0 +1,10 @@
+{
+  "name": "HomeLab OS",
+  "version": "1.0.0",
+  "channel": "stable",
+  "release_date": "2026-08-02",
+  "commit_hash": "d63ddd5",
+  "min_python_version": "3.10",
+  "min_docker_version": "24.0",
+  "status": "official_release"
+}
