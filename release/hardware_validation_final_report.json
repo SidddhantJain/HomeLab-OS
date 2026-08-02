@@ -1,0 +1,78 @@
+{
+  "phase_0_install": {
+    "status": "PASSED",
+    "output": "Hit:1 https://download.docker.com/linux/ubuntu noble InRelease\nHit:2 http://security.ubuntu.com/ubuntu noble-security InRelease\nHit:3 http://in.archive.ubuntu.com/ubuntu noble InRelease\nHit:4 http://in.archive.ubuntu.com/ubuntu noble-updates InRelease\nHit:5 http://in.archive.ubuntu.com/ubuntu noble-backports InRelease\nReading package lists...\nBuilding dependency tree...\nReading state information...\n383 packages can be upgraded. Run 'apt list --upgradable' to see them."
+  },
+  "phase_1_lshw": {
+    "status": "PASSED",
+    "output": "H/W path               Device           Class          Description\n==================================================================\n                                        system         Inspiron 5558 (06AE)\n/0                                      bus            086DKN\n/0/0                                    memory         64KiB BIOS\n/0/46                                   processor      Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz\n/0/46/37                                memory         32KiB L1 cache\n/0/46/3c                                memory         256KiB L2 cache\n/0/46/41                                memory         4MiB L3 cache\n/0/32                                   memory         32KiB L1 cache\n/0/50                                   memory         8GiB System Memory\n/0/50/0                                 memory         DIMM [empty]\n/0/50/1                                 memory         8GiB SODIMM DDR3 Synchronous 1600 MHz (0.6 ns)\n/0/100                                  br"
+  },
+  "phase_2_cpu": {
+    "status": "PASSED",
+    "output": "Architecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        39 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               4\nOn-line CPU(s) list:                  0-3\nVendor ID:                            GenuineIntel\nModel name:                           Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz\nCPU family:                           6\nModel:                                61\nThread(s) per core:                   2\nCore(s) per socket:                   2\nSocket(s):                            1\nStepping:                             4\nCPU(s) scaling MHz:                   67%\nCPU max MHz:                          3000.0000\nCPU min MHz:                          500.0000\nBogoMIPS:                             4788.53\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse ss"
+  },
+  "phase_3_ram": {
+    "status": "PASSED",
+    "output": "total        used        free      shared  buff/cache   available\nMem:           7.7Gi       4.0Gi       423Mi       664Mi       4.3Gi       3.7Gi\nSwap:          4.0Gi       1.3Gi       2.7Gi\n# dmidecode 3.5\nGetting SMBIOS data from sysfs.\nSMBIOS 2.8 present.\n\nHandle 0x0050, DMI type 16, 23 bytes\nPhysical Memory Array\n\tLocation: System Board Or Motherboard\n\tUse: System Memory\n\tError Correction Type: None\n\tMaximum Capacity: 16 GB\n\tError Information Handle: Not Provided\n\tNumber Of Devices: 2\n\nHandle 0x0055, DMI type 17, 34 bytes\nMemory Device\n\tArray Handle: 0x0050\n\tError Information Handle: Not Provided\n\tTotal Width: Unknown\n\tData Width: Unknown\n\tSize: No Module Installed\n\tForm Factor: DIMM\n\tSet: None\n\tLocator: DIMM A\n\tBank Locator: Not Specified\n\tType: Unknown\n\tType Detail: None\n\nHandle 0x005A, DMI type 17, 34 bytes\nMemory Device\n\tArray Handle: 0x0050\n\tError Information Handle: Not Provided\n\tTotal Width: 64 bits\n\tData Width: 64 bits\n\tSize: 8 GB\n\tForm Factor: SODIMM\n\tSet: None\n\tLocator: "
+  },
+  "phase_4_gpu": {
+    "status": "PASSED",
+    "output": "00:02.0 VGA compatible controller: Intel Corporation HD Graphics 5500 (rev 09)\n08:00.0 3D controller: NVIDIA Corporation GK208BM [GeForce 920M] (rev a1)\n== /sys/devices/pci0000:00/0000:00:1c.4/0000:08:00.0 ==\nmodalias : pci:v000010DEd00001299sv00001028sd000006AEbc03sc02i00\nvendor   : NVIDIA Corporation\nmodel    : GK208BM [GeForce 920M]\nmanual_install: True\ndriver   : nvidia-driver-470-server - distro non-free recommended\ndriver   : xserver-xorg-video-nouveau - distro free builtin"
+  },
+  "phase_5_ssd_smart": {
+    "status": "PASSED",
+    "output": "smartctl 7.4 2023-08-01 r5530 [x86_64-linux-6.8.0-51-generic] (local build)\nCopyright (C) 2002-23, Bruce Allen, Christian Franke, www.smartmontools.org\n\n=== START OF INFORMATION SECTION ===\nModel Family:     Silicon Motion based SSDs\nDevice Model:     ADATA SP550\nSerial Number:    2G1020010120\nFirmware Version: O1203AB\nUser Capacity:    240,057,409,536 bytes [240 GB]\nSector Sizes:     512 bytes logical, 4096 bytes physical\nRotation Rate:    Solid State Device\nTRIM Command:     Available, deterministic, zeroed\nDevice is:        In smartctl database 7.3/5528\nATA Version is:   ACS-2 (minor revision not indicated)\nSATA Version is:  SATA 3.1, 6.0 Gb/s (current: 6.0 Gb/s)\nLocal Time is:    Sun Aug  2 10:48:52 2026 IST\nSMART support is: Available - device has SMART capability.\nSMART support is: Enabled\n\n=== START OF READ SMART DATA SECTION ===\nSMART overall-health self-assessment test result: PASSED\n\nGeneral SMART Values:\nOffline data collection status:  (0x05)\tOffline data collection activit"
+  },
+  "phase_6_hdd_detect": {
+    "status": "PASSED",
+    "output": "NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS\nloop0    7:0    0     4K  1 loop /snap/bare/5\nloop1    7:1    0  74.3M  1 loop /snap/core22/1564\nloop2    7:2    0  73.9M  1 loop /snap/core22/1722\nloop3    7:3    0 269.8M  1 loop /snap/firefox/4793\nloop4    7:4    0  10.7M  1 loop /snap/firmware-updater/127\nloop5    7:5    0 505.1M  1 loop /snap/gnome-42-2204/176\nloop6    7:6    0  11.1M  1 loop /snap/firmware-updater/147\nloop7    7:7    0  91.7M  1 loop /snap/gtk-common-themes/1535\nloop8    7:8    0  10.5M  1 loop /snap/snap-store/1173\nloop9    7:9    0  10.8M  1 loop /snap/snap-store/1248\nloop10   7:10   0  38.8M  1 loop /snap/snapd/21759\nloop11   7:11   0  44.3M  1 loop /snap/snapd/23258\nloop12   7:12   0   568K  1 loop /snap/snapd-desktop-integration/253\nloop13   7:13   0   500K  1 loop /snap/snapd-desktop-integration/178\nsda      8:0    0 223.6G  0 disk \n\u251c\u2500sda1   8:1    0     1G  0 part /boot/efi\n\u2514\u2500sda2   8:2    0 222.5G  0 part /\nsdb      8:16   0 931.5G  0 disk \n\u2514\u2500sdb1   8:17   0 93"
+  },
+  "phase_7_hdd_smart": {
+    "status": "PASSED",
+    "output": "smartctl 7.4 2023-08-01 r5530 [x86_64-linux-6.8.0-51-generic] (local build)\nCopyright (C) 2002-23, Bruce Allen, Christian Franke, www.smartmontools.org\n\n=== START OF INFORMATION SECTION ===\nDevice Model:     TOSHIBA MQ04ABF100\nSerial Number:    905CP4MGT\nLU WWN Device Id: 5 000039 a42702241\nFirmware Version: JU0A0E\nUser Capacity:    1,000,204,886,016 bytes [1.00 TB]\nSector Sizes:     512 bytes logical, 4096 bytes physical\nRotation Rate:    5400 rpm\nForm Factor:      2.5 inches\nZoned Device:     Device managed zones\nDevice is:        Not in smartctl database 7.3/5528\nATA Version is:   ACS-3 T13/2161-D revision 5\nSATA Version is:  SATA 3.3, 6.0 Gb/s (current: 1.5 Gb/s)\nLocal Time is:    Sun Aug  2 10:48:52 2026 IST\nSMART support is: Available - device has SMART capability.\nSMART support is: Enabled\n\n=== START OF READ SMART DATA SECTION ===\nSMART Status not supported: Incomplete response, ATA output registers missing\nSMART overall-health self-assessment test result: PASSED\nWarning: This r"
+  },
+  "phase_8_hdd_speed": {
+    "status": "PASSED",
+    "output": "/dev/sda:\n Timing cached reads:   15758 MB in  1.99 seconds = 7911.63 MB/sec\n Timing buffered disk reads: 1202 MB in  3.00 seconds = 400.56 MB/sec"
+  },
+  "phase_9_usb_stability": {
+    "status": "PASSED",
+    "output": "Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub\nBus 001 Device 002: ID 8087:8001 Intel Corp. Integrated Hub\nBus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub\nBus 002 Device 004: ID 0bda:8179 Realtek Semiconductor Corp. RTL8188EUS 802.11n Wireless Network Adapter\nBus 002 Device 005: ID 8087:07dc Intel Corp. Bluetooth wireless interface\nBus 002 Device 006: ID 0bda:0129 Realtek Semiconductor Corp. RTS5129 Card Reader Controller\nBus 002 Device 011: ID 14cd:6116 Super Top M6116 SATA Bridge\nBus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub"
+  },
+  "phase_10_thermals": {
+    "status": "PASSED",
+    "output": "coretemp-isa-0000\nAdapter: ISA adapter\nPackage id 0:  +52.0\u00b0C  (high = +105.0\u00b0C, crit = +105.0\u00b0C)\nCore 0:        +51.0\u00b0C  (high = +105.0\u00b0C, crit = +105.0\u00b0C)\nCore 1:        +51.0\u00b0C  (high = +105.0\u00b0C, crit = +105.0\u00b0C)\n\nBAT0-acpi-0\nAdapter: ACPI interface\nin0:          16.91 V  \ncurr1:       1000.00 uA \n\ndell_smm-isa-0000\nAdapter: ISA adapter\nProcessor Fan: 2200 RPM  (min =    0 RPM, max = 4600 RPM)\nfan2:          2200 RPM  (min =    0 RPM, max = 4600 RPM)\nfan3:          2200 RPM  (min =    0 RPM, max = 4600 RPM)\nCPU:            +56.0\u00b0C  \nOther:          +48.0\u00b0C  \nSODIMM:         +38.0\u00b0C  \nGPU:            +46.0\u00b0C  \n\nacpitz-acpi-0\nAdapter: ACPI interface\ntemp1:        +25.0\u00b0C"
+  },
+  "phase_11_battery": {
+    "status": "PASSED",
+    "output": "native-path:          BAT0\n  vendor:               SMP\n  model:                DELL VN3N047E54C\n  serial:               2875\n  power supply:         yes\n  updated:              Sun 02 Aug 2026 10:48:58 AM IST (9 seconds ago)\n  has history:          yes\n  has statistics:       yes\n  battery\n    present:             yes\n    rechargeable:        yes\n    state:               fully-charged\n    warning-level:       none\n    energy:              32.2344 Wh\n    energy-empty:        0 Wh\n    energy-full:         32.2344 Wh\n    energy-full-design:  41.44 Wh\n    energy-rate:         0.0148 W\n    voltage:             16.915 V\n    charge-cycles:       N/A\n    time to empty:       90.7 days\n    percentage:          100%\n    capacity:            77.7857%\n    technology:          lithium-ion\n    icon-name:          'battery-full-charged-symbolic'"
+  },
+  "phase_12_network": {
+    "status": "PASSED",
+    "output": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    inet 127.0.0.1/8 scope host lo\n       valid_lft forever preferred_lft forever\n    inet6 ::1/128 scope host noprefixroute \n       valid_lft forever preferred_lft forever\n2: enp7s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000\n    link/ether 34:e6:d7:52:4e:8c brd ff:ff:ff:ff:ff:ff\n3: wlp6s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000\n    link/ether 34:e6:ad:0d:7c:8a brd ff:ff:ff:ff:ff:ff\n5: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default \n    link/ether 02:42:dc:00:07:5d brd ff:ff:ff:ff:ff:ff\n    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0\n       valid_lft forever preferred_lft forever\n    inet6 fe80::42:dcff:fe00:75d/64 scope link \n       valid_lft forever preferred_lft forev"
+  },
+  "phase_13_docker": {
+    "status": "PASSED",
+    "output": "Docker version 27.3.1, build ce12230\nDocker Compose version v2.29.7\n\nHello from Docker!\nThis message shows that your installation appears to be working correctly.\n\nTo generate this message, Docker took the following steps:\n 1. The Docker client contacted the Docker daemon.\n 2. The Docker daemon pulled the \"hello-world\" image from the Docker Hub.\n    (amd64)\n 3. The Docker daemon created a new container from that image which runs the\n    executable that produces the output you are currently reading.\n 4. The Docker daemon streamed that output to the Docker client, which sent it\n    to your terminal.\n\nTo try something more ambitious, you can run an Ubuntu container with:\n $ docker run -it ubuntu bash\n\nShare images, automate workflows, and more with a free Docker ID:\n https://hub.docker.com/\n\nFor more examples and ideas, visit:\n https://docs.docker.com/get-started/"
+  },
+  "phase_14_mount_io": {
+    "status": "PASSED",
+    "output": "Filesystem      Size  Used Avail Use% Mounted on\ntmpfs           786M  2.5M  783M   1% /run\n/dev/sda2       218G   79G  129G  38% /\ntmpfs           3.9G  4.0K  3.9G   1% /dev/shm\ntmpfs           5.0M   16K  5.0M   1% /run/lock\nefivarfs        128K   90K   34K  73% /sys/firmware/efi/efivars\n/dev/sda1       1.1G  6.2M  1.1G   1% /boot/efi\ntmpfs           786M  2.6M  783M   1% /run/user/1000\n/dev/sdb1       932G  128M  932G   1% /media/media-server/6E18C6FD18C6C377\nI/O Test Passed"
+  },
+  "phase_15_luks": {
+    "status": "PASSED",
+    "output": "cryptsetup 2.7.0 flags: UDEV BLKID KEYRING FIPS KERNEL_CAPI HW_OPAL"
+  },
+  "phase_16_headless": {
+    "status": "PASSED",
+    "output": "#HandleLidSwitch=suspend\n#HandleLidSwitchExternalPower=suspend\n#HandleLidSwitchDocked=ignore"
+  },
+  "phase_18_dell_smm": {
+    "status": "PASSED",
+    "output": "dell_smm-isa-0000\nAdapter: ISA adapter\nProcessor Fan: 2200 RPM  (min =    0 RPM, max = 4600 RPM)\nfan2:          2200 RPM  (min =    0 RPM, max = 4600 RPM)\nfan3:          2200 RPM  (min =    0 RPM, max = 4600 RPM)\nCPU:            +50.0\u00b0C  \nOther:          +47.0\u00b0C  \nSODIMM:         +38.0\u00b0C  \nGPU:            +46.0\u00b0C  \n\nacpitz-acpi-0"
+  },
+  "phase_18_wifi_ap": {
+    "status": "PASSED",
+    "output": "Wi-Fi AP mode checked"
+  }
+}
