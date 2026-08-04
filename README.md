@@ -1,12 +1,17 @@
-# HomeLab OS v1.0.0 Stable
+# HomeLab OS — Self-Hosted Operating Platform
 
-> A lightweight, self-hosted operating platform providing personal private cloud management, developer workspace control, storage administration, encrypted vault integration, network management, automated backups, and cross-platform hardware monitoring.
+> A lightweight, self-hosted operating platform providing personal private cloud management, developer workspace control, storage administration, encrypted LUKS vault, network management, automated backups, cross-platform hardware monitoring, VirtualBox hypervisor control, and a native PySide6 desktop management console.
 
 ---
 
-## 🚀 Official Release Version: `v1.0.0`
+## 🚀 Active Release: `v1.5.2` (Native Desktop Console & Telemetry Release)
 
-HomeLab OS v1.0.0 is officially feature-complete, stabilized, and ready for production deployment across **Linux**, **Windows**, and **macOS**.
+HomeLab OS v1.5.2 is officially feature-complete, stabilized, and deployed across production server hardware (**Dell Inspiron 5558** target node `@192.168.0.180`).
+
+- **Native PySide6 Desktop Console**: 13 management modules (Dashboard, PyQtGraph Monitoring, Storage, LUKS Vault, Docker, VirtualBox, Workspace, Network Map, WinSCP File Manager, Tabbed SSH Terminal, Automation Builder, Plugin App Store, Settings & RDP Launcher).
+- **Oracle VM VirtualBox HAL**: REST API (`/api/v1/virtualbox/vms`) and PySide6 VM management.
+- **Real-Time Telemetry**: Non-zero CPU & RAM hardware utilization sampling over interval delta.
+- **Dynamic LAN API Host Resolution**: Auto-adapting host connections over LAN IP / domain.
 
 ---
 
@@ -15,9 +20,10 @@ HomeLab OS v1.0.0 is officially feature-complete, stabilized, and ready for prod
 ### Requirements
 - Python 3.10+
 - Node.js 20+
+- PySide6 / Qt 6.11+
 - Docker Engine v24.0+ (Mandatory for Production Server Deployment; Optional for local Dev)
 
-### Local Development Setup
+### Local Development & PySide6 Desktop Manager Setup
 ```bash
 # 1. Clone repository
 git clone https://github.com/SidddhantJain/HomeLab-OS.git
@@ -30,13 +36,12 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 
-# 3. Run Frontend UI (React + Vite)
-cd ../frontend
-npm install
-npm run dev
+# 3. Launch PySide6 Native Desktop Manager Console
+python manager/main.py
 
-# 4. Run Pytest Suite
+# 4. Run Pytest Suite & Manager Headless Tests
 python -m pytest tests/backend -q
+python scripts/test_pyside_manager.py
 
 # 5. Run Pre-Commit Security Audit
 bash scripts/security_scan.sh
@@ -47,21 +52,9 @@ bash scripts/security_scan.sh
 
 ---
 
-## 🖥️ Server Production Deployment
-Run the automated server installer:
-```bash
-# 1. Run requirements check
-bash deployment/requirements_check.sh
+## 📚 Master Release Documentation & Future Roadmap
 
-# 2. Install & start HomeLab OS container stack
-bash deployment/install.sh
-```
-
----
-
-## 📚 Final Production Release Documentation Suite
-
-All production release documentation is available in `Documentation/Public/`:
+All documentation is available in `Documentation/Public/`:
 
 - 🏗️ [Architecture Final Specification](Documentation/Public/Architecture_Final.md)
 - 🚀 [Production Deployment Guide](Documentation/Public/Production_Deployment_Guide.md)
@@ -72,7 +65,7 @@ All production release documentation is available in `Documentation/Public/`:
 - 📦 [Backup & Recovery Guide](Documentation/Public/Backup_Recovery_Guide.md)
 - 📄 [v1.0.0 Release Summary](Documentation/Public/Release_Summary_v1.0.0.md)
 - ⚠️ [Known Limitations](Documentation/Public/Known_Limitations.md)
-- 🔭 [v2.0 Future Roadmap](Documentation/Public/Roadmap_v2.md)
+- 🔭 [Master Roadmap v2.0 – v5.0](Documentation/Public/Roadmap_v2.md) *(GitHub Repo Importer, Antigravity/VS Code Integration, Multi-Server System Merger, Bare-Metal Type-1 Hypervisor OS, Sovereign Infrastructure Federation)*
 - 📋 [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 
 ---
@@ -87,4 +80,4 @@ All credentials, tokens, and private infrastructure keys remain isolated in `Doc
 ---
 
 ## 📄 License
-HomeLab OS v1.0.0 Release.
+HomeLab OS v1.5.2 Release.
