@@ -1,106 +1,81 @@
-# HomeLab OS — Master Architectural Roadmap & Polyglot Engine (v1.5.x – v5.0)
+# HomeLab OS — Master Architectural Roadmap & Future Generation Specifications (v1.5.x – v5.0)
 
-This specification documents the multi-year architectural roadmap for **HomeLab OS**, establishing a clear, decisive progression from the current **v1.5 PySide6 Native Management Console** to **v2.5 High-Performance Polyglot Engine (Rust / Go / C++23 / Tauri 2.0 / Flutter)**, **Multi-Server System Merger**, **Bare-Metal Type-1 Hypervisor OS (v4.0)**, and **Autonomous Sovereign Infrastructure Federation (v5.0)**.
+This master specification documents the multi-year architectural roadmap for **HomeLab OS**, establishing a clear, decisive progression across all future version generations (**v2.0, v2.5, v3.0, v3.5, v4.0, v5.0**).
 
 ---
 
 ## 🎯 Master Version Progression Map
 
 ```text
-+-----------------------+     +-----------------------+     +-----------------------+
-|   HomeLab OS v1.5     |     |   HomeLab OS v2.0     |     |   HomeLab OS v2.5     |
-| Current Native Qt App | ──> | Multi-Server Merger   | ──> | Polyglot Core (Rust/Go|
-| GitHub & IDE Integr.  |     | Unified ZFS Storage   |     | Tauri 2.0 & Flutter)  |
-+-----------------------+     +-----------------------+     +-----------------------+
-                                                                        │
-                                                                        ▼
-+-----------------------+     +-----------------------+     +-----------------------+
-|   HomeLab OS v5.0     |     |   HomeLab OS v4.0     |     |   HomeLab OS v3.0     |
-| Sovereign Infrastructure| ◄──| Bare-Metal HyperOS    | ◄──| Local Edge AI Copilot |
-| P2P Federation Mesh   |     | Custom Linux ISO      |     | Zero-Trust Mesh       |
-+-----------------------+     +-----------------------+     +-----------------------+
++-----------------------------------------------------------------------------------+
+|                        HomeLab OS Multi-Generation Master Roadmap                 |
++-----------------------------------------------------------------------------------+
+|                                                                                   |
+|  🟢 v2.0 (Q1 2027): Multi-Node Cluster, 100+ App Store, DR Vault, Network Tunnels |
+|  🔵 v2.5 (Q2 2027): Polyglot Engine (Rust/Go/C++23), Tauri 2.0, Flutter, GPU Load |
+|  🟣 v3.0 (Q3 2027): Autonomous Edge AI Copilot, Zero-Trust Mesh, Frigate NVR AI  |
+|  🟡 v3.5 (Q4 2027): Semantic Document OCR, Solar/Electricity Transcode Scheduler  |
+|  🔴 v4.0 (Q1 2028): Bare-Metal Type-1 Hypervisor ISO, Virtual SAN, PCIe Pass     |
+|  ⚪ v5.0 (Q3 2028): Sovereign P2P Federation, Self-Healing Mesh, Quantum Crypto  |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 🏗️ Polyglot Architecture & Core Technology Stack (v2.5 Generation)
+## 📊 Detailed Version Generation Specifications
 
-```text
-               +-------------------------------------------------------------+
-               |                HomeLab OS Polyglot Engine Architecture      |
-               +-------------------------------------------------------------+
-               |                                                             |
-               |  +-------------------------------------------------------+  |
-               |  |  Presentation Layer: Tauri 2.0 (Rust) / React / Flutter |  |
-               |  +---------------------------+---------------------------+  |
-               |                              | REST / gRPC / WebSockets     |
-               |  +---------------------------v---------------------------+  |
-               |  |  API Gateway & Router: Go (Golang) Microservices       |  |
-               |  +---------------------------+---------------------------+  |
-               |                              | PyO3 / CFFI Foreign Calls    |
-               |  +---------------------------v---------------------------+  |
-               |  |  Core Compute Engine: Rust (homelab-core-rs)           |  |
-               |  +---------------------------+---------------------------+  |
-               |                              | Native System Calls          |
-               |  +---------------------------v---------------------------+  |
-               |  |  Hardware HAL: C++23 + io_uring + eBPF Kernel Drivers   |  |
-               |  +-------------------------------------------------------+  |
-               +-------------------------------------------------------------+
-```
+### 🟢 HomeLab OS v2.0 — Multi-Node Clustering & Core Capabilities (Target: Q1 2027)
+1. **1-Click Multi-Server Pairing & Merger Engine**: Pair separate physical servers (Dell Inspiron 5558, Raspberry Pi nodes, NAS servers, secondary PCs) into a single unified super-server cluster.
+2. **100+ App Smart Marketplace & Catalog**: 1-click template deployment for Jellyfin, Nextcloud, Plex, Home Assistant, Vaultwarden, Immich, Paperless-ngx, Pi-hole, AdGuard, Grafana, Prometheus.
+3. **Automated Disaster Recovery Vault Engine**: Scheduled `zstd` compressed differential backups, block-level encrypted cloud replication to S3/Backblaze B2, and 1-click bare-metal restoration.
+4. **Dynamic Network & Cloudflare Tunnel Manager**: Auto-configuring Cloudflare Tunnels, UPnP, WireGuard Mesh, and automated DNS record sync.
+5. **AI S.M.A.R.T Anomaly Detection & Predictive Alerting**: Machine learning drive failure prediction with Discord/Telegram/Slack/Email webhooks.
+6. **Multi-Tenant RBAC & Family Access Control**: Role-Based Access Control (Admin, Family Member, Restricted Guest).
+7. **Automated Update Engine & Rollback Safety Net**: Zero-downtime updates with pre-update DB snapshot auto-rollback.
+8. **Visual Event Bus & Workflow Canvas**: Drag-and-drop workflow builder (`Trigger -> Condition -> Action`).
 
 ---
 
-## 📊 Detailed Version Release Specifications
-
-### 1. HomeLab OS v2.5 — High-Performance Polyglot Architecture & Next-Gen Tooling Engine (Target: Q2 2027)
-- **Rust Core Subsystem (`homelab-core-rs`)**:
-  - Rewrites Python-heavy I/O loops with native Rust binaries compiled into Python via PyO3 bindings.
-  - Sub-millisecond telemetry gathering, zero-allocation ZFS disk monitoring, and hardware-accelerated AES-256-GCM LUKS vault cryptography.
-  - Total idle RAM consumption reduced to **< 30 MB**.
-- **Go (Golang) High-Concurrency API Gateway (`homelab-proxy-go`)**:
-  - Ultra-fast gRPC and HTTP/3 reverse proxy routing traffic across merged server nodes.
-  - Capable of processing **100,000+ requests/sec** with streaming WebSockets for real-time telemetry.
-- **C++23 eBPF Kernel Hardware Abstraction (`homelab-hal-cpp`)**:
-  - `io_uring` asynchronous disk I/O and eBPF kernel network packet filtering for zero-overhead packet routing and native PCIe passthrough.
-- **Tauri 2.0 (Rust) Native Desktop App**:
-  - Replaces standalone Web/Python desktop wrappers with a lightweight 15 MB native desktop application.
-- **Flutter (Dart) Mobile Applications**:
-  - Native iOS and Android mobile management apps with push notifications and biometrics.
-- **Drag-and-Drop Live Migration & HA Failover**:
-  - Live migration of Docker containers and VirtualBox/KVM VMs between nodes with zero downtime.
+### 🔵 HomeLab OS v2.5 — High-Performance Polyglot Architecture & Advanced Media Engine (Target: Q2 2027)
+1. **Rust Core Subsystem (`homelab-core-rs`)**: PyO3 bindings for native Rust binaries, reducing idle RAM footprint to **< 30 MB**.
+2. **Go High-Concurrency API Gateway (`homelab-proxy-go`)**: gRPC microservices handling **100,000+ req/sec**.
+3. **C++23 eBPF HAL (`homelab-hal-cpp`)**: `io_uring` disk I/O and eBPF network packet routing.
+4. **Tauri 2.0 (Rust) Desktop App & Flutter Mobile Apps**: 15 MB native desktop app and native iOS/Android apps.
+5. **Drag-and-Drop Live Container/VM Migration**: Move workloads between merged server nodes with zero downtime.
+6. **Hardware GPU Transcode Load Balancer**: Dynamic transcode stream balancing between Intel QuickSync (i7-5500U) and NVIDIA GPUs.
+7. **Unified File System & WebDAV Cloud Sync**: Dual-pane file manager with WebDAV, S3, and SMB network share mounting.
 
 ---
 
-### 2. GitHub & Code Repository Import Engine (v1.5.x / v2.0)
-- **1-Click GitHub / GitLab Repository Clone**: Import public/private repos into projects directory.
-- **Intelligent Stack Auto-Detection**: Auto-deploys Docker Compose, Dockerfile, Python virtualenvs, or Node.js runtimes.
+### 🟣 HomeLab OS v3.0 — Autonomous Edge AI & Zero-Trust Mesh (Target: Q3 2027)
+1. **Local AI Infrastructure Copilot (Ollama / vLLM / Llama-3 Integration)**:
+   - Natural language query engine: *"Analyze disk usage on external drive, check Jellyfin container logs, and optimize backup retention"*.
+   - Automated root-cause analysis for container crashes and SMART warnings.
+2. **Zero-Trust WireGuard & Tailscale Mesh Overlay**: Built-in encrypted overlay network allowing secure access anywhere without open router ports.
+3. **Autonomous Power & Thermal Optimization Engine**: Machine learning CPU frequency scaling and solar/battery power optimization.
+4. **Smart Camera & NVR Video Analytics Pipeline**: Integrated local AI object detection (Frigate NVR integration) for home security cameras.
 
 ---
 
-### 3. Antigravity IDE & VS Code Integration Protocol (v1.5.x / v2.0)
-- **Remote SSH & DevContainer Server Integration**: Remote dev endpoints for VS Code and Antigravity IDE.
-- **HomeLab OS IDE Extension API**: IDE status-bar metrics, right-click deploy, and container log streaming.
+### 🟡 HomeLab OS v3.5 — Intelligent Media, Document & Energy Automation (Target: Q4 2027)
+1. **Automated Document OCR & Semantic Search Indexing**: Paperless-ngx integration with vector embeddings for semantic document search.
+2. **Electricity Pricing-Aware Media Transcode Scheduler**: Deferred heavy video transcoding scheduled during off-peak/solar electricity hours.
+3. **Automated SSL & Dynamic Proxy Automation**: Automated ACME / Let's Encrypt / Cloudflare Tunnels SSL certificates with zero manual setup.
+4. **Smart Home IoT Hub & Home Assistant Sync**: Deep integration with Home Assistant for server-side smart home automation triggers.
 
 ---
 
-### 4. HomeLab OS v2.0 — Multi-Server System Merger & Cluster Unification (Target: Q1 2027)
-- **1-Click Multi-Server Pairing & Merger Engine**: Pair physical servers into a single unified super-server cluster.
-- **Unified Super-Server Resource Pool**: Merge CPU, RAM, disk, and network capacities.
-- **Distributed `raft` Database & State Merger**: Merge user accounts, permissions, Docker containers, and project registries across nodes without data conflicts.
+### 🔴 HomeLab OS v4.0 — Bare-Metal Type-1 Hypervisor OS ("HomeLab HyperOS") (Target: Q1 2028)
+1. **Custom Debian / Alpine Linux ISO Distribution (`HomeLab-OS-v4.0.iso`)**: Bootable installer ISO converting any PC/laptop into a bare-metal server.
+2. **Type-1 Hypervisor Subsystem (KVM / QEMU / LXC)**: Proxmox/Unraid replacement with native PCIe passthrough (GPUs, NVMe, NICs).
+3. **Unified Tri-Interface Management**: Web UI (`React / Vite`), Native Desktop Console (`PySide6 / Tauri 2.0`), and Mobile Apps (`Flutter`).
+4. **Virtual SAN & Distributed Block Storage**: Storage pooling across all physical hardware drives in the cluster into a single resilient virtual SAN.
 
 ---
 
-### 5. HomeLab OS v3.0 — Autonomous Edge AI & Zero-Trust Mesh (Target: Q3 2027)
-- **Local AI Infrastructure Copilot**: Integrated Ollama / vLLM local LLM assistant for natural language system diagnostics and automated rule creation.
-- **Zero-Trust WireGuard & Tailscale Mesh**: Encrypted overlay network for remote access anywhere without open ports.
-
----
-
-### 6. HomeLab OS v4.0 — Bare-Metal Type-1 Hypervisor OS ("HomeLab HyperOS") (Target: Q1 2028)
-- **Custom Debian / Alpine Linux ISO Distribution**: Bootable installer ISO (`HomeLab-OS-v4.0.iso`).
-- **Type-1 Hypervisor Subsystem (KVM / QEMU / LXC)**: Proxmox/Unraid replacement with native PCIe passthrough.
-
----
-
-### 7. HomeLab OS v5.0 — Autonomous Sovereign Infrastructure Federation (Target: Q3 2028)
-- **Decentralized P2P HomeLab Federation**: Interconnect private home server clusters across trusted friends and family.
+### ⚪ HomeLab OS v5.0 — Autonomous Sovereign Infrastructure Federation (Target: Q3 2028)
+1. **Decentralized P2P HomeLab Federation**: Interconnect private home server clusters across trusted friends and family for offsite backups and shared media streaming.
+2. **Self-Healing Storage & Auto-Recovering Mesh**: Automated bitrot repair, container auto-healing, and peer-to-peer data reconstruction.
+3. **Local AI Agent Orchestration Framework**: Run multi-agent AI workflows locally with zero cloud dependencies.
+4. **Quantum-Resistant Cryptography Subsystem**: Post-quantum encryption algorithms (Kyber / Dilithium) securing LUKS vaults and inter-node mesh communications.

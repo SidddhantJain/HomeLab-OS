@@ -65,7 +65,7 @@ All documentation is available in `Documentation/Public/`:
 - 📦 [Backup & Recovery Guide](Documentation/Public/Backup_Recovery_Guide.md)
 - 📄 [v1.0.0 Release Summary](Documentation/Public/Release_Summary_v1.0.0.md)
 - ⚠️ [Known Limitations](Documentation/Public/Known_Limitations.md)
-- 🔭 [Master Roadmap v2.0 – v5.0](Documentation/Public/Roadmap_v2.md) *(v2.5 High-Performance Polyglot Rust Core, Go Gateway, C++23 eBPF, Tauri 2.0, Flutter, GitHub Importer, Antigravity/VS Code Integration, Multi-Server System Merger, Bare-Metal Type-1 Hypervisor OS)*
+- 🔭 [Master Roadmap v2.0 – v5.0](Documentation/Public/Roadmap_v2.md) *(v2.0 100+ App Store & DR Vault, v2.5 Polyglot Engine, v3.0 Edge AI Copilot & NVR, v3.5 OCR & Solar Scheduler, v4.0 Bare-Metal Type-1 Hypervisor ISO, v5.0 Sovereign P2P Federation)*
 - 📋 [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 
 ---
