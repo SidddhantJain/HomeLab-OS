@@ -65,7 +65,7 @@ All documentation is available in `Documentation/Public/`:
 - 📦 [Backup & Recovery Guide](Documentation/Public/Backup_Recovery_Guide.md)
 - 📄 [v1.0.0 Release Summary](Documentation/Public/Release_Summary_v1.0.0.md)
 - ⚠️ [Known Limitations](Documentation/Public/Known_Limitations.md)
-- 🔭 [Master Roadmap v2.0 – v5.0](Documentation/Public/Roadmap_v2.md) *(GitHub Repo Importer, Antigravity/VS Code Integration, Multi-Server System Merger, Bare-Metal Type-1 Hypervisor OS, Sovereign Infrastructure Federation)*
+- 🔭 [Master Roadmap v2.0 – v5.0](Documentation/Public/Roadmap_v2.md) *(v2.5 High-Performance Polyglot Rust Core, Go Gateway, C++23 eBPF, Tauri 2.0, Flutter, GitHub Importer, Antigravity/VS Code Integration, Multi-Server System Merger, Bare-Metal Type-1 Hypervisor OS)*
 - 📋 [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 
 ---
