@@ -1,227 +1,151 @@
-# HomeLab OS — Master Architectural Roadmap Analysis & Feature Extensions (v1.5.2 – v5.0)
+# HomeLab OS — Master Architectural Roadmap & Future Generation Specifications (v2.0 Implemented | v3.0 – v5.0 Focus)
 
-> **Document Version**: 2.0.0  
-> **Status**: Approved Architectural Master Document  
-> **Target Platform Scope**: Linux (Debian/Ubuntu Server & Alpine Bare-Metal), Windows Desktop/Daemon (`.exe`/`.msi`), Android Native App (`.apk`/`.aab`), Multi-Node Clusters & Sovereign P2P Mesh.
+> **Document Version**: 3.0.0  
+> **Status**: Approved Master Roadmap & Product Extension Architecture  
+> **Special Module Focus**: **HomeLab OS IDE (Remote Compiler & Distributed Cloud IDE Ecosystem)**
 
 ---
 
-## 🎯 1. Architectural Evolution & Progression Overview
+## 🎯 1. Master Architectural Progression (v2.0 Implemented ➡️ v3.0 – v5.0 Evolution)
 
-The baseline system at **v1.5.2** provides a stabilized single-node operating platform with a **FastAPI backend**, a **React/Vite web UI**, a **PySide6 desktop manager console**, **Oracle VM VirtualBox integration**, **LUKS2 encrypted vault controls**, and **Docker container management**.
+With **v2.0 (Multi-Node Cluster & Windows Desktop App)** active, and **v2.5 (Polyglot Core & Closed-Source Obfuscation)** maintained as planned, the roadmap focuses on **v3.0, v3.5, v4.0, and v5.0**.
 
-The multi-year roadmap from **v2.0 to v5.0** transforms HomeLab OS from a single-node host manager into a **sovereign, polyglot, closed-source, autonomous AI-driven hypervisor and federated cloud ecosystem**.
+A flagship addition in **v3.0** is the **HomeLab OS IDE** — a native remote compiler and cloud IDE subsystem enabling secure remote code editing, PTY terminal access, containerized build execution, and GPU-accelerated compilation offloading from any Windows PC, Android tablet/phone, or Web browser.
 
 ```mermaid
 graph TD
-    A["v1.5.2: Single-Node Base Platform"] --> B["v2.0: Multi-Node Cluster & Windows App"]
-    B --> C["v2.5: Polyglot Core, Android Client & Closed-Source Engine"]
-    C --> D["v3.0: Autonomous Edge AI Copilot & Hardware DRM"]
-    D --> E["v3.5: Intelligent Media, OCR & Dynamic Transcoding"]
-    E --> F["v4.0: HomeLab HyperOS Bare-Metal Type-1 Hypervisor"]
-    F --> G["v5.0: Sovereign P2P Federation & AI Self-Healing Mesh"]
+    A["v2.0 (IMPLEMENTED): Multi-Node Cluster & Windows App"] --> B["v2.5 (PLANNED): Polyglot Rust/Go Core, Android Client & Obfuscation"]
+    B --> C["v3.0: HomeLab OS Remote IDE, Local Code AI & Hardware DRM"]
+    C --> D["v3.5: Tariff-Aware Compiler Scheduler, Android Mobile IDE & OCR"]
+    D --> E["v4.0: Bare-Metal HyperOS & Distributed Multi-Node Build Farm"]
+    E --> F["v5.0: Sovereign P2P Federation & AI Self-Fixing IDE Engine"]
 ```
 
 ---
 
-## 🚀 2. Generation-by-Generation Feature Matrix & Additional Innovations
+## 💻 2. HomeLab OS IDE — Remote Compiler & Cloud IDE Architecture
 
-### 🟢 HomeLab OS v2.0 — Multi-Node Cluster, App Catalog & Windows Desktop Manager
-*Target: Q1 2027 | Milestone: Clustering & Windows Ecosystem*
-
-#### Core Roadmap Features
-- 1-Click Multi-Server Pairing & Merger Engine (Dell Inspiron 5558 + Raspberry Pi + NAS).
-- 100+ App Smart Marketplace & Catalog (Immich, Jellyfin, Nextcloud, Home Assistant, Paperless-ngx, Vaultwarden).
-- Automated Disaster Recovery Vault (`zstd` compressed differential backups + S3/B2 block replication).
-- Dynamic Cloudflare Tunnel & WireGuard Mesh Manager.
-- AI S.M.A.R.T Drive Failure Anomaly Detection & Alerting (Discord/Telegram/Slack/Email).
-- Multi-Tenant RBAC & Family Access Control.
-- Windows Native Desktop Manager App (`.exe` / `.msi`) with System Tray & Status Daemon.
-
-#### 💡 Recommended Additional Functionalities & Architectural Extensions for v2.0
-1. **Zero-Configuration mDNS / Raft Cluster Discovery & Quorum Consensus**:
-   - Auto-discover secondary HomeLab OS nodes on local LAN using mDNS (`_homelab._tcp.local`) with mTLS identity verification.
-   - Implement **Raft Consensus Protocol** (`etcd` or `hashicorp/raft`) for multi-node state synchronization, preventing split-brain scenarios when nodes disconnect.
-2. **App Marketplace "Compose Stacks" & Dependency Resolver**:
-   - Expand 1-click app installation from single containers to multi-container **Production Stacks** (e.g., *Media Suite Stack*: Jellyfin + qBittorrent + VPN Sidecar + Radarr + Sonarr + Bazarr in a single deployment).
-   - Automated port conflict detection and reverse proxy path allocation (`/jellyfin`, `/nextcloud`).
-3. **Windows Service Daemon (`HomeLabDaemon.exe`) & Native Notification Center**:
-   - Run as an active Windows Service managed via SCM (Service Control Manager), auto-starting on Windows boot without user login.
-   - Low-overhead background WMI / OpenHardwareMonitor polling for local Windows hardware telemetry.
-4. **Differential Block-Level Snapshot Sync**:
-   - Integrate `zfs send/receive` or `btrfs send` block replication across nodes for sub-second snapshot transfers during DR backup runs.
-
----
-
-### 🔵 HomeLab OS v2.5 — High-Performance Polyglot Core, Android App & Closed-Source Engine
-*Target: Q2 2027 | Milestone: Polyglot Performance & Source Protection*
-
-#### Core Roadmap Features
-- **Rust Core Subsystem (`homelab-core-rs`)**: PyO3 bindings reducing idle RAM footprint to **< 30 MB**.
-- **Go High-Concurrency API Gateway (`homelab-proxy-go`)**: gRPC microservices targeting **100,000+ req/sec**.
-- **C++23 eBPF HAL (`homelab-hal-cpp`)**: `io_uring` disk I/O and eBPF network packet routing.
-- **Tauri 2.0 Desktop App**: 15 MB cross-platform desktop manager.
-- **Android Native App (`.apk` / `.aab`)**: Flutter/Kotlin companion with biometric authentication, FCM push alerts, and camera media backup.
-- **Closed-Source Obfuscated Binary Packaging Pipeline**: Python transpiled to native binaries (`.pyd`/`.so`/`.exe`) via Nuitka & PyArmor.
-
-#### 💡 Recommended Additional Functionalities & Architectural Extensions for v2.5
-1. **WASM / WASI Plugin Sandbox Engine**:
-   - Provide a WebAssembly runtime (Wasmtime) for third-party extensions. Allows developers to build custom HomeLab OS plugins in Rust, Go, C, or TypeScript without risk of exposing system binaries or executing arbitrary root shell code.
-2. **Android WebRTC Live Remote Terminal & Screen Mirroring**:
-   - Enable direct low-latency P2P WebRTC terminal streaming and desktop management from Android phones/tablets over low-bandwidth mobile networks.
-3. **Automated Obfuscation CI/CD GitHub Action Pipeline**:
-   - Fully automated build pipeline compiling Python code to C-extensions, embedding V8 bytecode UI snapshots, signing Windows Authenticode certificates, and generating encrypted `.apk`/`.msi` installers on git tag releases.
-4. **Smart Mobile Auto-Upload & Deduplication Engine**:
-   - Background media backup from Android devices with client-side SHA-256 deduplication before uploading photos/videos to Immich/Nextcloud storage vaults.
-
----
-
-### 🟣 HomeLab OS v3.0 — Autonomous Edge AI, Anti-Reverse DRM & Zero-Trust Mesh
-*Target: Q3 2027 | Milestone: Edge AI & Hardware Licensing*
-
-#### Core Roadmap Features
-- Local AI Infrastructure Copilot (Ollama / vLLM / Llama-3 integration for natural language server management).
-- Zero-Trust WireGuard & Tailscale Overlay Mesh.
-- Autonomous Machine Learning Power & Thermal Scaling Engine.
-- Smart NVR Video Analytics Pipeline (Frigate NVR AI integration).
-- Hardware-Bound Licensing & DRM Anti-Tampering Engine.
-- Automated Crash Telemetry & Self-Diagnostic Bug Reporter.
-
-#### 💡 Recommended Additional Functionalities & Architectural Extensions for v3.0
-1. **RAG Vector Knowledge Base over System Logs & Configuration**:
-   - Embed system logs (`journalctl`), Docker container stdout/stderr, SMART metrics, and HomeLab OS documentation into a local vector store (ChromaDB / FAISS).
-   - Natural language queries can immediately point to precise log lines: *"Why did Jellyfin crash at 2 AM yesterday?"* -> *"GPU transcode out of memory error in line 442 of container log"*.
-2. **TPM 2.0 / Windows DPAPI Hardware Fingerprint DRM**:
-   - Bind closed-source commercial licenses to hardware security modules (TPM 2.0 PCR registers, CPU serial numbers, motherboard UUID, and Windows DPAPI master keys), rendering binary copying across unauthenticated hardware impossible.
-3. **AI-Powered Network Intrusion Prevention System (NIPS)**:
-   - Run lightweight local ONNX anomaly detection models on eBPF network telemetry streams to detect port scanning, DDoS spikes, or brute-force SSH logins, automatically injecting iptables / nftables drop rules in real time.
-4. **Camera AI Triggered Automated HomeLab Workflows**:
-   - Bind Frigate NVR object recognition events directly to HomeLab OS Visual Event Bus (e.g., *If person detected at front drive after midnight -> spin up external storage array, record high-bitrate stream, send priority notification to Android app*).
-
----
-
-### 🟡 HomeLab OS v3.5 — Intelligent Media, Document OCR & Energy Automation
-*Target: Q4 2027 | Milestone: Smart Automation & Media Intelligence*
-
-#### Core Roadmap Features
-- Automated Document OCR & Semantic Search Indexing (Paperless-ngx + vector embeddings).
-- Electricity Pricing-Aware Media Transcode Scheduler.
-- Automated ACME / Let's Encrypt / Cloudflare SSL Management.
-- Smart Home IoT Hub & Home Assistant Sync.
-- Windows Background Daemon & Android Quick Widgets.
-
-#### 💡 Recommended Additional Functionalities & Architectural Extensions for v3.5
-1. **Dynamic Spot Electricity Price API Integration (Tibber / Octopus / Entso-E)**:
-   - Connect directly to real-time electricity tariff APIs. Automatically pause heavy CPU/GPU background tasks (4K H.265 transcoding, ZFS scrub, AI model fine-tuning, cloud backups) during high-cost peak hours and execute them during negative/low-cost electricity windows.
-2. **Unified Universal Search Engine ("HomeLab Spotlight")**:
-   - Single unified shortcut bar across Desktop, Web UI, and Mobile searching OCR documents, Jellyfin media files, Nextcloud documents, container names, and server setting shortcuts in sub-50ms.
-3. **Android Jetpack Compose Interactive Widgets & Lock Screen Controls**:
-   - Interactive home screen widgets displaying server CPU/RAM gauges, storage pool utilization, quick container restart buttons, and emergency VPN kill switches.
-
----
-
-### 🔴 HomeLab OS v4.0 — Bare-Metal Type-1 Hypervisor OS ("HomeLab HyperOS")
-*Target: Q1 2028 | Milestone: Bare-Metal Operating System*
-
-#### Core Roadmap Features
-- Bootable Custom Debian / Alpine Linux ISO (`HomeLab-OS-v4.0.iso`).
-- Type-1 Hypervisor Subsystem (KVM / QEMU / LXC with native GPU & PCIe Passthrough).
-- Unified Tri-Interface Management (Web, Desktop, Mobile).
-- Virtual SAN & Distributed Block Storage.
-- Sealed Closed-Source Production Distribution Pipeline.
-
-#### 💡 Recommended Additional Functionalities & Architectural Extensions for v4.0
-1. **Custom Hardened Real-Time Linux Kernel (`linux-homelab-rt`)**:
-   - Custom compiled Linux kernel featuring out-of-the-box support for ZFS on Linux, Open vSwitch, eBPF, KVM micro-VMs, and low-latency audio/video Passthrough drivers.
-2. **Live VM & Container Migration across Storage Nodes**:
-   - Seamlessly migrate live KVM virtual machines and LXC containers between clustered physical servers without interrupting running services or dropping network connections.
-3. **Graphical Calamares Bare-Metal ISO Installer Wizard**:
-   - User-friendly 3-step installer supporting automated disk partitioning, LUKS2 disk encryption setup, hardware auto-detection, and GPU driver initialization.
-4. **Web-Based SPICE / HTML5 VNC VM Console with USB Passthrough**:
-   - Direct web console interface providing fluid 60fps interaction with Windows/Linux guest virtual machines from any web browser or mobile client.
-
----
-
-### ⚪ HomeLab OS v5.0 — Autonomous Sovereign Infrastructure Federation
-*Target: Q3 2028 | Milestone: Self-Healing P2P Mesh & Quantum Resilience*
-
-#### Core Roadmap Features
-- Decentralized P2P HomeLab Federation (Offsite backups & media sharing with trusted peers).
-- Self-Healing Storage & Auto-Recovering Mesh.
-- Local AI Agent Orchestration Framework.
-- Quantum-Resistant Cryptography Subsystem (Kyber / Dilithium).
-- Autonomous AI Bug-Fix Engine & Self-Healing Micro-Patching.
-
-#### 💡 Recommended Additional Functionalities & Architectural Extensions for v5.0
-1. **Shamir's Secret Sharing & Erasure-Coded Zero-Knowledge Offsite Backups**:
-   - Split encrypted snapshot chunks across multiple trusted peer nodes owned by friends or family using Shamir's Secret Sharing. No individual peer holds enough pieces to decrypt or inspect the backup data.
-2. **Post-Quantum Hybrid Encryption WireGuard Mesh (Kyber-1024 + X25519)**:
-   - Upgrade inter-node tunnel encryption and LUKS vault key wrapping to NIST-approved post-quantum algorithms (ML-KEM / Kyber & ML-DSA / Dilithium) to safeguard private data against future quantum decryption threats.
-3. **Autonomous AI Sandbox Micro-Patching Engine**:
-   - When an unhandled runtime error occurs, local AI copilot automatically analyzes the stack trace, generates a code fix, spins up an isolated Docker micro-sandbox, verifies unit test compliance, and hot-applies a zero-downtime micro-patch without restarting the main server daemon.
-
----
-
-## 🔒 3. Closed-Source Obfuscation & DRM Architecture Specification
-
-To protect proprietary intellectual property, HomeLab OS implements a 3-tier closed-source packaging engine:
-
-```mermaid
-flowchart LR
-    A["Python / JS / C++ Source Code"] --> B["PyArmor / Nuitka C Transpilation"]
-    B --> C["Native C Machine Extensions .pyd / .so"]
-    C --> D["V8 Bytecode UI Blob Sealing"]
-    D --> E["TPM 2.0 Hardware Bound DRM Signing"]
-    E --> F["Single-Click Binary Installers .exe / .apk"]
-```
-
-### 1. Backend Code Protection (Nuitka + PyArmor)
-- **C-Extension Compilation**: Python code in `backend/app/` and `manager/` is transpiled directly to C machine code using Nuitka and PyArmor.
-- **Source Code Removal**: Plaintext `.py` files are completely excluded from the release build artifacts. Only native `.pyd` (Windows) and `.so` (Linux) files are shipped.
-
-### 2. Frontend & UI Protection
-- **V8 Bytecode Snapshots**: React web bundles and Desktop PySide6 assets are compiled into V8 bytecode blobs or embedded resource files (`qrc` / binary blobs), rendering HTML/JS reverse engineering impossible.
-
-### 3. Hardware-Bound Licensing Engine
-- **License File Verification**: Checks RSA-4096 signed license payloads against CPU ID, motherboard UUID, TPM 2.0 PCR values, and MAC address hashes.
-
----
-
-## 📱 4. Cross-Platform Native Client Strategy (Windows & Android)
+### Architectural Overview
+**HomeLab OS IDE** decouples code editing from code compilation and execution:
+- **Client Tier (Web Browser, Windows Desktop, Android Mobile/Tablet)**: Lightweight UI editor (Monaco Editor / VS Code Web core), interactive PTY terminal widget (`xterm.js`), and project file tree.
+- **Server Tier (`homelab-ide-daemon`)**: High-performance backend service running on server hardware, managing ephemeral Docker compiler sandboxes, PTY WebSocket terminals, file watchers, and gRPC language server protocol (LSP) proxies.
 
 ```text
-+-------------------------------------------------------------------------------+
-|                       HomeLab OS Unified Client Architecture                  |
-+-------------------------------------------------------------------------------+
-|                                                                               |
-|  [ Windows Desktop App ]            [ Android Native App ]                    |
-|  - PySide6 / Tauri 2.0              - Flutter / Jetpack Compose               |
-|  - HomeLabDaemon.exe (Svc)          - FCM Push Notifications                  |
-|  - System Tray & WMI Hardware       - Biometric Unlock (Fingerprint/FaceID)   |
-|  - Tabbed Terminal & WinSCP         - Background Media Auto-Upload            |
-|  - Windows Notifications            - Interactive Home Screen Widgets         |
-|                                                                               |
-+-------------------------------------------------------------------------------+
-                                      |
-                               ( mTLS / gRPC / WebSockets )
-                                      v
-+-------------------------------------------------------------------------------+
-|                        HomeLab OS Cluster Server Nodes                        |
-|  ( Fast-API / Rust homelab-core-rs / Go homelab-proxy-go / KVM Hypervisor )   |
-+-------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------+
+|                           HomeLab OS IDE Client Tier                            |
+|                                                                                 |
+|  [ Web Browser IDE ]        [ Native Windows IDE ]     [ Android Native Mobile ]|
+|  - Monaco / VS Web          - PySide6 / Tauri 2.0      - Flutter / Compose      |
+|  - xterm.js PTY Shell       - Multi-Terminal Tabs      - Floating Hotkeys       |
+|  - Visual Debugger          - Local/Remote Sync        - Touch Code Editor      |
++---------------------------------------------------------------------------------+
+                                       |
+                         ( WebSocket / mTLS / gRPC / WebRTC )
+                                       v
++---------------------------------------------------------------------------------+
+|                       HomeLab OS Server Remote Build Engine                     |
+|                                                                                 |
+|  - HomeLab IDE Daemon (File Watcher, PTY Master, LSP Router)                    |
+|  - Ephemeral Container Build Sandboxes (GCC/Clang, Cargo/Rust, Go, Python, CUDA)|
+|  - Server Hardware Offload (Intel QuickSync / NVIDIA CUDA GPU / 32-Core CPU)    |
+|  - Local AI Code Copilot (Ollama / DeepSeek-Coder / Llama-3-Code)               |
++---------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 🛠️ 5. Immediate Action Plan: Roadmap Execution Milestones
+## 🚀 3. Groundbreaking Features & Innovations for HomeLab OS IDE
 
-To seamlessly transition from **v1.5.2** to **v2.0 & v2.5**, follow this execution roadmap:
+### 1. Isolated Ephemeral Compiler Sandboxes ("Zero-Pollution Builds")
+- Every compile request or terminal session runs inside a isolated Docker/LXC container pre-configured with project SDKs (e.g. Rust `cargo-cross`, Android NDK, CUDA 12, Python `.venv`).
+- Prevents polluting the host operating system with conflicting compiler toolchains or system packages.
 
-1. **v2.0 Milestone 1 (Multi-Node Protocol)**: Build `backend/app/services/cluster.py` implementing node pairing, mTLS secret exchange, and multi-server DB sync.
-2. **v2.0 Milestone 2 (Windows Manager & Daemon)**: Package `manager/` into `HomeLabOS-Manager-Setup.exe` with a background system tray daemon (`HomeLabDaemon.exe`).
-3. **v2.0 Milestone 3 (App Marketplace)**: Expand `backend/app/services/docker.py` to support 100+ app templates and multi-container Docker Compose stacks.
-4. **v2.5 Milestone 1 (Polyglot Core & Obfuscation)**: Create `homelab-core-rs` Rust crate and implement Nuitka/PyArmor automated build scripts in `scripts/build_closed_source.py`.
-5. **v2.5 Milestone 2 (Android Native App)**: Initialize Flutter/Kotlin repository for Android mobile app with biometrics, FCM, and background auto-upload.
+### 2. Server GPU & Multi-Core Hardware Offloading
+- Offload compilation intensive tasks (`cargo build --release`, `make -j32`, C++23 template expansions, CUDA kernels, Docker BuildKit images) to the server's high-core CPU and NVIDIA/Intel GPU hardware.
+- Low-power devices (Android phones, entry laptops) stay cool and battery-efficient while receiving real-time build log streams.
+
+### 3. Local Edge AI Code Copilot (DeepSeek-Coder / Llama-3-Code)
+- Embedded local LLM engine running on the server node GPU via vLLM/Ollama.
+- Provides sub-50ms code autocompletion, inline code refactoring, docstring generation, and automated error explanation directly in the IDE without sending code to cloud AI APIs.
+
+### 4. Real-Time Collaborative Workspace (Yjs / CRDT Protocol)
+- Google Docs-style live editing allowing seamless multi-device collaboration.
+- Edit the same project simultaneously from your Windows Desktop and your Android tablet while changes stream to the server workspace in real time.
+
+### 5. Multi-Target Cross-Compilation Engine
+- Pre-packaged toolchains allowing 1-click cross-compilation:
+  - Compile on Linux server to produce Windows `.exe`/`.msi`, Android `.apk`, Linux `.AppImage`, and ARM64 binaries.
+
+### 6. Interactive Visual Remote Debugger (`gdb` / `lldb` / `py-spy` / `pprof`)
+- Native graphical debugging interface displaying stack frames, local variables, thread states, heap allocations, and flame graphs.
+
+### 7. Offline Edit Queue & Auto-Sync (Android / Windows App)
+- Make offline edits on mobile/desktop clients during network dropouts; edits automatically queue and sync to the server workspace upon reconnecting, triggering automatic remote build verification.
 
 ---
-*HomeLab OS Specification — Architecture & Master Roadmap Analysis*
+
+## 📊 4. Detailed Version Roadmap Specifications (v3.0 – v5.0)
+
+### 🟢 HomeLab OS v2.0 — Multi-Node Clustering & Core Capabilities (IMPLEMENTED)
+- **1-Click Multi-Server Pairing & Merger Engine**.
+- **100+ App Smart Marketplace & Catalog**.
+- **Automated Disaster Recovery Vault Engine**.
+- **Dynamic Cloudflare Tunnel & WireGuard Mesh Manager**.
+- **AI S.M.A.R.T Anomaly Detection & Predictive Alerting**.
+- **Native Windows Desktop Manager App (`.exe` / `.msi`)**.
+
+---
+
+### 🔵 HomeLab OS v2.5 — High-Performance Polyglot Architecture & Closed-Source Packaging (PLANNED - Q2 2027)
+- **Rust Core Subsystem (`homelab-core-rs`)** with PyO3 bindings (< 30 MB idle RAM).
+- **Go High-Concurrency API Gateway (`homelab-proxy-go`)** for 100,000+ req/sec.
+- **C++23 eBPF HAL (`homelab-hal-cpp`)** for `io_uring` disk I/O.
+- **Tauri 2.0 Desktop App** & **Android Native App (`.apk` / `.aab`)**.
+- **Closed-Source Obfuscation Pipeline** (Nuitka + PyArmor transpilation to `.pyd`/`.so`/`.exe`).
+
+---
+
+### 🟣 HomeLab OS v3.0 — Autonomous Edge AI, Hardware DRM & HomeLab OS IDE Core (Target: Q3 2027)
+1. **HomeLab OS Remote Compiler & Cloud IDE Engine**:
+   - Web/Windows/Android remote code editor (Monaco core), PTY terminal streaming (`xterm.js`), and workspace file tree.
+   - Ephemeral Docker compiler sandboxes offloading C++/Rust/Go/Python builds to server hardware.
+2. **Local AI Code Copilot (DeepSeek-Coder / vLLM Integration)**:
+   - Zero-cloud latency code autocompletion, inline code edits, and stack trace analysis.
+3. **RAG Vector Knowledge Base over System & Build Logs**:
+   - Vector indexing (ChromaDB) over container stdout/stderr, `journalctl`, and compiler warnings for natural language troubleshooting.
+4. **Hardware-Bound DRM & Anti-Tampering Engine**:
+   - TPM 2.0 PCR register validation, RSA-4096 signature verification, and Windows DPAPI hardware binding for closed-source commercial builds.
+5. **Zero-Trust WireGuard & Tailscale Overlay Mesh**.
+
+---
+
+### 🟡 HomeLab OS v3.5 — Dynamic IDE Automation, Energy Scheduler & Mobile Experience (Target: Q4 2027)
+1. **Tariff-Aware Remote Compiler & Distributed Build Cache**:
+   - Connect to spot electricity price APIs (Tibber/Octopus); automatically schedule heavy long-running C++/Rust kernel builds or AI training runs during low-cost energy windows using `sccache`/`ccache` build artifact caching.
+2. **Android Touch-Optimized IDE Mobile & Tablet Interface**:
+   - Jetpack Compose floating developer keyboard (Ctrl, Alt, Esc, Tab, Pipe `|`, Arrows), split-screen code editor & terminal, and 1-click remote compile floating action button.
+3. **Unified HomeLab Spotlight Universal Search**:
+   - Sub-50ms search bar across workspace files, OCR documents, Jellyfin media, and server settings.
+4. **Paperless-ngx OCR Semantic Search Indexing** & **Automated ACME SSL**.
+
+---
+
+### 🔴 HomeLab OS v4.0 — Bare-Metal Type-1 Hypervisor & Distributed IDE Build Farm (Target: Q1 2028)
+1. **Distributed Multi-Node Build Farm ("HomeLab Build Mesh")**:
+   - Distribute large multi-file compilation tasks across all merged physical nodes in the cluster (`distcc` / `cargo-dist` / distributed Docker BuildKit) to achieve sub-minute build times for massive codebases.
+2. **Custom Debian / Alpine Linux ISO (`HomeLab-OS-v4.0.iso`)**: Bootable bare-metal hypervisor installer.
+3. **Type-1 Hypervisor Subsystem (KVM / QEMU / LXC)** with native GPU & PCIe Passthrough.
+4. **Virtual SAN & Distributed Block Storage**.
+
+---
+
+### ⚪ HomeLab OS v5.0 — Autonomous Sovereign Federation & AI Self-Fixing IDE (Target: Q3 2028)
+1. **Autonomous AI Self-Fix Compiler Engine**:
+   - When a remote build fails, local AI Copilot automatically analyzes the compiler error log, generates a micro-patch, executes unit tests in an isolated micro-sandbox container, and presents a 1-click apply diff.
+2. **Shamir's Secret Sharing Offsite Zero-Knowledge Backups**:
+   - Split encrypted snapshot chunks across trusted peer nodes owned by friends or family.
+3. **Post-Quantum Hybrid Cryptography Subsystem (ML-KEM / Kyber & ML-DSA / Dilithium)**.
+4. **Decentralized P2P HomeLab Federation**.
+
+---
+*HomeLab OS Specification — Architecture, Master Roadmap & HomeLab OS IDE Engine*

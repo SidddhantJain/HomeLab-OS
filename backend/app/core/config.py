@@ -4,7 +4,7 @@ from typing import Optional
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "HomeLab OS"
-    VERSION: str = "v1.0"
+    VERSION: str = "2.0.0"
     ENV: str = "development"
     LOG_LEVEL: str = "INFO"
 
