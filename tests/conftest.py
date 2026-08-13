@@ -21,11 +21,17 @@ for db_file in ["homelab_test.db", "homelab.db"]:
         except Exception:
             pass
 
-# Import models and create all database tables for test session
+import pytest
 from app.core.database import Base, engine
 import app.models  # Ensures all SQLAlchemy models are registered
 
-Base.metadata.create_all(bind=engine)
+
+@pytest.fixture(autouse=True)
+def setup_test_database():
+    """Ensures all database tables are created before every test function."""
+    Base.metadata.create_all(bind=engine)
+    yield
+
 
 
 

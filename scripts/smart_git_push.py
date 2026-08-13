@@ -75,7 +75,7 @@ def main():
     ready_files = []
     pending_files = []
 
-    print("\n📊 Line Diff Analysis per File:")
+    print("\n[DIFF] Line Diff Analysis per File:")
     print("-" * 70)
     for filename, info in stats.items():
         total = info["total"]
@@ -100,8 +100,9 @@ def main():
 
     # Prompt user input before pushing
     print("\n" + "=" * 70)
-    print(" ⚠️  USER APPROVAL REQUIRED BEFORE PUSHING TO GITHUB")
+    print(" [ATTENTION] USER APPROVAL REQUIRED BEFORE PUSHING TO GITHUB")
     print("=" * 70)
+
     
     if len(sys.argv) > 1 and sys.argv[1] == "--yes":
         user_choice = "y"

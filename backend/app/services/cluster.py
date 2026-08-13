@@ -49,10 +49,15 @@ class ClusterService:
             return None
 
         now = datetime.now(timezone.utc).replace(tzinfo=None)
-        if pairing.expires_at < now:
+        expires_at = pairing.expires_at
+        if expires_at and expires_at.tzinfo is not None:
+            expires_at = expires_at.replace(tzinfo=None)
+
+        if expires_at and expires_at < now:
             pairing.status = "EXPIRED"
             self.db.commit()
             return None
+
 
         # Generate mTLS auth token for node communications
         mtls_secret = secrets.token_urlsafe(48)
