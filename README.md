@@ -65,7 +65,7 @@ All documentation is available in `Documentation/Public/`:
 - 📦 [Backup & Recovery Guide](Documentation/Public/Backup_Recovery_Guide.md)
 - 📄 [v1.0.0 Release Summary](Documentation/Public/Release_Summary_v1.0.0.md)
 - ⚠️ [Known Limitations](Documentation/Public/Known_Limitations.md)
-- 🔭 [Master Roadmap v2.0 – v5.0](Documentation/Public/Roadmap_v2.md) *(v2.0 100+ App Store & DR Vault, v2.5 Polyglot Engine, v3.0 Edge AI Copilot & NVR, v3.5 OCR & Solar Scheduler, v4.0 Bare-Metal Type-1 Hypervisor ISO, v5.0 Sovereign P2P Federation)*
+- 🔭 [Master Roadmap v2.0 – v5.0](Documentation/Public/Roadmap_v2.md) *(v2.0 100+ App Store, DR Vault & Windows App, v2.5 Android Native App & Closed-Source Binary Obfuscation, v3.0 Edge AI & Hardware DRM, v3.5 OCR & Solar Scheduler, v4.0 Bare-Metal HyperOS, v5.0 P2P Federation & AI Bug-Fix Engine)*
 - 📋 [All Phases Master Checklist](Documentation/Public/All_Phases_Checklist.md)
 
 ---
