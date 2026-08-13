@@ -4,11 +4,15 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import engine, Base
+import app.models  # Ensures all models (including cluster) are registered in Base.metadata
 from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring, alerts, workflow, recovery, docker, power, audit, manager, remote, filemanager, network, plugins, catalog, tokens, multiserver, activity, search, settings as settings_api, jobs, transfers, health, migration, sync, v2, virtualbox
-
+from app.api.v1 import cluster
 
 # Auto-create tables for initial boot
-Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine, checkfirst=True)
+
+
+
 
 
 @asynccontextmanager
@@ -16,11 +20,15 @@ async def lifespan(app: FastAPI):
     # Startup tasks
     print(f"Starting {settings.PROJECT_NAME} {settings.VERSION}...")
     from app.core.homelab_core import HomelabCore
+    from app.core.server_state import ServerState
+    if HomelabCore.instance().state_machine.state == ServerState.OFFLINE:
+        HomelabCore.reset()
     HomelabCore.instance().startup()
     yield
     # Shutdown tasks
     print(f"Shutting down {settings.PROJECT_NAME}...")
     HomelabCore.instance().shutdown()
+
 
 
 app = FastAPI(
@@ -74,6 +82,7 @@ app.include_router(plugins.router, prefix=settings.API_V1_STR)
 app.include_router(catalog.router, prefix=settings.API_V1_STR)
 app.include_router(tokens.router, prefix=settings.API_V1_STR)
 app.include_router(multiserver.router, prefix=settings.API_V1_STR)
+app.include_router(cluster.router, prefix=settings.API_V1_STR)
 app.include_router(activity.router, prefix=settings.API_V1_STR)
 app.include_router(search.router, prefix=settings.API_V1_STR)
 app.include_router(settings_api.router, prefix=settings.API_V1_STR)
@@ -85,6 +94,7 @@ app.include_router(health.router, prefix=settings.API_V1_STR)
 app.include_router(migration.router, prefix=settings.API_V1_STR)
 app.include_router(sync.router, prefix=settings.API_V1_STR)
 app.include_router(v2.router, prefix="/api")
+
 
 
 if __name__ == "__main__":
