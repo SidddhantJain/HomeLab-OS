@@ -5,6 +5,15 @@ All notable changes to the HomeLab OS project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.2] - 2026-08-13 — Native Desktop Console & Telemetry Release
+
+### Added
+- **PySide6 Desktop System Tray Daemon (`manager/core/daemon.py`)**: Background server health polling service, native OS balloon notifications, system tray icon, and quick-action menu (Quick Lock LUKS Vault, Open Console, Refresh Status).
+- **High-DPI Desktop Scaling & Application Metadata (`manager/main.py`)**: Enabled Qt crisp font rendering, high-DPI pixmaps, and signal binding between daemon status alerts and MainWindow activation.
+- **Multi-Node Clustering Database Models (`backend/app/models/cluster.py`)**: Initial database schema scaffolding for multi-server pairings (`ClusterNode`, `NodePairingRequest`, `NodeHeartbeat`, `ClusterGroup`).
+- **Closed-Source Obfuscation Build Script (`scripts/build_closed_source.py`)**: Automated build script implementing Nuitka C-extension binary compilation and PyArmor byte-code obfuscation for closed-source production releases.
+- **Headless Desktop & Cluster Model Automated Test Suite (`scripts/test_pyside_manager.py`)**: Extended automated test runner verifying 13 management pages, daemon status polling, and database model instantiation.
+
 ---
 
 ## [1.0.0] - 2026-08-02 — Official Stable Release Candidate

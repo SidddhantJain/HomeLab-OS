@@ -23,6 +23,7 @@ from app.models.plugin import PluginMetadata
 from app.models.catalog import AppCatalogItem
 from app.models.token import ApiToken
 from app.models.multiserver import ManagedServer, ServerGroup, ServerProfile, ServerConnection, ServerCertificate
+from app.models.cluster import ClusterNode, NodePairingRequest, NodeHeartbeat, ClusterGroup
 from app.models.activity import ActivityTimeline
 from app.models.job import BackgroundJob
 from app.models.transfer import FileTransfer
@@ -78,12 +79,17 @@ __all__ = [
     "ServerProfile",
     "ServerConnection",
     "ServerCertificate",
+    "ClusterNode",
+    "NodePairingRequest",
+    "NodeHeartbeat",
+    "ClusterGroup",
     "ActivityTimeline",
     "BackgroundJob",
     "FileTransfer",
     "UserSettings",
     "SyncState"
 ]
+
 
 
 

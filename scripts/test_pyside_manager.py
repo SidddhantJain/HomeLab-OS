@@ -1,36 +1,42 @@
 """
-HomeLab OS v1.5 — PySide6 Manager Headless Automated Test Suite
-Verifies QApplication, MainWindow, Page Switching, and API Client.
+HomeLab OS v1.5.2 — PySide6 Manager Headless Automated Test Suite
+Verifies QApplication, MainWindow, Page Switching, System Tray Daemon, and Cluster Models.
 """
 
 import sys
 import os
 
-# Ensure root directory is in sys.path
+# Ensure root directory and backend directory are in sys.path
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+backend_dir = os.path.join(root_dir, "backend")
 if root_dir not in sys.path:
     sys.path.insert(0, root_dir)
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
+
 
 from PySide6.QtWidgets import QApplication
 from manager.main_window import HomeLabMainWindow
 from manager.core.api_client import api_client
+from manager.core.daemon import HomeLabDaemonSystemTray
+from backend.app.models.cluster import ClusterNode, NodePairingRequest, NodeHeartbeat, ClusterGroup
 
 
 def run_manager_tests():
     print("=" * 70)
-    print(" Running Automated PySide6 Manager Test Suite")
+    print(" Running Automated PySide6 Manager Test Suite (v1.5.2)")
     print("=" * 70)
 
     app = QApplication.instance()
     if not app:
         app = QApplication(sys.argv)
 
-    print("\n[Test 1/4] Instantiating HomeLabMainWindow...")
+    print("\n[Test 1/6] Instantiating HomeLabMainWindow...")
     window = HomeLabMainWindow()
     assert window is not None
     print("   [OK] MainWindow created successfully!")
 
-    print("\n[Test 2/4] Verifying 13 Page Navigation Modules...")
+    print("\n[Test 2/6] Verifying 13 Page Navigation Modules...")
     total_pages = window.pages_stack.count()
     print(f"   Found {total_pages} registered navigation pages.")
     assert total_pages == 13
@@ -40,12 +46,23 @@ def run_manager_tests():
         widget = window.pages_stack.widget(i)
         print(f"   Page {i+1}/13 ({widget.__class__.__name__}): ACTIVE")
 
-    print("\n[Test 3/4] Testing API Client & Fallback Telemetry...")
+    print("\n[Test 3/6] Testing System Tray Daemon Initialization...")
+    daemon = HomeLabDaemonSystemTray()
+    assert daemon is not None
+    print("   [OK] HomeLabDaemonSystemTray initialized successfully!")
+
+    print("\n[Test 4/6] Testing API Client & Fallback Telemetry...")
     status = api_client.get_system_status()
     print(f"   API Status Response: {status}")
     print("   [OK] API Client handles online/offline status gracefully!")
 
-    print("\n[Test 4/4] Verifying QSS Dark Theme Loading...")
+    print("\n[Test 5/6] Verifying Multi-Node Cluster Database Models...")
+    node = ClusterNode(node_name="inspiron-5558-primary", hostname="inspiron-5558", ip_address="192.168.0.180", role="PRIMARY")
+    assert node.node_name == "inspiron-5558-primary"
+    assert node.role == "PRIMARY"
+    print("   [OK] ClusterNode model schema verified successfully!")
+
+    print("\n[Test 6/6] Verifying QSS Dark Theme Loading...")
     qss_path = os.path.join(root_dir, "manager", "themes", "dark_theme.qss")
     assert os.path.exists(qss_path)
     print("   [OK] dark_theme.qss exists and valid!")
@@ -57,3 +74,4 @@ def run_manager_tests():
 
 if __name__ == "__main__":
     run_manager_tests()
+
