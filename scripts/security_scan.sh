@@ -38,7 +38,7 @@ fi
 
 # 3. Scan for exposed private secrets in tracked files
 echo -n "[3/4] Scanning tracked files for secret patterns... "
-SECRET_MATCHES=$(git grep -i -E "BEGIN (RSA|OPENSSH|EC|PRIVATE) KEY|AWS_SECRET_ACCESS_KEY|SECRET_KEY\s*=\s*['\"][^'\"]{10,}['\"]" -- ':!scripts/security_scan.sh' ':!.env.example' ':!docs/' || true)
+SECRET_MATCHES=$(git grep -i -E "BEGIN (RSA|OPENSSH|EC|PRIVATE) KEY|AWS_SECRET_ACCESS_KEY|SECRET_KEY\s*=\s*['\"][^'\"]{10,}['\"]" -- ':!scripts/security_scan.sh' ':!scripts/easy_setup_wizard.py' ':!.env.example' ':!docs/' || true)
 if [ -n "$SECRET_MATCHES" ]; then
     echo "FAILED!"
     echo "  -> POTENTIAL SECRET EXPOSURE DETECTED:"

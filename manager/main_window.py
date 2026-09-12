@@ -26,6 +26,8 @@ from manager.pages.nvr_analytics_page import NVRAnalyticsPage
 from manager.pages.power_optimizer_page import PowerOptimizerPage
 from manager.pages.hypervisor_page import HypervisorPage
 from manager.pages.federation_page import FederationPage
+from manager.pages.build_farm_page import BuildFarmPage
+from manager.pages.spotlight_search_page import SpotlightSearchPage
 
 
 class HomeLabMainWindow(QMainWindow):
@@ -77,6 +79,8 @@ class HomeLabMainWindow(QMainWindow):
             ("⚡ Power Optimizer", PowerOptimizerPage()),
             ("🔴 Type-1 MicroVM Hypervisor", HypervisorPage()),
             ("🌐 Sovereign P2P Federation", FederationPage()),
+            ("🏭 Build Farm & AI Self-Fix", BuildFarmPage()),
+            ("🔍 Spotlight Search & Shamir Vault", SpotlightSearchPage()),
             ("🐳 Docker Stack", DockerPage()),
             ("📦 VirtualBox VMs", VirtualBoxPage()),
             ("🚀 Live Migration", LiveMigrationPage()),

@@ -30,15 +30,15 @@ def run_manager_tests():
     assert window is not None
     print("   [OK] MainWindow created successfully!")
 
-    print("\n[Test 2/4] Verifying 23 Page Navigation Modules...")
+    print("\n[Test 2/4] Verifying 25 Page Navigation Modules...")
     total_pages = window.pages_stack.count()
     print(f"   Found {total_pages} registered navigation pages.")
-    assert total_pages == 23
+    assert total_pages == 25
 
     for i in range(total_pages):
         window.switch_page(i)
         widget = window.pages_stack.widget(i)
-        print(f"   Page {i+1}/23 ({widget.__class__.__name__}): ACTIVE")
+        print(f"   Page {i+1}/25 ({widget.__class__.__name__}): ACTIVE")
 
     print("\n[Test 3/4] Testing API Client & Fallback Telemetry...")
     status = api_client.get_system_status()
