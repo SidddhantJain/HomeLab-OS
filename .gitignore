@@ -64,6 +64,7 @@ frontend/build/
 # Release build packages
 release/packages/*.tar.gz
 release/packages/*.zip
+release/obfuscated/
 
 # IDE & OS files
 .vscode/

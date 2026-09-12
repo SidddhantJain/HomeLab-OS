@@ -4,17 +4,17 @@
 
 ---
 
-## 🚀 Active Release: `v2.5.0` (Polyglot Core & Mobile Ecosystem Release)
+## 🚀 Active Release: `v3.0.0` (Autonomous Edge AI & Zero-Trust Mesh Release)
 
-HomeLab OS v2.5.0 is officially feature-complete, stabilized, fully tested (76 backend and 17 PySide6 desktop navigation modules passing), and ready for production deployment.
+HomeLab OS v3.0.0 is officially feature-complete, stabilized, fully tested (84 backend and 21 PySide6 desktop navigation modules passing), and ready for production deployment.
 
-- **🦀 High-Performance Rust PyO3 Telemetry Subsystem**: Low-latency (< 2ms) telemetry gathering and AES-256-GCM vault cryptographic acceleration via `homelab-core-rs` PyO3 FFI bridge, reducing idle RAM footprint to **< 30 MB**.
-- **📦 Drag-and-Drop Live Container & VM Migration Engine**: Zero-downtime container volume snapshot streaming, execution state freezing, and cluster node migration.
-- **🎬 Hardware GPU Transcode Load Balancer**: Intel QuickSync Video (i7-5500U) & NVIDIA NVENC auto-detection and task load balancing.
-- **🧩 WASM / WASI Plugin Sandbox Engine**: WebAssembly runtime (Wasmtime) sandbox for running 3rd-party extensions in Rust, Go, C, or TypeScript with zero root elevation risk.
-- **📱 Android Companion & WebRTC Remote Terminal**: Biometrics, FCM push alerts, client SHA-256 media auto-upload deduplication, and low-latency P2P WebRTC live terminal signaling.
-- **🔒 Closed-Source Binary Obfuscation Pipeline**: Nuitka C-extension compilation and PyArmor code protection builder (`scripts/build_obfuscated_binaries.py`).
-- **🖥️ Native PySide6 Desktop Console**: 17 management modules (Dashboard, PyQtGraph Monitoring, Storage, LUKS Vault, Docker, VirtualBox, Live Migration, GPU Balancer, WASM Plugins, Mobile Sync, Workspace, Network Map, WinSCP File Manager, Tabbed SSH Terminal, Automation Builder, Plugin App Store, Settings & RDP Launcher).
+- **🤖 Local AI Infrastructure Copilot (`ai_copilot`)**: Autonomous log diagnostics, system query assistant, and incident remediation leveraging local Ollama/vLLM models (Llama-3, Mistral, Qwen).
+- **🔒 Zero-Trust WireGuard & Tailscale Mesh Network (`mesh_network`)**: Cross-node peer-to-peer encrypted mesh VPN topology, ACL policy enforcement, and live node key rotation.
+- **📹 Frigate NVR Video Analytics Engine (`nvr_analytics`)**: AI object detection (person, car, animal), live camera feed integration, thermal alert streaming, and event clipping.
+- **⚡ Autonomous Power & Thermal Optimizer (`power_optimizer`)**: Dynamic CPU governor scaling, thermal throttling control, UPS power monitoring, and eco-mode scheduler.
+- **🦀 High-Performance Rust PyO3 Core & WASM Sandbox**: Low-latency (< 2ms) telemetry gathering, AES-256-GCM vault acceleration, and WASI plugin sandbox engine (< 30 MB idle RAM footprint).
+- **📱 Android Companion & WebRTC Remote Terminal**: Biometric authentication, FCM push alerts, client SHA-256 media auto-upload deduplication, and WebRTC P2P remote terminal signaling.
+- **🖥️ Native PySide6 Desktop Console**: 21 management modules (Dashboard, PyQtGraph Monitoring, Storage, LUKS Vault, Docker, VirtualBox, Live Migration, GPU Balancer, WASM Plugins, Mobile Sync, Workspace, Network Map, WinSCP File Manager, Tabbed SSH Terminal, Automation Builder, Plugin App Store, Settings, RDP Launcher, AI Copilot Console, Zero-Trust Mesh, Frigate NVR Analytics, & Power Optimizer).
 
 ---
 
@@ -39,10 +39,10 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 
-# 3. Launch PySide6 Native Desktop Manager Console (17 Modules)
+# 3. Launch PySide6 Native Desktop Manager Console (21 Modules)
 python manager/main.py
 
-# 4. Run Full-Spectrum Test Suite (76 Backend Tests)
+# 4. Run Full-Spectrum Test Suite (84 Backend Tests)
 python -m pytest tests/backend -q
 python scripts/test_pyside_manager.py
 
