@@ -100,6 +100,13 @@ This master specification documents the multi-year architectural roadmap for **H
 
 ---
 
+### 🌟 HomeLab OS Future Horizons — Generation v5.5 & v6.0 (Target: 2029+)
+1. **Self-Evolving AI Kernel & Zero-Downtime Micro-Patching (v5.5)**: Autonomous AI kernel patching system that monitors production execution, writes C/Rust FFI extensions on the fly, and applies hot fixes to live memory without restarting services.
+2. **Interstellar Offline Mesh & Delay-Tolerant Networking (v6.0)**: Store-and-forward peer synchronization designed for low-bandwidth, high-latency, or completely disconnected environments.
+3. **Hardware Neural Processing Unit (NPU) Direct Acceleration**: Direct hardware integration for NPU blocks (Apple Neural Engine, Intel NPU, Qualcomm Hexagon) for zero-Watt local AI inference.
+
+---
+
 ## 📱 Cross-Platform Compatibility, Closed-Source Obfuscation & Bug-Fix Architecture Strategy
 
 ### 📱 1. Platform Compatibility Matrix (Windows & Android Native Apps)

@@ -4,18 +4,17 @@
 
 ---
 
-## 🚀 Active Release: `v4.0.0` (Bare-Metal Type-1 Hypervisor & Easy 1-Click Setup Release)
+## 🚀 Active Release: `v5.0.0` (Sovereign P2P Federation & Post-Quantum Cryptography Release)
 
-HomeLab OS v4.0.0 is officially feature-complete, stabilized, fully tested (88 backend and 22 PySide6 desktop navigation modules passing), and ready for production deployment.
+HomeLab OS v5.0.0 is officially feature-complete, stabilized, fully tested (92 backend and 23 PySide6 desktop navigation modules passing), and ready for production deployment.
 
+- **🌐 Decentralized Sovereign P2P Federation (`federation`)**: Interconnect private home server clusters across trusted nodes for encrypted offsite block-level backup streams, federated media sharing, and shared storage quota management.
+- **🔒 Post-Quantum Cryptography Subsystem (`quantum_crypto`)**: Kyber-1024 Key Encapsulation Mechanism (KEM) and Dilithium-5 Post-Quantum Digital Signatures securing LUKS vaults, P2P mesh links, and binary integrity checksums.
+- **🤖 Local AI Multi-Agent Orchestration Framework (`ai_agents`)**: Autonomous multi-agent AI orchestration engine spawning specialized sub-agents (*System Diagnostician*, *Power/Thermal Controller*, *Zero-Trust Security Guard*, *Backup Auditor*).
+- **📦 Standalone `.exe` Setup Installer Builder (`scripts/build_windows_setup_installer.py`)**: PyInstaller & Inno Setup script creating single-click zero-dependency Windows setup installer executables (`release/installers/HomeLabOS-Setup-v5.0.0.exe`).
 - **🔴 Bare-Metal Type-1 MicroVM Hypervisor Engine (`hypervisor`)**: KVM / QEMU / LXC microVM lifecycle management, CPU core pinning, PCIe GPU / NVMe passthrough auto-detection, and Virtual SAN block storage pools.
 - **✨ Easy 1-Click Non-Technical Setup & Launchers**: Interactive setup wizard (`python scripts/easy_setup_wizard.py`), 1-click double-click launchers (`start_server.bat` / `start_server.sh`, `start_manager.bat` / `start_manager.sh`), automated desktop shortcuts, and plain-English user setup guide ([`Non_Technical_Setup_Guide.md`](file:///d:/Siddhant/projects/HomeLab%20OS/Documentation/Public/Non_Technical_Setup_Guide.md)).
-- **🤖 Local AI Infrastructure Copilot (`ai_copilot`)**: Autonomous log diagnostics, system query assistant, and incident remediation leveraging local Ollama/vLLM models.
-- **🔒 Zero-Trust WireGuard & Tailscale Mesh Network (`mesh_network`)**: Encrypted mesh VPN overlay topology and live node key rotation.
-- **📹 Frigate NVR Video Analytics Engine (`nvr_analytics`)**: AI object detection (person, car, animal), live camera feeds, and thermal alert events.
-- **⚡ Autonomous Power & Thermal Optimizer (`power_optimizer`)**: Dynamic CPU governor scaling, thermal throttling control, and UPS power monitoring.
-- **🦀 High-Performance Rust PyO3 Core & WASM Sandbox**: Sub-2ms telemetry gathering, AES-256-GCM vault acceleration, and WASI plugin sandbox.
-- **🖥️ Native PySide6 Desktop Console**: 22 management modules (Dashboard, Monitoring, Storage, Vault, AI Copilot, Mesh Network, NVR Analytics, Power Optimizer, Type-1 Hypervisor, Docker, VirtualBox, Live Migration, GPU Balancer, WASM Plugins, Mobile Sync, Workspace, Network Map, Remote Console, Remote Desktop RDP, Automation Builder, Plugin App Store, Settings).
+- **🖥️ Native PySide6 Desktop Console**: 23 management modules (Dashboard, Monitoring, Storage, Vault, AI Copilot, Mesh Network, NVR Analytics, Power Optimizer, Type-1 Hypervisor, Sovereign P2P Federation, Docker, VirtualBox, Live Migration, GPU Balancer, WASM Plugins, Mobile Sync, Workspace, Network Map, Remote Console, Remote Desktop RDP, Automation Builder, Plugin App Store, Settings).
 
 ---
 
@@ -43,10 +42,10 @@ pip install -r backend/requirements.txt
 # 2. Run Backend API (FastAPI)
 python -m uvicorn app.main:app --reload --port 8000 --app-dir backend
 
-# 3. Launch PySide6 Native Desktop Manager Console (22 Modules)
+# 3. Launch PySide6 Native Desktop Manager Console (23 Modules)
 python manager/main.py
 
-# 4. Run Full-Spectrum Test Suite (88 Backend Tests + 22 Manager Pages)
+# 4. Run Full-Spectrum Test Suite (92 Backend Tests + 23 Manager Pages)
 python -m pytest tests/backend -q
 python scripts/test_pyside_manager.py
 

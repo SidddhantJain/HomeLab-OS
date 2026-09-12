@@ -5,6 +5,18 @@ All notable changes to the HomeLab OS project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] - 2026-09-12 — Sovereign P2P Federation, Quantum Cryptography & Standalone .exe Installer Release
+
+### Added
+- **Sovereign P2P Federation Engine (`federation`)**: Interconnect private server clusters across trusted nodes for encrypted offsite block-level backup streams, federated media sharing, and shared storage quota management.
+- **Post-Quantum Cryptography Subsystem (`quantum_crypto`)**: Kyber-1024 Key Encapsulation Mechanism (KEM) and Dilithium-5 Post-Quantum Digital Signatures securing LUKS vaults, P2P mesh links, and binary integrity checksums.
+- **Local AI Multi-Agent Orchestration Framework (`ai_agents`)**: Autonomous multi-agent AI orchestration engine spawning specialized sub-agents (*System Diagnostician*, *Power/Thermal Controller*, *Zero-Trust Security Guard*, *Backup Auditor*).
+- **Standalone `.exe` Setup Installer Builder (`scripts/build_windows_setup_installer.py`)**: PyInstaller & Inno Setup script creating single-click zero-dependency Windows setup installer executables (`HomeLabOS-Setup-v5.0.0.exe`).
+- **PySide6 Manager Console (Module #23)**: `FederationPage` console module for P2P Federation Mesh, Post-Quantum Cryptography, and Local AI Multi-Agent tasks.
+- **Full Spectrum Testing & Hardening**: 92+ backend pytest test cases, 23 PySide manager navigation pages passing, installer builder script, and pre-commit security audit.
+
+---
+
 ## [1.5.2] - 2026-08-13 — Native Desktop Console & Telemetry Release
 
 ### Added

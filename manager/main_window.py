@@ -25,13 +25,14 @@ from manager.pages.mesh_network_page import MeshNetworkPage
 from manager.pages.nvr_analytics_page import NVRAnalyticsPage
 from manager.pages.power_optimizer_page import PowerOptimizerPage
 from manager.pages.hypervisor_page import HypervisorPage
+from manager.pages.federation_page import FederationPage
 
 
 class HomeLabMainWindow(QMainWindow):
-    """Main Application Window for HomeLab OS v4.0 Native Desktop Console."""
+    """Main Application Window for HomeLab OS v5.0 Native Desktop Console."""
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("HomeLab OS v4.0 — Desktop Manager Console")
+        self.setWindowTitle("HomeLab OS v5.0 — Desktop Manager Console")
         self.resize(1300, 850)
         self.init_ui()
 
@@ -51,7 +52,7 @@ class HomeLabMainWindow(QMainWindow):
         s_layout.setContentsMargins(16, 20, 16, 20)
         s_layout.setSpacing(2)
 
-        logo_lbl = QLabel("🛡️ HomeLab OS v4.0")
+        logo_lbl = QLabel("🛡️ HomeLab OS v5.0")
         logo_lbl.setObjectName("HeaderTitle")
         s_layout.addWidget(logo_lbl)
 
@@ -75,6 +76,7 @@ class HomeLabMainWindow(QMainWindow):
             ("📹 Frigate NVR Analytics", NVRAnalyticsPage()),
             ("⚡ Power Optimizer", PowerOptimizerPage()),
             ("🔴 Type-1 MicroVM Hypervisor", HypervisorPage()),
+            ("🌐 Sovereign P2P Federation", FederationPage()),
             ("🐳 Docker Stack", DockerPage()),
             ("📦 VirtualBox VMs", VirtualBoxPage()),
             ("🚀 Live Migration", LiveMigrationPage()),
