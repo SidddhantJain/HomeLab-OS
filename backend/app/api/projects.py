@@ -52,6 +52,30 @@ def create_project(
         raise HTTPException(status_code=400, detail=str(e))
 
 
+@router.post("/scan-all")
+def scan_all_projects(
+    db: Session = Depends(get_db),
+    service: ProjectService = Depends(get_project_service)
+):
+    """Scan D:\\Siddhant\\projects directory and register all 17 projects into database."""
+    try:
+        projects = service._manager.auto_scan_workspace_dir(db)
+        return {
+            "status": "success",
+            "count": len(projects),
+            "projects": [
+                {
+                    "id": p.id,
+                    "name": p.name,
+                    "description": p.description,
+                    "path": p.metadata_rel.storage if p.metadata_rel else "unknown"
+                } for p in projects
+            ]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.post("/{project_id}/snapshot")
 def create_project_snapshot(
     project_id: str,
