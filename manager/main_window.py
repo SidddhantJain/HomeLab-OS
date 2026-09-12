@@ -20,13 +20,17 @@ from manager.pages.live_migration_page import LiveMigrationPage
 from manager.pages.gpu_balancer_page import GPUBalancerPage
 from manager.pages.wasm_plugins_page import WasmPluginsPage
 from manager.pages.mobile_sync_page import MobileSyncPage
+from manager.pages.ai_copilot_page import AICopilotPage
+from manager.pages.mesh_network_page import MeshNetworkPage
+from manager.pages.nvr_analytics_page import NVRAnalyticsPage
+from manager.pages.power_optimizer_page import PowerOptimizerPage
 
 
 class HomeLabMainWindow(QMainWindow):
-    """Main Application Window for HomeLab OS v2.5 Native Desktop Console."""
+    """Main Application Window for HomeLab OS v3.0 Native Desktop Console."""
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("HomeLab OS v2.5 — Desktop Manager Console")
+        self.setWindowTitle("HomeLab OS v3.0 — Desktop Manager Console")
         self.resize(1300, 850)
         self.init_ui()
 
@@ -44,16 +48,16 @@ class HomeLabMainWindow(QMainWindow):
         sidebar.setFixedWidth(240)
         s_layout = QVBoxLayout(sidebar)
         s_layout.setContentsMargins(16, 20, 16, 20)
-        s_layout.setSpacing(4)
+        s_layout.setSpacing(2)
 
-        logo_lbl = QLabel("🛡️ HomeLab OS v2.5")
+        logo_lbl = QLabel("🛡️ HomeLab OS v3.0")
         logo_lbl.setObjectName("HeaderTitle")
         s_layout.addWidget(logo_lbl)
 
         sub_lbl = QLabel("Native PySide6 Desktop Console")
         sub_lbl.setObjectName("MetricSubtext")
         s_layout.addWidget(sub_lbl)
-        s_layout.addSpacing(10)
+        s_layout.addSpacing(8)
 
         # Navigation Stack
         self.pages_stack = QStackedWidget()
@@ -65,6 +69,10 @@ class HomeLabMainWindow(QMainWindow):
             ("📈 Real-Time Monitoring", MonitoringPage()),
             ("💾 Storage & SMART", StoragePage()),
             ("🔒 LUKS Vault", VaultPage()),
+            ("🤖 AI Infrastructure Copilot", AICopilotPage()),
+            ("🕸️ Zero-Trust Mesh Network", MeshNetworkPage()),
+            ("📹 Frigate NVR Analytics", NVRAnalyticsPage()),
+            ("⚡ Power Optimizer", PowerOptimizerPage()),
             ("🐳 Docker Stack", DockerPage()),
             ("📦 VirtualBox VMs", VirtualBoxPage()),
             ("🚀 Live Migration", LiveMigrationPage()),
