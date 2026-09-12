@@ -5,7 +5,7 @@ from contextlib import asynccontextmanager
 from app.core.config import settings
 from app.core.database import engine, Base
 import app.models  # Ensures all models (including cluster) are registered in Base.metadata
-from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring, alerts, workflow, recovery, docker, power, audit, manager, remote, filemanager, network, plugins, catalog, tokens, multiserver, activity, search, settings as settings_api, jobs, transfers, health, migration, sync, v2, virtualbox, v2_5_migration, v2_5_gpu, v2_5_mobile, v3_0_ai, v3_0_mesh, v3_0_nvr, v3_0_power
+from app.api import auth, system, storage, projects, vault, workspace, backup, downloads, documentation, monitoring, alerts, workflow, recovery, docker, power, audit, manager, remote, filemanager, network, plugins, catalog, tokens, multiserver, activity, search, settings as settings_api, jobs, transfers, health, migration, sync, v2, virtualbox, v2_5_migration, v2_5_gpu, v2_5_mobile, v3_0_ai, v3_0_mesh, v3_0_nvr, v3_0_power, v4_0_hypervisor
 from app.api.v1 import cluster
 
 # Auto-create tables for initial boot
@@ -94,6 +94,9 @@ app.include_router(v3_0_ai.router, prefix=settings.API_V1_STR)
 app.include_router(v3_0_mesh.router, prefix=settings.API_V1_STR)
 app.include_router(v3_0_nvr.router, prefix=settings.API_V1_STR)
 app.include_router(v3_0_power.router, prefix=settings.API_V1_STR)
+
+# v4.0 Routers
+app.include_router(v4_0_hypervisor.router, prefix=settings.API_V1_STR)
 
 app.include_router(jobs.router, prefix=settings.API_V1_STR)
 app.include_router(transfers.router, prefix=settings.API_V1_STR)
