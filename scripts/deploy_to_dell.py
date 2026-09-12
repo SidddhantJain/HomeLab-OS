@@ -84,8 +84,13 @@ def deploy_homelab_os():
     time.sleep(5)
 
     # Step 5: Verify Deployment Status
-    print("\n[Step 5/5] Verifying Live Health Status on Dell Server...")
+    print("\n[Step 5/6] Verifying Live Health Status on Server...")
     status = run_command_remote(client, "curl -s http://127.0.0.1:8000/api/v1/system/status || echo 'Backend starting...'")
+
+    # Step 6: Create Desktop Shortcuts on Server Home / Desktop
+    print("\n[Step 6/6] Creating Desktop Launcher Shortcuts on Server Home / Desktop...")
+    run_command_remote(client, f"cd {TARGET_DIR} && python3 scripts/create_desktop_shortcuts.py || true")
+    run_command_remote(client, f"mkdir -p ~/Desktop ~/.local/share/applications && cp {TARGET_DIR}/scripts/*.desktop ~/Desktop/ 2>/dev/null || true")
 
     client.close()
 
