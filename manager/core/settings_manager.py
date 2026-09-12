@@ -8,7 +8,7 @@ class SettingsManager:
     """Manages persistent configuration profiles for HomeLab Manager."""
     def __init__(self):
         self.config = {
-            "server_ip": "192.168.0.180",
+            "server_ip": "192.168.0.182",
             "server_port": 8000,
             "rdp_port": 3389,
             "username": "media-server",

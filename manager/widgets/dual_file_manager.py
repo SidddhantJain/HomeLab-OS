@@ -36,7 +36,7 @@ class DualFileManager(QWidget):
         right_frame.setObjectName("Card")
         r_layout = QVBoxLayout(right_frame)
 
-        r_header = QLabel("🐧 HomeLab Server (media-server@192.168.0.180)")
+        r_header = QLabel("🐧 HomeLab Server (media-server@192.168.0.182)")
         r_header.setObjectName("SectionTitle")
         r_layout.addWidget(r_header)
 
@@ -52,9 +52,9 @@ class DualFileManager(QWidget):
         # Action Button Toolbar (Upload, Download, Refresh, Delete)
         toolbar = QHBoxLayout()
 
-        btn_upload = QPushButton("Upload Selection ➔")
+        btn_upload = QPushButton("⬆️ Upload File to Remote Server")
         btn_upload.setObjectName("PrimaryButton")
-        btn_upload.clicked.connect(lambda: QMessageBox.information(self, "Transfer", "Uploading file to media-server@192.168.0.180..."))
+        btn_upload.clicked.connect(lambda: QMessageBox.information(self, "Transfer", "Uploading file to media-server@192.168.0.182..."))
 
         btn_download = QPushButton("⬅ Download Selection")
         btn_download.setObjectName("SecondaryButton")

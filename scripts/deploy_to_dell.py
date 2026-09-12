@@ -11,11 +11,11 @@ import paramiko
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-HOST = "192.168.0.180"
+HOST = "192.168.0.182"
 PORT = 22
-USER = "media-server"
+USER = "server"
 PASS = "1"
-TARGET_DIR = "/home/media-server/HomeLab-OS"
+TARGET_DIR = "/home/server/HomeLab-OS"
 
 
 def run_command_remote(client, cmd, timeout=120):
@@ -91,9 +91,9 @@ def deploy_homelab_os():
 
     print("\n" + "=" * 70)
     print(" DEPLOYMENT SUCCESSFUL!")
-    print(f" HomeLab OS Dashboard: http://192.168.0.180:5173")
-    print(f" REST API Documentation: http://192.168.0.180:8000/docs")
-    print(f" System Status Endpoint: http://192.168.0.180:8000/api/v1/system/status")
+    print(f" HomeLab OS Dashboard: http://192.168.0.182:5173")
+    print(f" REST API Documentation: http://192.168.0.182:8000/docs")
+    print(f" System Status Endpoint: http://192.168.0.182:8000/api/v1/system/status")
     print("=" * 70)
 
 

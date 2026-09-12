@@ -43,10 +43,10 @@ class AICopilotPage(QWidget):
             return
 
         self.chat_output.append(f"\n👤 USER: {prompt}")
-        host = settings.get("server_ip", "192.168.0.180")
+        host = settings.get("server_ip", "192.168.0.182")
         port = settings.get("server_port", 8000)
         try:
-            r = requests.post(f"http://{host}:{port}/api/v1/ai/query", params={"prompt": prompt}, timeout=3)
+            r = requests.post(f"http://{host}:{port}/api/v1/ai/query", params={"prompt": prompt}, timeout=0.5)
             res = r.json() if r.status_code == 200 else {"response": "Local AI Copilot: System health optimal. /dev/sda and /dev/sdb1 storage drives operating at 42% capacity with zero SMART warnings."}
         except Exception:
             res = {"response": "Local AI Copilot: System health optimal. All core cluster nodes are online and active."}

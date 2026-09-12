@@ -54,7 +54,7 @@ class PowerOptimizerPage(QWidget):
         layout.addStretch()
 
     def set_policy(self, policy_name: str):
-        host = settings.get("server_ip", "192.168.0.180")
+        host = settings.get("server_ip", "192.168.0.182")
         port = settings.get("server_port", 8000)
         try:
             r = requests.post(f"http://{host}:{port}/api/v1/power/optimizer/policy/set", params={"policy_name": policy_name}, timeout=3)

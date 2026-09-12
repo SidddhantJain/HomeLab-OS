@@ -23,7 +23,7 @@ class TopologyCanvas(QGraphicsView):
         nodes = [
             {"id": "cloud", "label": "🌐 Internet Cloud\n0.0.0.0/0", "x": 350, "y": 40, "color": "#0284C7", "active": True},
             {"id": "router", "label": "📡 Central Gateway Router\n192.168.0.1", "x": 350, "y": 140, "color": "#10B981", "active": True},
-            {"id": "server", "label": "💻 HomeLab Server (Dell 5558)\n192.168.0.180 (Master Host)", "x": 350, "y": 270, "color": "#38BDF8", "active": True},
+            {"id": "server", "label": "💻 HomeLab Server (Dell 5558)\n192.168.0.182 (Master Host)", "x": 350, "y": 270, "color": "#38BDF8", "active": True},
             {"id": "laptop", "label": "💻 Dev Laptop\n192.168.0.105", "x": 120, "y": 400, "color": "#94A3B8", "active": True},
             {"id": "nas", "label": "🗄️ External NAS / Vault\n/dev/sdb1 (932 GB)", "x": 280, "y": 400, "color": "#F59E0B", "active": True},
             {"id": "tv", "label": "📺 Living Room Smart TV\n192.168.0.120", "x": 440, "y": 400, "color": "#94A3B8", "active": True},

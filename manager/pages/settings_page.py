@@ -27,7 +27,7 @@ class SettingsPage(QWidget):
         cl.setSpacing(14)
 
         cl.addWidget(QLabel("Target HomeLab Server Hostname / IP:"))
-        self.ip_input = QLineEdit(settings.get("server_ip", "192.168.0.180"))
+        self.ip_input = QLineEdit(settings.get("server_ip", "192.168.0.182"))
         cl.addWidget(self.ip_input)
 
         cl.addWidget(QLabel("FastAPI REST Port:"))
@@ -38,7 +38,7 @@ class SettingsPage(QWidget):
         self.rdp_port_input = QLineEdit(str(settings.get("rdp_port", 3389)))
         cl.addWidget(self.rdp_port_input)
 
-        self.auto_conn = QCheckBox("Auto-connect to 192.168.0.180 on PySide6 application launch")
+        self.auto_conn = QCheckBox("Auto-connect to 192.168.0.182 on PySide6 application launch")
         self.auto_conn.setChecked(settings.get("auto_connect", True))
         cl.addWidget(self.auto_conn)
 
@@ -68,7 +68,7 @@ class SettingsPage(QWidget):
     def launch_rdp(self):
         target_ip = self.ip_input.text().strip()
         try:
-            # On Windows, invoke mstsc /v:192.168.0.180
+            # On Windows, invoke mstsc /v:192.168.0.182
             subprocess.Popen(["mstsc", f"/v:{target_ip}"])
         except Exception as e:
             QMessageBox.warning(self, "RDP Launcher", f"Could not launch mstsc RDP client: {e}")

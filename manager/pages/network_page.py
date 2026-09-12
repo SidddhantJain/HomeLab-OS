@@ -44,7 +44,7 @@ class NetworkPage(QWidget):
 
     def populate_devices(self):
         devices = [
-            {"host": "media-server", "ip": "192.168.0.180", "mac": "98:de:d0:16:af:8f", "iface": "wlx98ded016af8f", "status": "ONLINE (0.4 ms) 🟢"},
+            {"host": "media-server", "ip": "192.168.0.182", "mac": "98:de:d0:16:af:8f", "iface": "wlx98ded016af8f", "status": "ONLINE (0.4 ms) 🟢"},
             {"host": "Gateway-Router", "ip": "192.168.0.1", "mac": "00:11:22:33:44:55", "iface": "br0", "status": "ONLINE (1.2 ms) 🟢"},
             {"host": "Docker-Bridge", "ip": "172.18.0.1", "mac": "02:42:56:73:db:0e", "iface": "br-906d518598dc", "status": "ACTIVE 🟢"}
         ]

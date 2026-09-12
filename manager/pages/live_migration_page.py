@@ -56,10 +56,10 @@ class LiveMigrationPage(QWidget):
     def start_migration(self):
         w_id = self.workload_input.text().strip()
         t_ip = self.target_input.text().strip()
-        host = settings.get("server_ip", "192.168.0.180")
+        host = settings.get("server_ip", "192.168.0.182")
         port = settings.get("server_port", 8000)
         try:
-            r = requests.post(f"http://{host}:{port}/api/v1/cluster/migration/start", params={"workload_id": w_id, "target_node_ip": t_ip}, timeout=3)
+            r = requests.post(f"http://{host}:{port}/api/v1/cluster/migration/start", params={"workload_id": w_id, "target_node_ip": t_ip}, timeout=0.5)
             if r.status_code == 200:
                 QMessageBox.information(self, "Live Migration", f"Migration started: {r.json().get('migration_id')}")
         except Exception:

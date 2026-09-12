@@ -33,7 +33,7 @@ class ServerLauncherDialog(QDialog):
         cl.setSpacing(10)
 
         cl.addWidget(QLabel("Server Address / IP:"))
-        self.ip_input = QLineEdit(settings.get("server_ip", "192.168.0.180"))
+        self.ip_input = QLineEdit(settings.get("server_ip", "192.168.0.182"))
         cl.addWidget(self.ip_input)
 
         cl.addWidget(QLabel("Username:"))

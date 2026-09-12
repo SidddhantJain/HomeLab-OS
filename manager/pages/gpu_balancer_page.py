@@ -50,10 +50,10 @@ class GPUBalancerPage(QWidget):
         layout.addStretch()
 
     def test_balancer(self):
-        host = settings.get("server_ip", "192.168.0.180")
+        host = settings.get("server_ip", "192.168.0.182")
         port = settings.get("server_port", 8000)
         try:
-            r = requests.post(f"http://{host}:{port}/api/v1/gpu/transcode/route", params={"video_file": "movie_4k.mp4"}, timeout=3)
+            r = requests.post(f"http://{host}:{port}/api/v1/gpu/transcode/route", params={"video_file": "movie_4k.mp4"}, timeout=0.5)
             res = r.json() if r.status_code == 200 else {"assigned_encoder": "quicksync", "estimated_fps": 142.0}
         except Exception:
             res = {"assigned_encoder": "quicksync", "estimated_fps": 142.0}

@@ -1,7 +1,15 @@
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QFrame
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QThread, Signal
 import pyqtgraph as pg
 from manager.core.api_client import api_client
+
+
+class FetchChartThread(QThread):
+    result_signal = Signal(dict)
+
+    def run(self):
+        data = api_client.get_system_status()
+        self.result_signal.emit(data or {})
 
 
 class MonitoringPage(QWidget):
@@ -10,6 +18,7 @@ class MonitoringPage(QWidget):
         super().__init__(parent)
         self.cpu_history = [0] * 60
         self.ram_history = [0] * 60
+        self.fetch_thread = None
         self.init_ui()
 
         self.timer = QTimer(self)
@@ -51,7 +60,13 @@ class MonitoringPage(QWidget):
         layout.addWidget(chart_card)
 
     def update_charts(self):
-        data = api_client.get_system_status()
+        if self.fetch_thread and self.fetch_thread.isRunning():
+            return
+        self.fetch_thread = FetchChartThread()
+        self.fetch_thread.result_signal.connect(self._on_chart_data_loaded)
+        self.fetch_thread.start()
+
+    def _on_chart_data_loaded(self, data: dict):
         if data:
             cpu = data.get("cpu", 0.0)
             ram = data.get("ram", 0.0)
@@ -66,3 +81,4 @@ class MonitoringPage(QWidget):
 
         self.cpu_curve.setData(self.cpu_history)
         self.ram_curve.setData(self.ram_history)
+

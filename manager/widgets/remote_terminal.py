@@ -45,34 +45,33 @@ class RemoteTerminalWidget(QWidget):
         self.console_output.setReadOnly(True)
         self.console_output.setFont(QFont("Consolas", 10))
         self.console_output.setStyleSheet("background-color: #090D16; color: #38BDF8; border: 1px solid #334155; border-radius: 8px;")
-        self.console_output.appendPlainText("Welcome to HomeLab OS Remote SSH Terminal Console\nConnected to media-server@192.168.0.180:22\nType command below and press Enter (or click Send):\n" + "-"*60 + "\n")
+        self.console_output.appendPlainText("Welcome to HomeLab OS Remote SSH Terminal Console\nConnected to media-server@192.168.0.182:22\nType command below and press Enter (or click Send):\n" + "-"*60 + "\n")
+        layout.addWidget(self.console_output)
 
-        # Input Command Row
-        cmd_row = QHBoxLayout()
+        # Input Bar
+        input_layout = QHBoxLayout()
         self.cmd_input = QLineEdit()
-        self.cmd_input.setPlaceholderText("Enter command (e.g., uname -a, htop, docker ps)...")
+        self.cmd_input.setPlaceholderText("Enter bash command (e.g. systemctl status homelab-core)...")
         self.cmd_input.returnPressed.connect(self.send_command)
 
-        self.send_btn = QPushButton("Execute ➔")
+        self.send_btn = QPushButton("Send Command")
         self.send_btn.setObjectName("PrimaryButton")
         self.send_btn.clicked.connect(self.send_command)
 
-        cmd_row.addWidget(self.cmd_input)
-        cmd_row.addWidget(self.send_btn)
-
-        layout.addWidget(self.console_output)
-        layout.addLayout(cmd_row)
+        input_layout.addWidget(self.cmd_input)
+        input_layout.addWidget(self.send_btn)
+        layout.addLayout(input_layout)
 
     def send_command(self):
         cmd = self.cmd_input.text().strip()
         if not cmd:
             return
 
-        self.console_output.appendPlainText(f"\nmedia-server@192.168.0.180:~$ {cmd}")
+        self.console_output.appendPlainText(f"\nmedia-server@192.168.0.182:~$ {cmd}")
         self.cmd_input.clear()
 
         # Run SSH in background thread to avoid freezing UI
-        self.worker = SSHWorker("192.168.0.180", "media-server", "1", cmd)
+        self.worker = SSHWorker("192.168.0.182", "media-server", "1", cmd)
         self.worker.output_received.connect(self.on_output)
         self.worker.start()
 

@@ -18,12 +18,44 @@ QFrame#Sidebar {
     border-right: 1px solid #334155;
 }
 
+QScrollArea#SidebarScroll {
+    background-color: transparent;
+    border: none;
+}
+
+QWidget#NavContainer {
+    background-color: transparent;
+}
+
+QScrollBar:vertical {
+    border: none;
+    background: #0F172A;
+    width: 6px;
+    margin: 0px;
+    border-radius: 3px;
+}
+
+QScrollBar::handle:vertical {
+    background: #334155;
+    min-height: 20px;
+    border-radius: 3px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #0284C7;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
 QPushButton#NavButton {
     background-color: transparent;
     color: #94A3B8;
     border: none;
     border-radius: 8px;
-    padding: 10px 14px;
+    padding: 8px 12px;
+    min-height: 36px;
     text-align: left;
     font-weight: 500;
     font-size: 13px;

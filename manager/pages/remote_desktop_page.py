@@ -28,7 +28,7 @@ class RemoteDesktopPage(QWidget):
         cl.setSpacing(14)
 
         cl.addWidget(QLabel("Target RDP / VRDE Host Address:"))
-        self.host_input = QLineEdit("192.168.0.180")
+        self.host_input = QLineEdit("192.168.0.182")
         cl.addWidget(self.host_input)
 
         cl.addWidget(QLabel("RDP Port (Default 3389 / VirtualBox VRDE 5901-5902):"))

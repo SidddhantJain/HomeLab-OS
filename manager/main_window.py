@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QFrame, QPushButton, QStackedWidget, QLabel, QStatusBar, QDockWidget
+    QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QFrame, QPushButton, QStackedWidget, QLabel, QStatusBar, QDockWidget, QScrollArea
 )
 from PySide6.QtCore import Qt
 
@@ -51,8 +51,8 @@ class HomeLabMainWindow(QMainWindow):
         sidebar.setObjectName("Sidebar")
         sidebar.setFixedWidth(240)
         s_layout = QVBoxLayout(sidebar)
-        s_layout.setContentsMargins(16, 20, 16, 20)
-        s_layout.setSpacing(2)
+        s_layout.setContentsMargins(12, 16, 12, 16)
+        s_layout.setSpacing(4)
 
         logo_lbl = QLabel("🛡️ HomeLab OS v5.0")
         logo_lbl.setObjectName("HeaderTitle")
@@ -61,10 +61,24 @@ class HomeLabMainWindow(QMainWindow):
         sub_lbl = QLabel("Native PySide6 Desktop Console")
         sub_lbl.setObjectName("MetricSubtext")
         s_layout.addWidget(sub_lbl)
-        s_layout.addSpacing(8)
+        s_layout.addSpacing(6)
 
         # Navigation Stack
         self.pages_stack = QStackedWidget()
+
+        # Scrollable area for Navigation Buttons
+        nav_scroll = QScrollArea()
+        nav_scroll.setObjectName("SidebarScroll")
+        nav_scroll.setWidgetResizable(True)
+        nav_scroll.setFrameShape(QFrame.NoFrame)
+        nav_scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        nav_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        nav_container = QWidget()
+        nav_container.setObjectName("NavContainer")
+        nav_layout = QVBoxLayout(nav_container)
+        nav_layout.setContentsMargins(0, 0, 0, 0)
+        nav_layout.setSpacing(4)
 
         # Nav Buttons Mapping
         self.nav_buttons = []
@@ -102,10 +116,12 @@ class HomeLabMainWindow(QMainWindow):
             btn.setObjectName("NavButton")
             btn.setCheckable(True)
             btn.clicked.connect(lambda _, index=idx: self.switch_page(index))
-            s_layout.addWidget(btn)
+            nav_layout.addWidget(btn)
             self.nav_buttons.append(btn)
 
-        s_layout.addStretch()
+        nav_layout.addStretch()
+        nav_scroll.setWidget(nav_container)
+        s_layout.addWidget(nav_scroll)
 
         # Footer Server Profile Card
         footer_card = QFrame()
@@ -113,7 +129,7 @@ class HomeLabMainWindow(QMainWindow):
         fl = QVBoxLayout(footer_card)
         fl.setContentsMargins(10, 10, 10, 10)
         fl.addWidget(QLabel("Target Server:"))
-        fl.addWidget(QLabel("media-server@192.168.0.180"))
+        fl.addWidget(QLabel("media-server@192.168.0.182"))
         s_layout.addWidget(footer_card)
 
         main_layout.addWidget(sidebar)
@@ -122,7 +138,8 @@ class HomeLabMainWindow(QMainWindow):
         # Status Bar
         self.status_bar = QStatusBar()
         self.setStatusBar(self.status_bar)
-        self.status_bar.showMessage("Connected to HomeLab Server: media-server@192.168.0.180 (Status: 200 OK)")
+        self.status_bar.showMessage("Connected to HomeLab Server: media-server@192.168.0.182 (Status: 200 OK)")
+
 
         # Activate initial Dashboard page
         self.switch_page(0)

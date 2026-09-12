@@ -32,10 +32,10 @@ class VirtualBoxPage(QWidget):
         self.populate_vms()
 
     def populate_vms(self):
-        host = settings.get("server_ip", "192.168.0.180")
+        host = settings.get("server_ip", "192.168.0.182")
         port = settings.get("server_port", 8000)
         try:
-            r = requests.get(f"http://{host}:{port}/api/v1/virtualbox/vms", timeout=3)
+            r = requests.get(f"http://{host}:{port}/api/v1/virtualbox/vms", timeout=0.5)
             vms = r.json() if r.status_code == 200 else self._fallback_vms()
         except Exception:
             vms = self._fallback_vms()

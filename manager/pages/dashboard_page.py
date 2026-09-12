@@ -1,15 +1,24 @@
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame, QPushButton, QProgressBar, QGridLayout
 )
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, QThread, Signal
 from manager.widgets.metric_card import MetricCard
 from manager.core.api_client import api_client
+
+
+class FetchTelemetryThread(QThread):
+    result_signal = Signal(dict)
+
+    def run(self):
+        data = api_client.get_system_status()
+        self.result_signal.emit(data or {})
 
 
 class DashboardPage(QWidget):
     """Main System Dashboard page displaying live server telemetry, status badges, & health overview."""
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.fetch_thread = None
         self.init_ui()
 
         # Timer for live telemetry polling (every 3 seconds)
@@ -63,7 +72,7 @@ class DashboardPage(QWidget):
         ov_title.setObjectName("SectionTitle")
         ov_layout.addWidget(ov_title)
 
-        self.lbl_server_name = QLabel("Server Host: media-server@192.168.0.180")
+        self.lbl_server_name = QLabel("Server Host: media-server@192.168.0.182")
         self.lbl_os = QLabel("OS Release: Linux 6.8.0-51-generic (Ubuntu 24.04 LTS)")
         self.lbl_uptime = QLabel("Uptime: Active")
 
@@ -91,7 +100,13 @@ class DashboardPage(QWidget):
         layout.addStretch()
 
     def refresh_telemetry(self):
-        data = api_client.get_system_status()
+        if self.fetch_thread and self.fetch_thread.isRunning():
+            return
+        self.fetch_thread = FetchTelemetryThread()
+        self.fetch_thread.result_signal.connect(self._on_telemetry_loaded)
+        self.fetch_thread.start()
+
+    def _on_telemetry_loaded(self, data: dict):
         if data:
             self.card_status.set_value("ACTIVE 🟢", data.get("server_name", "media-server"))
             cpu = data.get("cpu", 0.0)
@@ -110,4 +125,5 @@ class DashboardPage(QWidget):
             self.cpu_bar.setValue(int(cpu))
             self.ram_bar.setValue(int(ram))
         else:
-            self.card_status.set_value("OFFLINE 🔴", "Check 192.168.0.180:8000")
+            self.card_status.set_value("OFFLINE 🔴", "Check 192.168.0.182:8000")
+
