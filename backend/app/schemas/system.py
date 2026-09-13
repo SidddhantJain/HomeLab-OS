@@ -4,7 +4,7 @@ from typing import Optional
 
 class RootResponse(BaseModel):
     name: str = "HomeLab OS"
-    version: str = "v1.0"
+    version: str = "v3.5 Pro"
     status: str = "running"
 
 

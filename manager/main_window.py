@@ -4,6 +4,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt
 
 from manager.pages.dashboard_page import DashboardPage
+from manager.pages.device_control_page import DeviceControlPage
 from manager.pages.monitoring_page import MonitoringPage
 from manager.pages.storage_page import StoragePage
 from manager.pages.vault_page import VaultPage
@@ -31,10 +32,10 @@ from manager.pages.spotlight_search_page import SpotlightSearchPage
 
 
 class HomeLabMainWindow(QMainWindow):
-    """Main Application Window for HomeLab OS v5.0 Native Desktop Console."""
+    """Main Application Window for HomeLab OS v3.5 Pro Desktop Manager Console."""
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("HomeLab OS v5.0 — Desktop Manager Console")
+        self.setWindowTitle("HomeLab OS v3.5 Pro — Desktop Manager Console")
         self.resize(1300, 850)
         self.init_ui()
 
@@ -54,10 +55,9 @@ class HomeLabMainWindow(QMainWindow):
         s_layout.setContentsMargins(12, 16, 12, 16)
         s_layout.setSpacing(4)
 
-        logo_lbl = QLabel("🛡️ HomeLab OS v5.0")
+        logo_lbl = QLabel("🛡️ HomeLab OS v3.5 Pro")
         logo_lbl.setObjectName("HeaderTitle")
         s_layout.addWidget(logo_lbl)
-
         sub_lbl = QLabel("Native PySide6 Desktop Console")
         sub_lbl.setObjectName("MetricSubtext")
         s_layout.addWidget(sub_lbl)
@@ -84,6 +84,7 @@ class HomeLabMainWindow(QMainWindow):
         self.nav_buttons = []
         nav_items = [
             ("📊 Dashboard", DashboardPage()),
+            ("🎮 Remote Device Control", DeviceControlPage()),
             ("📈 Real-Time Monitoring", MonitoringPage()),
             ("💾 Storage & SMART", StoragePage()),
             ("🔒 LUKS Vault", VaultPage()),

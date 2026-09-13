@@ -33,7 +33,7 @@ def test_read_root(client):
     assert response.status_code == 200
     data = response.json()
     assert data["name"] == "HomeLab OS"
-    assert data["version"] == "v1.0"
+    assert data["version"] == "v3.5 Pro"
     assert data["status"] == "running"
 
 

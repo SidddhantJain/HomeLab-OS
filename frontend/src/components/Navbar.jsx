@@ -24,7 +24,7 @@ const Navbar = ({ user, onLogout }) => {
         </div>
         <div>
           <h1 className="text-base font-bold text-white tracking-tight">HomeLab OS</h1>
-          <p className="text-xs text-slate-400">{serverTitle} • v1.0</p>
+          <p className="text-xs text-slate-400">{serverTitle} • v3.5 Pro</p>
         </div>
       </div>
 
