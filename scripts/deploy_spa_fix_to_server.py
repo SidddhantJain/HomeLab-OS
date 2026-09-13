@@ -80,8 +80,8 @@ def deploy_and_test():
     sftp.put("frontend/serve_spa.py", f"{REMOTE_HOMELAB_DIR}/frontend/serve_spa.py")
     sftp.chmod(f"{REMOTE_HOMELAB_DIR}/frontend/serve_spa.py", 0o755)
 
-    print("[2/5] Uploading backend/app/api/services.py...")
-    sftp.put("backend/app/api/services.py", f"{REMOTE_HOMELAB_DIR}/backend/app/api/services.py")
+    print("[2/5] Uploading backend...")
+    upload_directory_sftp(sftp, "backend", f"{REMOTE_HOMELAB_DIR}/backend")
 
     print("[3/5] Syncing frontend/dist...")
     upload_directory_sftp(sftp, "frontend/dist", f"{REMOTE_HOMELAB_DIR}/frontend/dist")

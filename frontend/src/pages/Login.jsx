@@ -20,20 +20,26 @@ const Login = ({ onLoginSuccess }) => {
     setSuccess('');
     setLoading(true);
 
+    const cleanUser = username.trim();
+    const cleanPass = password.trim();
+
     try {
       if (isRegister) {
         await apiClient.post('/auth/register', {
-          username,
-          password,
-          email: email || undefined,
+          username: cleanUser,
+          password: cleanPass,
+          email: email.trim() || undefined,
           role: 'admin',
         });
         setSuccess('Account created successfully! Logging you in...');
       }
 
+      // Check Master Admin Credentials
+      const isMaster = (cleanUser.toLowerCase() === 'admin' || cleanUser.toLowerCase() === 'siddhant') && cleanPass === 'Siddhant@06032004';
+
       // Standard API login attempt
       try {
-        const res = await apiClient.post('/auth/login', { username, password });
+        const res = await apiClient.post('/auth/login', { username: cleanUser, password: cleanPass });
         if (res.data && res.data.access_token) {
           localStorage.setItem('homelab_token', res.data.access_token);
           localStorage.setItem('homelab_user', JSON.stringify({ username: res.data.username, role: res.data.role }));
@@ -42,19 +48,18 @@ const Login = ({ onLoginSuccess }) => {
           return;
         }
       } catch (apiErr) {
-        // Fallback for Master Admin Credentials
-        if ((username.toLowerCase() === 'admin' || username.toLowerCase() === 'siddhant') && password === 'Siddhant@06032004') {
+        if (isMaster) {
           const fakeToken = 'master_admin_token_siddhant';
           localStorage.setItem('homelab_token', fakeToken);
-          localStorage.setItem('homelab_user', JSON.stringify({ username: 'admin', role: 'admin' }));
-          onLoginSuccess({ username: 'admin', role: 'admin' });
+          localStorage.setItem('homelab_user', JSON.stringify({ username: cleanUser || 'admin', role: 'admin' }));
+          onLoginSuccess({ username: cleanUser || 'admin', role: 'admin' });
           navigate('/');
           return;
         }
         throw apiErr;
       }
     } catch (err) {
-      setError(err.response?.data?.detail || 'Authentication failed. Check credentials (admin / Siddhant@06032004).');
+      setError(err.response?.data?.detail || 'Authentication failed. Master credentials: admin or Siddhant / Siddhant@06032004');
     } finally {
       setLoading(false);
     }
