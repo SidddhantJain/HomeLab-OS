@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, HardDrive, Lock, FolderKanban, Settings, Cpu, Layers, Camera, Database, BookOpen, Download } from 'lucide-react';
+import { LayoutDashboard, Server, HardDrive, Lock, FolderKanban, Settings, Cpu, Layers, Camera, Database, BookOpen, Download } from 'lucide-react';
 
 const Sidebar = () => {
   const navItems = [
     { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/server-management', label: 'Server Management', icon: Server },
     { path: '/admin', label: 'Control Center', icon: Cpu },
     { path: '/remote', label: 'Remote Control', icon: Settings },
     { path: '/activity', label: 'Activity Timeline', icon: BookOpen },

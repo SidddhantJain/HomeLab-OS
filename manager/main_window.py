@@ -4,6 +4,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt
 
 from manager.pages.dashboard_page import DashboardPage
+from manager.pages.server_management_page import ServerManagementPage
 from manager.pages.device_control_page import DeviceControlPage
 from manager.pages.monitoring_page import MonitoringPage
 from manager.pages.storage_page import StoragePage
@@ -84,6 +85,7 @@ class HomeLabMainWindow(QMainWindow):
         self.nav_buttons = []
         nav_items = [
             ("📊 Dashboard", DashboardPage()),
+            ("🌐 Hosted Services & Websites", ServerManagementPage()),
             ("🎮 Remote Device Control", DeviceControlPage()),
             ("📈 Real-Time Monitoring", MonitoringPage()),
             ("💾 Storage & SMART", StoragePage()),

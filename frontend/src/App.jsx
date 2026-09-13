@@ -24,6 +24,7 @@ import HealthCenterPage from './pages/HealthCenter';
 import JobCenterPage from './pages/JobCenter';
 import TransfersPage from './pages/Transfers';
 import MigrationWizardPage from './pages/MigrationWizard';
+import ServerManagementPage from './pages/ServerManagement';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -61,6 +62,7 @@ function App() {
                 <main className="flex-1 p-6 overflow-y-auto">
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
+                    <Route path="/server-management" element={<ServerManagementPage />} />
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/remote" element={<RemoteControl />} />
                     <Route path="/network" element={<NetworkPage />} />
