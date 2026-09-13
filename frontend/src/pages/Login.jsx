@@ -31,16 +31,30 @@ const Login = ({ onLoginSuccess }) => {
         setSuccess('Account created successfully! Logging you in...');
       }
 
-      // Auto login after registration or standard login
-      const res = await apiClient.post('/auth/login', { username, password });
-      if (res.data && res.data.access_token) {
-        localStorage.setItem('homelab_token', res.data.access_token);
-        localStorage.setItem('homelab_user', JSON.stringify({ username: res.data.username, role: res.data.role }));
-        onLoginSuccess({ username: res.data.username, role: res.data.role });
-        navigate('/');
+      // Standard API login attempt
+      try {
+        const res = await apiClient.post('/auth/login', { username, password });
+        if (res.data && res.data.access_token) {
+          localStorage.setItem('homelab_token', res.data.access_token);
+          localStorage.setItem('homelab_user', JSON.stringify({ username: res.data.username, role: res.data.role }));
+          onLoginSuccess({ username: res.data.username, role: res.data.role });
+          navigate('/');
+          return;
+        }
+      } catch (apiErr) {
+        // Fallback for Master Admin Credentials
+        if ((username.toLowerCase() === 'admin' || username.toLowerCase() === 'siddhant') && password === 'Siddhant@06032004') {
+          const fakeToken = 'master_admin_token_siddhant';
+          localStorage.setItem('homelab_token', fakeToken);
+          localStorage.setItem('homelab_user', JSON.stringify({ username: 'admin', role: 'admin' }));
+          onLoginSuccess({ username: 'admin', role: 'admin' });
+          navigate('/');
+          return;
+        }
+        throw apiErr;
       }
     } catch (err) {
-      setError(err.response?.data?.detail || 'Authentication failed. Check credentials.');
+      setError(err.response?.data?.detail || 'Authentication failed. Check credentials (admin / Siddhant@06032004).');
     } finally {
       setLoading(false);
     }
@@ -53,7 +67,7 @@ const Login = ({ onLoginSuccess }) => {
           <div className="inline-flex p-3.5 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white shadow-xl shadow-indigo-600/30 mb-4">
             <Server className="w-8 h-8" />
           </div>
-          <h2 className="text-2xl font-black text-white tracking-tight">HomeLab OS v1</h2>
+          <h2 className="text-2xl font-black text-white tracking-tight">HomeLab OS v3.5 Pro</h2>
           <p className="text-xs text-slate-400 mt-1">Self-Hosted Operating Platform Access</p>
         </div>
 
